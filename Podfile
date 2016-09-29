@@ -7,5 +7,8 @@ target 'Foodaholic' do
 
   # Pods for Foodaholic
     pod 'Firebase/Core'
+pod ‘Firebase’
+pod ‘Firebase/Database’
+
 
 end
