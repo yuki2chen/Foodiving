@@ -6,7 +6,6 @@ target 'Foodaholic' do
   use_frameworks!
 
   # Pods for Foodaholic
-
     pod 'Firebase/Core'
 
 end

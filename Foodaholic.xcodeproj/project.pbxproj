@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */; };
+		A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */; };
 		A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */; };
 		A5DF278C1D9CDE7500CF5CEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF278B1D9CDE7500CF5CEA /* ViewController.swift */; };
 		A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */; };
@@ -16,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodaholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.release.xcconfig"; sourceTree = "<group>"; };
+		75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.debug.xcconfig"; sourceTree = "<group>"; };
+		A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5DF27861D9CDE7500CF5CEA /* Foodaholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodaholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DF278B1D9CDE7500CF5CEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501D79A4C471F0E502D5EA29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D9577A5152E95F38FA9C36D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */,
+				68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A5DF277D1D9CDE7500CF5CEA = {
 			isa = PBXGroup;
 			children = (
 				A5DF27881D9CDE7500CF5CEA /* Foodaholic */,
 				A5DF27871D9CDE7500CF5CEA /* Products */,
+				5D9577A5152E95F38FA9C36D /* Pods */,
+				501D79A4C471F0E502D5EA29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +89,7 @@
 				A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */,
 				A5DF27981D9CDE7500CF5CEA /* Info.plist */,
 				A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */,
+				A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */,
 			);
 			path = Foodaholic;
 			sourceTree = "<group>";
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5DF279B1D9CDE7500CF5CEA /* Build configuration list for PBXNativeTarget "Foodaholic" */;
 			buildPhases = (
+				B15150DDCF684F0B61B52F34 /* 📦 Check Pods Manifest.lock */,
 				A5DF27821D9CDE7500CF5CEA /* Sources */,
 				A5DF27831D9CDE7500CF5CEA /* Frameworks */,
 				A5DF27841D9CDE7500CF5CEA /* Resources */,
+				6F16A0BA8BCD03BDCB4651AE /* 📦 Embed Pods Frameworks */,
+				6330373B95B3C83A5D32655F /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,12 +156,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */,
+				A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */,
 				A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */,
 				A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6330373B95B3C83A5D32655F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F16A0BA8BCD03BDCB4651AE /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B15150DDCF684F0B61B52F34 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A5DF27821D9CDE7500CF5CEA /* Sources */ = {
@@ -251,6 +330,7 @@
 		};
 		A5DF279C1D9CDE7500CF5CEA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Foodaholic/Info.plist;
@@ -262,6 +342,7 @@
 		};
 		A5DF279D1D9CDE7500CF5CEA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Foodaholic/Info.plist;
@@ -290,6 +371,7 @@
 				A5DF279D1D9CDE7500CF5CEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
