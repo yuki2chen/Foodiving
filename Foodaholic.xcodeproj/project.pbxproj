@@ -15,6 +15,7 @@
 		A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */; };
 		A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */; };
 		A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */; };
+		A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DF27961D9CDE7500CF5CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5DF27981D9CDE7500CF5CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		A5DF27881D9CDE7500CF5CEA /* Foodaholic */ = {
 			isa = PBXGroup;
 			children = (
+				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
 				A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */,
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */,
 				A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */,
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,

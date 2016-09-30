@@ -16,8 +16,6 @@ struct RestaurantInDatabaseStruct {
 
 }
 
-
-
 class ResaturantMealTableViewController: UITableViewController {
 
     var restaurants = [RestaurantInDatabaseStruct]()
@@ -68,12 +66,12 @@ class ResaturantMealTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
         
 //        let labelOfName = cell?.viewWithTag(1) as! UILabel
 //        labelOfName.text = restaurants[indexPath.row].restaurantName
-        let labelOfAddress = cell?.viewWithTag(2) as! UILabel
-        labelOfAddress.text = restaurants[indexPath.row].address
+//        let labelOfAddress = cell?.viewWithTag(2) as! UILabel
+//        labelOfAddress.text = restaurants[indexPath.row].address
         
         return cell!
         
