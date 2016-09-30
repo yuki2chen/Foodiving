@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
 
     //Mark: Properties
     @IBOutlet weak var mealNameLabel: UILabel!
@@ -26,6 +26,7 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var environmentRateLabel: UILabel!
     
+    @IBOutlet weak var environmentRatingControl: RatingControl!
     @IBOutlet weak var serviceRateLabel: UILabel!
     
     @IBOutlet weak var revisitRateLabel: UILabel!

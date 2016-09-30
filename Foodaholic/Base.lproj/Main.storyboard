@@ -60,15 +60,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
-                                <rect key="frame" x="26" y="36" width="156" height="161"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7C2-cS-Y89" appends="YES" id="Hk7-Nc-iEn"/>
-                                </connections>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOW-1v-z7B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOW-1v-z7B">
                                 <rect key="frame" x="31" y="212" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FGQ-rw-VKQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -85,14 +81,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFS-P9-fZg">
-                                <rect key="frame" x="262" y="566" width="31" height="30"/>
+                                <rect key="frame" x="283" y="562" width="34" height="30"/>
                                 <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="postButton:" destination="Aly-U5-KVA" eventType="touchUpInside" id="qZM-e7-J8H"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Environment：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYU-AZ-2C1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Environment：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYU-AZ-2C1">
                                 <rect key="frame" x="48" y="241" width="113" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="1Sb-eQ-8Qc"/>
+                                    <constraint firstAttribute="height" constant="21" id="MZb-Tk-zFw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -111,6 +111,12 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="taste：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLc-Rw-v7E">
                                 <rect key="frame" x="48" y="363" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-cT-eHC">
+                                <rect key="frame" x="195" y="39" width="54" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -143,21 +149,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1b-wN-Kk1">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1b-wN-Kk1">
                                 <rect key="frame" x="433" y="150" width="156" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="eV8-Bj-ufS"/>
+                                </constraints>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OQ-th-jBv">
-                                <rect key="frame" x="262" y="150" width="165" height="30"/>
+                                <rect key="frame" x="262" y="150" width="163" height="30"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zma-6B-eNA">
                                 <rect key="frame" x="333" y="112" width="165" height="30"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-cT-eHC">
-                                <rect key="frame" x="195" y="39" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="73" placeholderIntrinsicHeight="61" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-zY-xaE" customClass="RatingControl" customModule="Foodaholic" customModuleProvider="target">
+                                <rect key="frame" x="157" y="239" width="240" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
+                                <rect key="frame" x="26" y="28" width="156" height="161"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7C2-cS-Y89" appends="YES" id="Hk7-Nc-iEn"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -166,6 +180,7 @@
                         <outlet property="commentLabel" destination="gcR-H4-3He" id="O1I-b9-SGS"/>
                         <outlet property="commentTextField" destination="Ryn-gh-QLn" id="2iN-8h-zEp"/>
                         <outlet property="environmentRateLabel" destination="mYU-AZ-2C1" id="EL9-qL-ogj"/>
+                        <outlet property="environmentRatingControl" destination="Eg3-zY-xaE" id="bQR-fS-eUC"/>
                         <outlet property="mealNameLabel" destination="Ol8-cT-eHC" id="2Lj-Mc-4ax"/>
                         <outlet property="mealNameTextField" destination="aHS-vg-l7Y" id="89y-cu-Aug"/>
                         <outlet property="photoImageView" destination="A45-de-9GS" id="4Eh-Dm-irE"/>
@@ -185,7 +200,24 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2125" y="-240"/>
+            <point key="canvasLocation" x="2044" y="-283"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KCb-BH-5Tq">
+            <objects>
+                <viewController id="GXE-ak-xOH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ADX-HI-jXe"/>
+                        <viewControllerLayoutGuide type="bottom" id="jta-N9-Azg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lqZ-jr-9tT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="koA-u3-4zz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
