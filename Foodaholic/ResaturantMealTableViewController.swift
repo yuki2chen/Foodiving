@@ -10,28 +10,16 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-//struct MealInDatabaseStruct {
-//    let mealName: String!
-//    let price: String!
-////    let photo: UIImage!
-////    let tasteRating: RatingControl
-//    let comment: String!
-//
-//}
+
 
 class ResaturantMealTableViewController: UITableViewController {
     var meals = [Meal]()
-//    var mealsInDatabase = [MealInDatabaseStruct]()
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
-        
-
-        
-        
+        // Mark: Retrieve data
         let mealInfoDatabase = FIRDatabase.database().reference()
         mealInfoDatabase.child("Restaurants_comment").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: {
             snapshot in
@@ -56,9 +44,6 @@ class ResaturantMealTableViewController: UITableViewController {
     
     //Mark: Navigation
     
-    
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail"{
             
@@ -79,21 +64,26 @@ class ResaturantMealTableViewController: UITableViewController {
     
     
     //Mark: Action
-
+    
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? CommentViewController, meal = sourceViewController.meal {
+            
+            
+            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
+                // Update an existing meal
                 meals[selectedIndexPath.row] = meal
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             } else {
-                // Add a new meal.
-                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-                meals.append(meal)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                
+                meals.removeLast()
+                // Add a new meal
+                //let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+                
+                
+                //meals.append(meal)
+                //tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
-            // Save the meals.
-//            saveMeals()
         }
     }
     
