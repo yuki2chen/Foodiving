@@ -50,23 +50,32 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
         
         
-        
+        //
         mealNameTextField.delegate = self
+        priceTextField.delegate = self
+        commentTextField.delegate = self
 //        checkValidMealName()
         
-        if let meal = meal{
-            navigationItem.title = meal.mealName
-            mealNameTextField.text = meal.mealName
-            priceTextField.text = meal.price
-//            photoImageView.image = meal.photo
-            commentTextField.text = meal.comment
-//            tasteRatingControl.rating = meal.tasteRating
         
-            
-        }
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        //??
+//        if let meal = meal{
+//            navigationItem.title = meal.mealName
+//            mealNameTextField.text = meal.mealName
+//            priceTextField.text = meal.price
+////            photoImageView.image = meal.photo
+//            commentTextField.text = meal.comment
+////            tasteRatingControl.rating = meal.tasteRating
+//        
+//            
+//        }
         
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
@@ -85,12 +94,8 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     }
     
 
-    //Mark: UITextFieldDelegate
     
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        mealNameLabel.text = textField.text
-//    }
-//    
+
     
     
     
@@ -159,6 +164,21 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     
     //Mark: UITextFieldDelegate
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard
+//        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return false
+    }
+
+    
+    
+    //    func textFieldDidEndEditing(textField: UITextField) {
+    //        mealNameLabel.text = textField.text
+    //    }
+    //
 //    
 //    func textFieldDidBeginEditing(textField: UITextField) {
 //        //打字的時候不能按post button
@@ -171,7 +191,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //        let mealNametext = mealNameTextField.text ?? ""
 //        PostButton.enabled = !mealNametext.isEmpty
 //    }
-    
+//    
 //    func textFieldDidEndEditing(textField: UITextField) {
 //    }
     
@@ -189,11 +209,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //        mealNameTextField.resignFirstResponder()
 //        priceTextField.resignFirstResponder()
 //        commentTextField.resignFirstResponder()
-        print("selectImage")
         //Mark: create a image picker controller
         let imagePickerController = UIImagePickerController()
         
-        imagePickerController.sourceType = .Camera
+        imagePickerController.sourceType = .PhotoLibrary
         imagePickerController.delegate = self
         presentViewController(imagePickerController, animated: true, completion: nil)
         
@@ -202,4 +221,19 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
         
     
+}
+
+
+
+
+
+//Mark: 點選任意處可隱藏keyboard
+extension UIViewController{
+    func hideKeyboardWhenTappedAround(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
