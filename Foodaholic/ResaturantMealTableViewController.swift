@@ -26,7 +26,7 @@ class ResaturantMealTableViewController: UITableViewController {
             let mealName = snapshot.value!["mealName"] as! String
             let price = snapshot.value!["price"] as! String
 //            let photo = snapshot.value!["photo"] as! UIImage
-            let tasteRating = snapshot.value!["tasteRating"] as! Double
+            let tasteRating = snapshot.value!["tasteRating"] as! Int
             let comment = snapshot.value!["comment"] as! String
 
             

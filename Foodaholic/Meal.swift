@@ -21,14 +21,14 @@ class Meal: NSObject{
     var mealName: String
     var price: String
     //var photo: UIImage?
-    var tasteRating: Double
+    var tasteRating: Int
     var comment: String
     
     
     
     // MARK: Initialization
     
-    init?(mealName: String, price: String,tasteRating: Double,comment: String){
+    init?(mealName: String, price: String,tasteRating: Int,comment: String){
         self.mealName = mealName
         self.price = price
         //self.photo = photo

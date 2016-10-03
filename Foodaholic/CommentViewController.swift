@@ -139,7 +139,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             let mealName = mealNameTextField.text ?? ""
             let price = String(priceTextField ?? "")
 //            let photo = photoImageView.image
-            let tasteRating = Double(tasteRatingControl.rating)
+            let tasteRating = Int(tasteRatingControl.rating)
             let comment = commentTextField.text ?? ""
             meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
             
