@@ -65,17 +65,17 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         self.hideKeyboardWhenTappedAround()
         
-        //??
-//        if let meal = meal{
-//            navigationItem.title = meal.mealName
-//            mealNameTextField.text = meal.mealName
-//            priceTextField.text = meal.price
-////            photoImageView.image = meal.photo
-//            commentTextField.text = meal.comment
-////            tasteRatingControl.rating = meal.tasteRating
-//        
-//            
-//        }
+        //點選cell時 會有儲存的資訊
+        if let meal = meal{
+            navigationItem.title = meal.mealName
+            mealNameTextField.text = meal.mealName
+            priceTextField.text = meal.price
+//            photoImageView.image = meal.photo
+            commentTextField.text = meal.comment
+//            tasteRatingControl.rating = meal.tasteRating
+        
+            
+        }
         
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
@@ -139,9 +139,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             let mealName = mealNameTextField.text ?? ""
             let price = String(priceTextField ?? "")
 //            let photo = photoImageView.image
-            let tasteRating = tasteRatingControl.rating
+            let tasteRating = Double(tasteRatingControl.rating)
             let comment = commentTextField.text ?? ""
-            meal = Meal(mealName: mealName, price: price,  comment: comment)
+            meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
             
             
             
@@ -222,6 +222,8 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
     
 }
+
+
 
 
 

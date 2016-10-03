@@ -31,13 +31,12 @@ class RatingControl: UIView {
         
         for _ in 0..<5{
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-//          button.backgroundColor = UIColor.blueColor()
-           
-            
             
             button.setTitle(filledRatePicture, forState: .Selected)
             button.setTitle(emptyRatePicture, forState: .Normal)
             button.setTitle(filledRatePicture, forState: [.Highlighted, .Selected])
+            
+            
             // ???
             button.reversesTitleShadowWhenHighlighted = false
             button.highlighted = false
@@ -88,7 +87,7 @@ class RatingControl: UIView {
             button.selected = index < rating
         }
     }
-    
+
     
     
 }

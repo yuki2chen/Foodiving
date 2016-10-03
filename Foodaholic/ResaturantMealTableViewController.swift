@@ -26,11 +26,11 @@ class ResaturantMealTableViewController: UITableViewController {
             let mealName = snapshot.value!["mealName"] as! String
             let price = snapshot.value!["price"] as! String
 //            let photo = snapshot.value!["photo"] as! UIImage
-//            let tasteRating = snapshot.value!["tasteRating"] as! RatingControl
+            let tasteRating = snapshot.value!["tasteRating"] as! Double
             let comment = snapshot.value!["comment"] as! String
 
             
-            self.meals.insert(Meal(mealName: mealName,price: price,comment: comment)!, atIndex:0)
+            self.meals.insert(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment)!, atIndex:0)
             self.tableView.reloadData()
             
             }
@@ -117,11 +117,7 @@ class ResaturantMealTableViewController: UITableViewController {
         
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = meal.price
-//        cell.ratingControl.rating = meal.tasteRating
-//        let labelOfName = cell?.viewWithTag(1) as! UILabel
-//        labelOfName.text = restaurants[indexPath.row].restaurantName
-//        let labelOfAddress = cell?.viewWithTag(2) as! UILabel
-//        labelOfAddress.text = restaurants[indexPath.row].address
+        cell.ratingControl.rating = Int(meal.tasteRating)
         
         return cell
         
