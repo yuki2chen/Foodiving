@@ -47,6 +47,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,9 +59,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         photoImageView.userInteractionEnabled = true
         
         
-        //
+        
         mealNameTextField.delegate = self
         priceTextField.delegate = self
+        priceTextField.keyboardType = .NumberPad //只能輸入數字
         commentTextField.delegate = self
 //        checkValidMealName()
         
@@ -171,6 +176,13 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //        textField.resignFirstResponder()
         self.view.endEditing(true)
         return false
+    }
+    
+    
+    func priceTextField(priceTextField: UITextField,shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
+        let invalidCharcters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+        return string.rangeOfCharacterFromSet(invalidCharcters,options: [],range: string.startIndex ..< string.endIndex) == nil
+        
     }
 
     
