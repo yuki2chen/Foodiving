@@ -84,10 +84,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 
     //Mark: UITextFieldDelegate
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        mealNameLabel.text = textField.text
-    }
-    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        mealNameLabel.text = textField.text
+//    }
+//    
     
     
     
@@ -133,7 +133,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //            let photo = photoImageView.image
             let tasteRating = tasteRatingControl.rating
             let comment = commentTextField.text ?? ""
-            meal = Meal(mealName: mealName, price: price, tasteRating: tasteRating, comment: comment)
+            meal = Meal(mealName: mealName, price: price,  comment: comment)
             
             
             

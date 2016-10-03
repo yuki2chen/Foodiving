@@ -46,7 +46,7 @@ class Meal: NSObject{
     
     // MARK: Initialization
 
-    init?(mealName: String, price: String, tasteRating: Int,comment: String){
+    init?(mealName: String, price: String,comment: String){
         self.mealName = mealName
         self.price = price
 //        self.photo = photo
@@ -54,9 +54,9 @@ class Meal: NSObject{
         self.comment = comment
         
         super.init()
-        if mealName.isEmpty || tasteRating < 0 {
-            return nil
-        }
+//        if mealName.isEmpty || tasteRating < 0 {
+//            return nil
+//        }
     }
     
     

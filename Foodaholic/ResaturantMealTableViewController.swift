@@ -10,18 +10,18 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-struct MealInDatabaseStruct {
-    let mealName: String!
-    let price: String!
-//    let photo: UIImage!
-//    let tasteRating: RatingControl
-    let comment: String!
-
-}
+//struct MealInDatabaseStruct {
+//    let mealName: String!
+//    let price: String!
+////    let photo: UIImage!
+////    let tasteRating: RatingControl
+//    let comment: String!
+//
+//}
 
 class ResaturantMealTableViewController: UITableViewController {
     var meals = [Meal]()
-    var mealsInDatabase = [MealInDatabaseStruct]()
+//    var mealsInDatabase = [MealInDatabaseStruct]()
 
     
     
@@ -42,7 +42,7 @@ class ResaturantMealTableViewController: UITableViewController {
             let comment = snapshot.value!["comment"] as! String
 
             
-            self.mealsInDatabase.insert(MealInDatabaseStruct(mealName: mealName,price: price, comment: comment), atIndex:0)
+            self.meals.insert(Meal(mealName: mealName,price: price,comment: comment)!, atIndex:0)
             self.tableView.reloadData()
             
             }
@@ -99,25 +99,7 @@ class ResaturantMealTableViewController: UITableViewController {
     
     
     
-    
-    //Mark: Save Meals
-//    func saveMeals(){
-//        let isSuccessfulSave = NSKeyedArchiver.archivedDataWithRootObject(meals, toFirebase: Meal.ArchiveURL.path!)
-//    }
-//    
-    
-    
-    //Mark: -Create Database
-//    func perMealDetailInDatabase(){
-//        let mealName =  "drip cafe"
-//        let price = "city_hall"
-//        
-//        let mealInfoDatabase: [String: AnyObject] = ["name": mealName ,"address": price]
-//        let mealReference = FIRDatabase.database().reference()
-//        
-//        mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
-//    }
-//    
+  
     
     
     override func didReceiveMemoryWarning() {
