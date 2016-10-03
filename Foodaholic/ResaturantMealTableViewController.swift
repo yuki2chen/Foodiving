@@ -10,47 +10,114 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-struct RestaurantInDatabaseStruct {
-    let restaurantName: String!
-    let address: String!
+struct MealInDatabaseStruct {
+    let mealName: String!
+    let price: String!
+//    let photo: UIImage!
+//    let tasteRating: RatingControl
+    let comment: String!
 
 }
 
 class ResaturantMealTableViewController: UITableViewController {
+    var meals = [Meal]()
+    var mealsInDatabase = [MealInDatabaseStruct]()
 
-    var restaurants = [RestaurantInDatabaseStruct]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let restaurantInfoDatabase = FIRDatabase.database().reference()
-        restaurantInfoDatabase.child("Restaurants").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: {
+        
+
+        
+        
+        let mealInfoDatabase = FIRDatabase.database().reference()
+        mealInfoDatabase.child("Restaurants_comment").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: {
             snapshot in
-            let restaurantName = snapshot.value!["name"] as! String
-            let address = snapshot.value!["address"] as! String
+            let mealName = snapshot.value!["mealName"] as! String
+            let price = snapshot.value!["price"] as! String
+//            let photo = snapshot.value!["photo"] as! UIImage
+//            let tasteRating = snapshot.value!["tasteRating"] as! RatingControl
+            let comment = snapshot.value!["comment"] as! String
+
             
-            self.restaurants.insert(RestaurantInDatabaseStruct(restaurantName:restaurantName,address:address), atIndex:0)
+            self.mealsInDatabase.insert(MealInDatabaseStruct(mealName: mealName,price: price, comment: comment), atIndex:0)
             self.tableView.reloadData()
             
             }
         )
         
         
-        RestaurantInDatabase()
     }
 
-    //Mark: -Create Database
-    func RestaurantInDatabase(){
-        let restaurantName =  "drip cafe"
-        let address = "city_hall"
-        
-        let restaurantInfoDatabase: [String: AnyObject] = ["name": restaurantName ,"address": address]
-        let restaurantReference = FIRDatabase.database().reference()
-        
-        restaurantReference.child("Restaurants").childByAutoId().setValue(restaurantInfoDatabase)
+    
+    
+    
+    //Mark: Navigation
+    
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail"{
+            
+            let mealDetailViewController = segue.destinationViewController as! CommentViewController
+            
+            if let selectedMealCell = sender as? ResaturantMealTableViewCell{
+                let indexPath = tableView.indexPathForCell(selectedMealCell)!
+                let selectedMeal = meals[indexPath.row]
+                mealDetailViewController.meal = selectedMeal
+            }
+            
+        }else if segue.identifier == "AddItem"{
+            
+            print("add new meal")
+            
+        }
     }
     
+    
+    //Mark: Action
+
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? CommentViewController, meal = sourceViewController.meal {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing meal.
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            } else {
+                // Add a new meal.
+                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+                meals.append(meal)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
+            // Save the meals.
+//            saveMeals()
+        }
+    }
+    
+    
+    
+    
+    //Mark: Save Meals
+//    func saveMeals(){
+//        let isSuccessfulSave = NSKeyedArchiver.archivedDataWithRootObject(meals, toFirebase: Meal.ArchiveURL.path!)
+//    }
+//    
+    
+    
+    //Mark: -Create Database
+//    func perMealDetailInDatabase(){
+//        let mealName =  "drip cafe"
+//        let price = "city_hall"
+//        
+//        let mealInfoDatabase: [String: AnyObject] = ["name": mealName ,"address": price]
+//        let mealReference = FIRDatabase.database().reference()
+//        
+//        mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
+//    }
+//    
     
     
     override func didReceiveMemoryWarning() {
@@ -59,21 +126,32 @@ class ResaturantMealTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return restaurants.count
+        return meals.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "MealTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier,forIndexPath: indexPath) as! ResaturantMealTableViewCell
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
         
+        let meal = meals[indexPath.row]
+        
+        cell.mealNameLabel.text = meal.mealName
+        cell.priceLabel.text = meal.price
+//        cell.ratingControl.rating = meal.tasteRating
 //        let labelOfName = cell?.viewWithTag(1) as! UILabel
 //        labelOfName.text = restaurants[indexPath.row].restaurantName
 //        let labelOfAddress = cell?.viewWithTag(2) as! UILabel
 //        labelOfAddress.text = restaurants[indexPath.row].address
         
-        return cell!
+        return cell
         
         
     }

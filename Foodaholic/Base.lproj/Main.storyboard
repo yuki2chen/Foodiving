@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aly-U5-KVA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2VG-6Q-IKK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Resaturant Meal Table View Controller-->
+        <!--Title-->
         <scene sceneID="5YE-Hn-Rgu">
             <objects>
                 <tableViewController storyboardIdentifier="ResaturantMealTableViewController" id="Sai-bb-y4a" customClass="ResaturantMealTableViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
@@ -14,27 +14,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="173" id="B7H-Yi-Ply">
-                                <rect key="frame" x="0.0" y="28" width="600" height="173"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" rowHeight="120" id="B7H-Yi-Ply" customClass="ResaturantMealTableViewCell" customModule="Foodaholic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="172.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
-                                            <rect key="frame" x="250" y="41" width="51" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
+                                            <rect key="frame" x="-7" y="0.0" width="126" height="119.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
+                                            <rect key="frame" x="138" y="8" width="56" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kh7-s2-kdh">
-                                            <rect key="frame" x="250" y="99" width="40" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31h-5p-ty2">
+                                            <rect key="frame" x="138" y="44" width="39" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="mMu-zf-eWD" customClass="RatingControl" customModule="Foodaholic" customModuleProvider="target">
+                                            <rect key="frame" x="138" y="81" width="200" height="25"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mealNameLabel" destination="Ani-Sg-yyM" id="y9u-Eh-FBf"/>
+                                    <outlet property="photoImageView" destination="L7p-dI-6hA" id="Mj9-Ms-MU4"/>
+                                    <outlet property="priceLabel" destination="31h-5p-ty2" id="HM7-Me-BYr"/>
+                                    <outlet property="ratingControl" destination="mMu-zf-eWD" id="5dg-5M-blO"/>
+                                    <segue destination="Aly-U5-KVA" kind="show" identifier="ShowDetail" id="7R2-Fi-Uev"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -42,11 +56,19 @@
                             <outlet property="delegate" destination="Sai-bb-y4a" id="hXK-RR-I1c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="BQs-IV-5KO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="Osk-F8-H1V">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Fg-Hm-3R8">
+                            <connections>
+                                <segue destination="WeB-NF-YVO" kind="presentation" id="Yqi-Ag-JNQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPa-cN-ZTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-240"/>
+            <point key="canvasLocation" x="3024" y="-296"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
@@ -61,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOW-1v-z7B">
-                                <rect key="frame" x="31" y="212" width="44" height="21"/>
+                                <rect key="frame" x="22" y="258" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FGQ-rw-VKQ"/>
                                 </constraints>
@@ -70,25 +92,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ryn-gh-QLn">
-                                <rect key="frame" x="31" y="433" width="558" height="30"/>
+                                <rect key="frame" x="22" y="479" width="558" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-H4-3He">
-                                <rect key="frame" x="31" y="404" width="82" height="21"/>
+                                <rect key="frame" x="22" y="450" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFS-P9-fZg">
-                                <rect key="frame" x="283" y="562" width="34" height="30"/>
-                                <state key="normal" title="Post"/>
-                                <connections>
-                                    <action selector="postButton:" destination="Aly-U5-KVA" eventType="touchUpInside" id="qZM-e7-J8H"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Environment：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYU-AZ-2C1">
-                                <rect key="frame" x="48" y="241" width="113" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Taste：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYU-AZ-2C1">
+                                <rect key="frame" x="39" y="285" width="59" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="113" id="1Sb-eQ-8Qc"/>
                                     <constraint firstAttribute="height" constant="21" id="MZb-Tk-zFw"/>
@@ -98,89 +113,107 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Service：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-vn-aol">
-                                <rect key="frame" x="48" y="282" width="74" height="21"/>
+                                <rect key="frame" x="39" y="328" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="revisit：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-jv-68K">
-                                <rect key="frame" x="48" y="322" width="63" height="21"/>
+                                <rect key="frame" x="39" y="368" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="taste：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLc-Rw-v7E">
-                                <rect key="frame" x="48" y="363" width="56" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Environment：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLc-Rw-v7E">
+                                <rect key="frame" x="39" y="402" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-cT-eHC">
-                                <rect key="frame" x="195" y="39" width="54" height="21"/>
+                                <rect key="frame" x="186" y="85" width="54" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkJ-6E-GJZ">
-                                <rect key="frame" x="195" y="77" width="56" height="21"/>
+                                <rect key="frame" x="186" y="123" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Service charge：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d15-Xd-n94">
-                                <rect key="frame" x="195" y="117" width="132" height="21"/>
+                                <rect key="frame" x="378" y="124" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65F-dI-cjx">
-                                <rect key="frame" x="195" y="158" width="68" height="21"/>
+                                <rect key="frame" x="186" y="164" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHS-vg-l7Y">
-                                <rect key="frame" x="254" y="36" width="322" height="30"/>
+                                <rect key="frame" x="245" y="82" width="322" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-Be-i0p">
-                                <rect key="frame" x="254" y="74" width="322" height="30"/>
+                                <rect key="frame" x="245" y="120" width="120" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1b-wN-Kk1">
-                                <rect key="frame" x="433" y="150" width="156" height="30"/>
+                                <rect key="frame" x="368" y="164" width="98" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="eV8-Bj-ufS"/>
                                 </constraints>
                             </pickerView>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZP-xQ-RKa">
+                                <rect key="frame" x="474" y="164" width="98" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="Com-J8-os1"/>
+                                </constraints>
+                            </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OQ-th-jBv">
-                                <rect key="frame" x="262" y="150" width="163" height="30"/>
+                                <rect key="frame" x="262" y="164" width="98" height="30"/>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zma-6B-eNA">
-                                <rect key="frame" x="333" y="112" width="165" height="30"/>
-                            </pickerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="73" placeholderIntrinsicHeight="61" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-zY-xaE" customClass="RatingControl" customModule="Foodaholic" customModuleProvider="target">
-                                <rect key="frame" x="157" y="239" width="240" height="25"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
-                                <rect key="frame" x="26" y="28" width="156" height="161"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
+                                <rect key="frame" x="17" y="74" width="156" height="161"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7C2-cS-Y89" appends="YES" id="Hk7-Nc-iEn"/>
+                                    <outletCollection property="gestureRecognizers" destination="cyW-d8-78K" appends="YES" id="twq-pT-H7R"/>
                                 </connections>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z47-9w-gBu">
+                                <rect key="frame" x="518" y="119" width="51" height="31"/>
+                            </switch>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="73" placeholderIntrinsicHeight="61" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-zY-xaE" customClass="RatingControl" customModule="Foodaholic" customModuleProvider="target">
+                                <rect key="frame" x="106" y="285" width="200" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Zjv-oW-ssP">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="SgD-uP-lfb">
+                            <connections>
+                                <action selector="cancel:" destination="Aly-U5-KVA" id="F0J-0p-aeP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" style="plain" id="U7U-UY-n5B">
+                            <connections>
+                                <segue destination="1vv-sy-jwi" kind="unwind" unwindAction="unwindToMealList:" id="taQ-IT-Z3L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="PostButton" destination="U7U-UY-n5B" id="chg-wh-NXE"/>
                         <outlet property="addressNameLabel" destination="65F-dI-cjx" id="8Uj-ug-WxO"/>
                         <outlet property="commentLabel" destination="gcR-H4-3He" id="O1I-b9-SGS"/>
                         <outlet property="commentTextField" destination="Ryn-gh-QLn" id="2iN-8h-zEp"/>
-                        <outlet property="environmentRateLabel" destination="mYU-AZ-2C1" id="EL9-qL-ogj"/>
-                        <outlet property="environmentRatingControl" destination="Eg3-zY-xaE" id="bQR-fS-eUC"/>
+                        <outlet property="environmentRateLabel" destination="wLc-Rw-v7E" id="cJC-Eg-YdJ"/>
                         <outlet property="mealNameLabel" destination="Ol8-cT-eHC" id="2Lj-Mc-4ax"/>
                         <outlet property="mealNameTextField" destination="aHS-vg-l7Y" id="89y-cu-Aug"/>
                         <outlet property="photoImageView" destination="A45-de-9GS" id="4Eh-Dm-irE"/>
@@ -190,34 +223,61 @@
                         <outlet property="revisitRateLabel" destination="LKb-jv-68K" id="qcN-dj-76S"/>
                         <outlet property="serviceChargeNameLabel" destination="d15-Xd-n94" id="ROR-NS-YUz"/>
                         <outlet property="serviceRateLabel" destination="Bdg-vn-aol" id="qhb-md-NY6"/>
-                        <outlet property="tasteRateLabel" destination="wLc-Rw-v7E" id="ZZK-Se-IOS"/>
+                        <outlet property="tasteRateLabel" destination="mYU-AZ-2C1" id="rmr-4S-bEY"/>
+                        <outlet property="tasteRatingControl" destination="Eg3-zY-xaE" id="e2K-aQ-ZJx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DaQ-Sq-bk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="7C2-cS-Y89">
+                <tapGestureRecognizer id="cyW-d8-78K">
                     <connections>
-                        <action selector="selectImage:" destination="Aly-U5-KVA" id="0Tt-Bd-np8"/>
+                        <action selector="selectImage:" destination="Aly-U5-KVA" id="al3-3b-xMj"/>
                     </connections>
                 </tapGestureRecognizer>
+                <exit id="1vv-sy-jwi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2044" y="-283"/>
+            <point key="canvasLocation" x="4480" y="-283"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="KCb-BH-5Tq">
+        <!--Navigation Controller-->
+        <scene sceneID="hfF-LL-KCi">
             <objects>
-                <viewController id="GXE-ak-xOH" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ADX-HI-jXe"/>
-                        <viewControllerLayoutGuide type="bottom" id="jta-N9-Azg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lqZ-jr-9tT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="koA-u3-4zz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2VG-6Q-IKK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vYj-Is-SqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sai-bb-y4a" kind="relationship" relationship="rootViewController" id="zUs-d3-lUb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7nm-jn-fg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2209" y="-283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZId-El-au0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WeB-NF-YVO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2AQ-dd-5K3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Aly-U5-KVA" kind="relationship" relationship="rootViewController" id="cNK-2V-DER"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-fR-SAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3782" y="155"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7R2-Fi-Uev"/>
+    </inferredMetricsTieBreakers>
 </document>

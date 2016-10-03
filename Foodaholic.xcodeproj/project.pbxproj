@@ -17,6 +17,8 @@
 		A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */; };
 		A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */; };
 		A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD11D9E3E210062C276 /* RatingControl.swift */; };
+		A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */; };
+		A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD51D9FA2200062C276 /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		A5DF27981D9CDE7500CF5CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A5FD5AD11D9E3E210062C276 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewCell.swift; sourceTree = "<group>"; };
+		A5FD5AD51D9FA2200062C276 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +92,11 @@
 			children = (
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A5FD5AD11D9E3E210062C276 /* RatingControl.swift */,
+				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
 				A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */,
+				A5FD5AD51D9FA2200062C276 /* Meal.swift */,
 				A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */,
 				A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */,
 				A5DF27981D9CDE7500CF5CEA /* Info.plist */,
@@ -135,6 +141,7 @@
 				TargetAttributes = {
 					A5DF27851D9CDE7500CF5CEA = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7WL624JB7U;
 					};
 				};
 			};
@@ -224,6 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */,
+				A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */,
+				A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */,
 				A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */,
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
 				A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */,
@@ -341,10 +350,13 @@
 			baseConfigurationReference = 75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -353,10 +365,13 @@
 			baseConfigurationReference = 68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
