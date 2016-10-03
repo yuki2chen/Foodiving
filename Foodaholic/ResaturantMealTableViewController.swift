@@ -76,7 +76,7 @@ class ResaturantMealTableViewController: UITableViewController {
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             } else {
                 
-                meals.removeLast()
+//                meals.append(meal)
                 // Add a new meal
                 //let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
                 

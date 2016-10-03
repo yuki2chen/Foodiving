@@ -50,6 +50,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        photoImageView.userInteractionEnabled = true
+        
+        
         
         mealNameTextField.delegate = self
 //        checkValidMealName()
@@ -161,8 +164,8 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //        //打字的時候不能按post button
 //        PostButton.enabled = false
 //    }
-    
-    
+//    
+//    
 //
 //    func checkValidMealName(){
 //        let mealNametext = mealNameTextField.text ?? ""
@@ -183,20 +186,18 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     @IBAction func selectImage(sender: UITapGestureRecognizer) {
         //當點擊時 keyboard會關閉
-        mealNameTextField.resignFirstResponder()
-        priceTextField.resignFirstResponder()
-        commentTextField.resignFirstResponder()
-        
+//        mealNameTextField.resignFirstResponder()
+//        priceTextField.resignFirstResponder()
+//        commentTextField.resignFirstResponder()
+        print("selectImage")
         //Mark: create a image picker controller
         let imagePickerController = UIImagePickerController()
         
-        imagePickerController.sourceType = .PhotoLibrary
+        imagePickerController.sourceType = .Camera
         imagePickerController.delegate = self
         presentViewController(imagePickerController, animated: true, completion: nil)
         
     }
-    
-
     
     
         
