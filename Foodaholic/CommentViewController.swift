@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
 
@@ -70,14 +71,14 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         self.hideKeyboardWhenTappedAround()
         
-        //點選cell時 會有儲存的資訊
+        //點選cell時 會有post的資訊
         if let meal = meal{
             navigationItem.title = meal.mealName
             mealNameTextField.text = meal.mealName
             priceTextField.text = meal.price
 //            photoImageView.image = meal.photo
             commentTextField.text = meal.comment
-//            tasteRatingControl.rating = meal.tasteRating
+            tasteRatingControl.rating = meal.tasteRating
         
             
         }
@@ -114,6 +115,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         //當cancel時  忽略picker
         dismissViewControllerAnimated(true, completion: nil)
         
+        picker.allowsEditing = true
+        presentViewController(picker, animated: true, completion: nil)
+        
     }
     func imagePickerController(picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[String : AnyObject]){
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -142,7 +146,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if PostButton === sender{
             let mealName = mealNameTextField.text ?? ""
-            let price = String(priceTextField ?? "")
+            let price = priceTextField.text ?? "0"
 //            let photo = photoImageView.image
             let tasteRating = Int(tasteRatingControl.rating)
             let comment = commentTextField.text ?? ""
@@ -158,6 +162,24 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             
             mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
             
+            
+            //Mark: save image in storage
+            
+            
+            let storageRef = FIRStorage.storage().reference
+            let mealPhoto = storageRef().child("mealPhoto/file.jpg")
+        
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "photoImageView/jpeg"
+            
+            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.8)!,metadata: metadata){(data,error) in
+                if error == nil{
+                    print("upload successful")
+                    
+                }else{
+                    print(error?.localizedDescription)
+                }
+            }
         }
         
         

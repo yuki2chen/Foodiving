@@ -20,7 +20,7 @@ class Meal: NSObject{
     
     var mealName: String
     var price: String
-    //var photo: UIImage?
+    var photo: UIImage?
     var tasteRating: Int
     var comment: String
     

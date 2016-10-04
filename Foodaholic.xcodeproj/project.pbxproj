@@ -10,6 +10,7 @@
 		943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */; };
 		A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */; };
 		A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */; };
+		A54657D71DA35BB400ECA38C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D61DA35BB400ECA38C /* MapViewController.swift */; };
 		A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */; };
 		A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */; };
 		A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 		75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.debug.xcconfig"; sourceTree = "<group>"; };
 		A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewController.swift; sourceTree = "<group>"; };
+		A54657D61DA35BB400ECA38C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5DF27861D9CDE7500CF5CEA /* Foodaholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodaholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DF278E1D9CDE7500CF5CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		A5DF27881D9CDE7500CF5CEA /* Foodaholic */ = {
 			isa = PBXGroup;
 			children = (
+				A54657D61DA35BB400ECA38C /* MapViewController.swift */,
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A5FD5AD11D9E3E210062C276 /* RatingControl.swift */,
 				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
@@ -237,6 +240,7 @@
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
 				A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,
+				A54657D71DA35BB400ECA38C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

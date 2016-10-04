@@ -23,6 +23,9 @@ class ResaturantMealTableViewController: UITableViewController {
         let mealInfoDatabase = FIRDatabase.database().reference()
         mealInfoDatabase.child("Restaurants_comment").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: {
             snapshot in
+            
+            print(snapshot)
+            
             let mealName = snapshot.value!["mealName"] as! String
             let price = snapshot.value!["price"] as! String
 //            let photo = snapshot.value!["photo"] as! UIImage
@@ -37,8 +40,63 @@ class ResaturantMealTableViewController: UITableViewController {
         )
         
         
+        
+//        let storageRef = FIRStorage.storage().reference
+//        let mealPhoto = storageRef().child("mealPhoto/file.jpg")
+        //        mealPhoto.downloadURLWithCompletion{(URL, error) -> Void in
+//            if (error != nil) {
+//                print("error to download")
+//            }else{
+//                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
+//                resaturantMealTableViewCell.photoImageView.image = UIImage(contentsOfFile:"gs://foodaholic-e6dde.appspot.com/mealPhoto")
+//            }
+//            
+//        }
+
+//        mealPhoto.dataWithMaxSize(1*1000*1000){
+//            (data,error) in
+//            if error == nil{
+//                print(data)
+//                
+//                let myImage = UIImage(data: data!)
+////                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
+////                resaturantMealTableViewCell.photoImageView.image = UIImage(data: data!)
+//
+//            }else{
+//                print(error?.localizedDescription)
+//            }
+//        }
+//        
+//        self.tableView.reloadData()
+
     }
 
+    //Mark: Retrieve Image from firebase
+    
+    
+    func retrieveImage(){
+        let storageRef = FIRStorage.storage().reference
+        let mealPhoto = storageRef().child("mealPhoto/file.jpg")
+        
+        mealPhoto.dataWithMaxSize(1*1000*1000){
+            (data,error) in
+            if error == nil{
+                print(data)
+                
+                let myImage = UIImage(data: data!)
+//                self.meals.insert(Meal(photo:mealPhoto))
+                
+                //                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
+                //                resaturantMealTableViewCell.photoImageView.image = UIImage(data: data!)
+                
+            }else{
+                print(error?.localizedDescription)
+            }
+        }
+        
+        self.tableView.reloadData()
+
+    }
     
     
     
@@ -76,11 +134,9 @@ class ResaturantMealTableViewController: UITableViewController {
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             } else {
                 
-//                meals.append(meal)
                 // Add a new meal
                 //let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-                
-                
+                            
                 //meals.append(meal)
                 //tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
@@ -116,11 +172,10 @@ class ResaturantMealTableViewController: UITableViewController {
         let meal = meals[indexPath.row]
         
         cell.mealNameLabel.text = meal.mealName
-        cell.priceLabel.text = meal.price
+        cell.priceLabel.text = String(meal.price)
         cell.ratingControl.rating = Int(meal.tasteRating)
-        
+//        cell.photoImageView.image = 
         return cell
-        
         
     }
 }
