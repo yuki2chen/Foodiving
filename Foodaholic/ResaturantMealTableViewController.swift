@@ -9,15 +9,18 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 
 
 class ResaturantMealTableViewController: UITableViewController {
     var meals = [Meal]()
+    var photoURL: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        
         
         // Mark: Retrieve data
         let mealInfoDatabase = FIRDatabase.database().reference()
@@ -28,7 +31,7 @@ class ResaturantMealTableViewController: UITableViewController {
             
             let mealName = snapshot.value!["mealName"] as! String
             let price = snapshot.value!["price"] as! String
-//            let photo = snapshot.value!["photo"] as! UIImage
+            self.photoURL = snapshot.value!["photoURL"] as! String
             let tasteRating = snapshot.value!["tasteRating"] as! Int
             let comment = snapshot.value!["comment"] as! String
 
@@ -41,66 +44,10 @@ class ResaturantMealTableViewController: UITableViewController {
         
         
         
-//        let storageRef = FIRStorage.storage().reference
-//        let mealPhoto = storageRef().child("mealPhoto/file.jpg")
-        //        mealPhoto.downloadURLWithCompletion{(URL, error) -> Void in
-//            if (error != nil) {
-//                print("error to download")
-//            }else{
-//                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
-//                resaturantMealTableViewCell.photoImageView.image = UIImage(contentsOfFile:"gs://foodaholic-e6dde.appspot.com/mealPhoto")
-//            }
-//            
-//        }
-
-//        mealPhoto.dataWithMaxSize(1*1000*1000){
-//            (data,error) in
-//            if error == nil{
-//                print(data)
-//                
-//                let myImage = UIImage(data: data!)
-////                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
-////                resaturantMealTableViewCell.photoImageView.image = UIImage(data: data!)
-//
-//            }else{
-//                print(error?.localizedDescription)
-//            }
-//        }
-//        
-//        self.tableView.reloadData()
-
-    }
-
-    //Mark: Retrieve Image from firebase
-    
-    
-    func retrieveImage(){
-        let storageRef = FIRStorage.storage().reference
-        let mealPhoto = storageRef().child("mealPhoto/file.jpg")
-        
-        mealPhoto.dataWithMaxSize(1*1000*1000){
-            (data,error) in
-            if error == nil{
-                print(data)
-                
-                let myImage = UIImage(data: data!)
-//                self.meals.insert(Meal(photo:mealPhoto))
-                
-                //                let resaturantMealTableViewCell = ResaturantMealTableViewCell()
-                //                resaturantMealTableViewCell.photoImageView.image = UIImage(data: data!)
-                
-            }else{
-                print(error?.localizedDescription)
-            }
-        }
-        
-        self.tableView.reloadData()
-
     }
     
     
-    
-    //Mark: Navigation
+    // Mark: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail"{
@@ -121,7 +68,10 @@ class ResaturantMealTableViewController: UITableViewController {
     }
     
     
-    //Mark: Action
+    
+    
+    
+    // Mark: Action
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? CommentViewController, meal = sourceViewController.meal {
@@ -152,6 +102,10 @@ class ResaturantMealTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -159,10 +113,14 @@ class ResaturantMealTableViewController: UITableViewController {
     }
     
     
+    
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return meals.count
     }
+    
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "MealTableViewCell"
@@ -174,7 +132,11 @@ class ResaturantMealTableViewController: UITableViewController {
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = String(meal.price)
         cell.ratingControl.rating = Int(meal.tasteRating)
-//        cell.photoImageView.image = 
+        let photoUrl = NSURL(string: photoURL)
+        let photoData = NSData(contentsOfURL: photoUrl!)
+        cell.photoImageView.image = UIImage(data: photoData!)
+        
+        
         return cell
         
     }

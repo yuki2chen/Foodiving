@@ -145,49 +145,69 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if PostButton === sender{
-            let mealName = mealNameTextField.text ?? ""
-            let price = priceTextField.text ?? "0"
-//            let photo = photoImageView.image
-            let tasteRating = Int(tasteRatingControl.rating)
-            let comment = commentTextField.text ?? ""
-            meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
             
             
             
-            
-            //Mark: save data in firebase
-            
-            let mealInfoDatabase: [String: AnyObject] = ["mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment]
-            let mealReference = FIRDatabase.database().reference()
-            
-            mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
             
             
             //Mark: save image in storage
             
             
             let storageRef = FIRStorage.storage().reference
-            let mealPhoto = storageRef().child("mealPhoto/file.jpg")
-        
+            let maelPhotoFileName = NSUUID().UUIDString
+            let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
+            
+            
             let metadata = FIRStorageMetadata()
             metadata.contentType = "photoImageView/jpeg"
             
             mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.8)!,metadata: metadata){(data,error) in
+                
                 if error == nil{
                     print("upload successful")
+                    
+                    guard let photoURL = data?.downloadURL()?.absoluteString else{
+                        print("fail to download photoURL")
+                        return
+                    }
+
+                    print("photoURL: \(photoURL)")
+                    
+                    
+                    //func save to database
+                    self.saveToFirebase(photoURL)
                     
                 }else{
                     print(error?.localizedDescription)
                 }
+                
             }
+            
+           
         }
         
         
         
     }
     
-    
-    
+    //Mark: save To Firebase
+    func saveToFirebase(photoURL: String){
+        let mealName = mealNameTextField.text ?? ""
+        let price = priceTextField.text ?? "0"
+        //            let photo = photoImageView.image
+        let tasteRating = Int(tasteRatingControl.rating)
+        let comment = commentTextField.text ?? ""
+        meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
+        
+        //Mark: save data in firebase
+        
+        let mealInfoDatabase: [String: AnyObject] = ["mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL]
+        
+        let mealReference = FIRDatabase.database().reference()
+        
+        mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
+
+    }
     
     
     //Mark: UITextFieldDelegate
