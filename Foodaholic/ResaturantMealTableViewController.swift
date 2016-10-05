@@ -52,12 +52,14 @@ class ResaturantMealTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail"{
             
-            let mealDetailViewController = segue.destinationViewController as! CommentViewController
+            let mealDetailViewController = segue.destinationViewController as! DetailViewController
             
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
+                let selectedPhoto = photoURL
                 mealDetailViewController.meal = selectedMeal
+                mealDetailViewController.photoURL = selectedPhoto
             }
             
         }else if segue.identifier == "AddItem"{
@@ -83,12 +85,8 @@ class ResaturantMealTableViewController: UITableViewController {
                 meals[selectedIndexPath.row] = meal
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             } else {
-                
-                // Add a new meal
-                //let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-                            
-                //meals.append(meal)
-                //tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                print("can't update an existing meal")
+               
             }
         }
     }

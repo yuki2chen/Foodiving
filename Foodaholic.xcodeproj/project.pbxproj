@@ -11,6 +11,7 @@
 		A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */; };
 		A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */; };
 		A54657D71DA35BB400ECA38C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D61DA35BB400ECA38C /* MapViewController.swift */; };
+		A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D81DA4E07700ECA38C /* DetailViewController.swift */; };
 		A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */; };
 		A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */; };
 		A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 		A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewController.swift; sourceTree = "<group>"; };
 		A54657D61DA35BB400ECA38C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A54657D81DA4E07700ECA38C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A5DF27861D9CDE7500CF5CEA /* Foodaholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodaholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DF278E1D9CDE7500CF5CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				A54657D61DA35BB400ECA38C /* MapViewController.swift */,
+				A54657D81DA4E07700ECA38C /* DetailViewController.swift */,
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A5FD5AD11D9E3E210062C276 /* RatingControl.swift */,
 				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */,
 				A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */,
 				A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */,
 				A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */,

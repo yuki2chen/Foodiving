@@ -260,7 +260,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     @IBAction func selectImage(sender: UITapGestureRecognizer) {
         //當點擊時 keyboard會關閉
-//        mealNameTextField.resignFirstResponder()
+        mealNameTextField.resignFirstResponder()
 //        priceTextField.resignFirstResponder()
 //        commentTextField.resignFirstResponder()
         //Mark: create a image picker controller
@@ -276,10 +276,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
     
 }
-
-
-
-
 
 
 

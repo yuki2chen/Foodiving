@@ -133,6 +133,21 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
     }
     
 
+    func pickPlace(){
+        //        let center = CLLocation
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
