@@ -20,9 +20,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var priceTextField: UITextField!
     
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
-    
-    @IBOutlet weak var addressNameLabel: UILabel!
-    
+        
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet weak var rateLabel: UILabel!

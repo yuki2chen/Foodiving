@@ -20,29 +20,42 @@ class ResaturantMealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+    
+        retreiveData()
         
         
-        // Mark: Retrieve data
+    }
+    
+    
+    // Mark: Retrieve data
+    
+    func retreiveData() {
+        
+        meals = []
+        
         let mealInfoDatabase = FIRDatabase.database().reference()
-        mealInfoDatabase.child("Restaurants_comment").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: {
+        mealInfoDatabase.child("restaurantsComments").observeEventType(.Value, withBlock: {
+            
             snapshot in
+            print(snapshot.value)
+            let snapshots = snapshot.children.allObjects
+            for commentSnap in snapshots{
+                
+                let mealName = commentSnap.value["mealName"] as! String
+                let price = commentSnap.value["price"] as! String
+                self.photoURL = commentSnap.value["photoURL"] as! String
+                let tasteRating = commentSnap.value["tasteRating"] as! Int
+                let comment = commentSnap.value["comment"] as! String
+                
+                self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
+                
+            }
             
-            print(snapshot)
             
-            let mealName = snapshot.value!["mealName"] as! String
-            let price = snapshot.value!["price"] as! String
-            self.photoURL = snapshot.value!["photoURL"] as! String
-            let tasteRating = snapshot.value!["tasteRating"] as! Int
-            let comment = snapshot.value!["comment"] as! String
-
-            
-            self.meals.insert(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment)!, atIndex:0)
             self.tableView.reloadData()
             
             }
         )
-        
-        
         
     }
     

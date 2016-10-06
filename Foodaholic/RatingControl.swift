@@ -40,8 +40,8 @@ class RatingControl: UIView {
             // ???
             button.reversesTitleShadowWhenHighlighted = false
             button.highlighted = false
-            button.showsTouchWhenHighlighted = false
-            button.adjustsImageWhenHighlighted = false
+//            button.showsTouchWhenHighlighted = false
+//            button.adjustsImageWhenHighlighted = false
             
             button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(_:)), forControlEvents: .TouchDown)
             ratingButtons += [button]
