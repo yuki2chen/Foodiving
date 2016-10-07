@@ -16,11 +16,12 @@ use_frameworks!
 
   # Pods for Foodaholic
     pod 'Firebase/Core'
-pod ‘Firebase’
-pod ‘Firebase/Database’
-pod ‘Firebase/Storage’
+pod 'Firebase'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 pod 'GooglePlaces'
 pod 'GoogleMaps'
 pod 'Alamofire', '~> 3.4'
-pod 'QuadratTouch', '>= 1.0'
+pod 'FoursquareAPIClient'
+
 end

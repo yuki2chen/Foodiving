@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import GooglePlaces
 import GoogleMaps
+import FoursquareAPIClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        GMSServices .provideAPIKey("AIzaSyD4X4xxJjmvtUXR0w3gVIXkrQ2xhI-XIys")
+//        GMSServices .provideAPIKey("AIzaSyD4X4xxJjmvtUXR0w3gVIXkrQ2xhI-XIys")
         return true
     }
 

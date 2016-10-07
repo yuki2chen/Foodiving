@@ -2,212 +2,137 @@
 //  MapViewController.swift
 //  Foodaholic
 //
-//  Created by onechun🌾 on 2016/10/4.
+//  Created by onechun🌾 on 2016/10/6.
 //  Copyright © 2016年 onechun. All rights reserved.
 //
 
+import FoursquareAPIClient
 import UIKit
-import GoogleMaps
-import Alamofire
+import MapKit
 
-
-class MapViewController: UIViewController,CLLocationManagerDelegate {
+class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    var jsonData: NSData!
+    var searchRestaurants = [searchRestaurant]()
     
-    //Mark: properties
-    let locationManager = CLLocationManager()
-
+    @IBOutlet weak var addTableView: UITableView!
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)){
-//            UIApplication.sharedApplication().openURL(NSURL(string: "comgooglemaps://?center=25.04,121.56&zoom=15&views=traffic&mapmode=standard&q=Restaurant")!)
-//            UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps-x-callback://?center=25.04,121.56&zoom=15&x-success=sourceapp://?resume=true&x-source=Nom+Nom")!)
-//            
-//        }else{
-//            print("can't use comgooglemaps://")
-//        }
-        
-        
-        let camera = GMSCameraPosition.cameraWithLatitude(25.04, longitude: 121.56, zoom: 15)
-        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        mapView.myLocationEnabled = true
-        self.view = mapView
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(25.04, 121.56)
-        marker.title = "appWorks"
-        marker.snippet = "Taipei"
-        marker.map = mapView
-        
-        
-        mapView.accessibilityElementsHidden = false
-        mapView.myLocationEnabled = true
-        if let mylocation = mapView.myLocation{
-            print("User's Location:\(mylocation)")
-        }else{
-            print("User's location is unknown")
-        }
-        
-        //      地圖邊框間距
-        //        let mapInsets = UIEdgeInsetsMake(100.0, -300.0, 0.0, 300.0)
-        //        mapView.padding = mapInsets
-        
-        
-        
-        //Mark: location manager
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
 
+        addTableView.delegate = self
+        addTableView.dataSource = self
         
+        fetchData()
         
-        //指南針
-        mapView.settings.compassButton = true
+    }
+    
+    
+    
+    
+    func fetchData(){
+        let client = FoursquareAPIClient(clientId: "QI0IEIXIM255IVYTP1MIM0IWQZWC0LON5PFTRKCVO51OD5TL", clientSecret: "DUWMECG3XTFZGMHO2XZNNHGCLJBWZ5TMW3X30R530F5OR3KZ")
         
-        fetchJson()
-    }
-    
-    
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
-    }
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("error:\(error.localizedDescription)")
-    }
-    
-    
-    
-    
-    
-    
-    //Mark: reserch nearby restaurant
-    
-    func fetchJson(){
-    
-        let requestURL:NSURL = NSURL(string:
-            "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&key=AIzaSyCZWxo8dAqLLxguD92c3zjFd6ypBQFLJ7g")!
-    
-        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-        urlRequest.HTTPMethod = "GET"
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(urlRequest){
-            (data, response, error) -> Void in
+        let parameter: [String: String] = [
+            "ll": "25.0445735,121.5548777",
+            "categoryId": "4d4b7105d754a06374d81259",
+            "limit": "10"
+        ]
+        
+        client.requestWithPath("venues/search", method: .GET, parameter: parameter) {
+            (data, error) in
             
-            print(error?.localizedDescription)
-            
-            let httpResponse = response as! NSHTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode == 200){
-                print("finding restaurant place downloaded")
-                
-                
-                do{
-                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                
-                    if let findingPlace = json["results"] as? [[String: AnyObject]]{
-                        
-                        
-                        
-                        print("finding place ok")
-                    }
-                }catch{
-                    print("Error with Json:\(error)")
-                }
+            if let error = error{
+                print("Errrrrror: \(error.localizedDescription)")
+                return
             }
+            
+            
+            let datajson = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            let data = datajson!.dataUsingEncoding(NSUTF8StringEncoding)
+            self.jsonData = data
+//            print(datajson)
+            
+            self.transformData()
+            
+//            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            
         }
-        task.resume()
         
     }
     
+    
+    
+    func transformData(){
+        
+        
+        
+        do{
+            
+            if let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary{
+                
+                guard let response = jsonResult["response"] as? NSDictionary else{
+                    return
+                }
+                
+                guard let venues = response["venues"] as? NSArray else{
+                    return
+                }
+                for restaurants in venues{
+                    guard let restaurants = restaurants as? NSDictionary else{
+                        return
+                    }
 
-    func pickPlace(){
-        //        let center = CLLocation
+                    let id = restaurants.valueForKey("id") as? String ?? ""
+                    let name = restaurants.valueForKey("name") as? String ?? ""
+                    let location = restaurants.valueForKey("location") as? String ?? ""
+                    self.searchRestaurants.append(searchRestaurant(id: id, name: name, location: location))
+                    
+                    print(restaurants["location"]!)
+                }
+                
+                
+                
+                self.addTableView.reloadData()
+
+                
+            }
+        }catch let error as NSError{
+            print(error)
+        }
+       
+
+        
+    }
+    
+    
+  
+    
+    //Mark: TableView Data Source
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return searchRestaurants.count
+    }
+    
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchRestaurantsTableViewCell", forIndexPath: indexPath) as! searchRestaurantsTableViewCell
+        
+        let restaurant = searchRestaurants[indexPath.row]
+        cell.restaurantName.text = restaurant.name
+        
+        return cell
     }
 
+
+
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    //?????
-//    override func loadView() {
-//        var camera = GMSCameraPosition.cameraWithLatitude(1.285, longitude: 103.848, zoom: 12)
-//        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-//        mapView.delegate = self
-//        self.view = mapView
-//    }
-    
-    
-//    func reverseGeocodeCoordinate(coordinate:CLLocationCoordinate2D){
-//        let geocoder = GMSGeocoder()
-//        
-//        geocoder.reverseGeocodeCoordinate(coordinate){response,error in
-//            if let address = response?.firstResult(){
-//                let lines = address.lines as [String]!
-//                self.addressLabel.text = lines.joinWithSeparator("\n")
-//                
-//                UIView.animateWithDuration(0.25){
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//        }
-//        
-    
-        
-//    }
     
 }
 
 
-//extension MapViewController: GMSMapViewDelegate{
-//    func mapView(mapView: GMSMapView!,willmove gesture:Bool) {
-//        mapView.clear()
-//    }
-//    func mapView(mapView: GMSMapView!, idleAtCameraPosition cameraPosition: GMSCameraPosition!){
-//        let handler = {(response: GMSReverseGeocodeResponse! ,error: NSError!) -> Void in
-//            if let result = response.firstResult(){
-//                let marker = GMSMarker()
-//                marker.position = cameraPosition.target
-//                marker.title = result.lines[0] as! String
-//                marker.snippet = result.lines[1] as! String
-//                marker.map = mapView
-//            }
-//        }
-//        geocoder?.reverseGeocodeCoordinate(cameraPosition.target,completionhandler: handler)
-//    }
-//}
-
-
-
-
-
-//extension MapViewController: GMSMapViewDelegate{
-//    func mapView(mapView: GMSMapView, idleAtCameraPosition position:GMSCameraPosition) {
-//        reverseGeocodeCoordinate(position.target)
-//    
-//    }
-//}
-//
-//

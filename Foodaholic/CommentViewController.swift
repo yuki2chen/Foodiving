@@ -20,8 +20,22 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var priceTextField: UITextField!
     
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
+    
+    @IBOutlet weak var serviceSwitch: UISwitch!
+    
+    @IBAction func serviceAction(sender: AnyObject) {
+        let onState = serviceSwitch.on
+        if onState{
+            serviceChargeNameLabel.text = "Service charge"
+            
+        }else{
+            serviceChargeNameLabel.text = "No Service charge"
+        }
         
-    @IBOutlet weak var photoImageView: UIImageView!
+        
+    }
+    
+       @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet weak var rateLabel: UILabel!
     
