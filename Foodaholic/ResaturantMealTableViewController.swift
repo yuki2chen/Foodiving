@@ -16,13 +16,16 @@ import FirebaseStorage
 class ResaturantMealTableViewController: UITableViewController {
     var meals = [Meal]()
     var photoURL: String = ""
+    
+    var restDic: [String:AnyObject] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
  
     
         retreiveData()
-        
+    
+        self.navigationItem.title = String(restDic["name"])
         
     }
     

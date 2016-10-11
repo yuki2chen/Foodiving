@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6zs-4f-jb6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VIk-Sl-DiE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -339,6 +339,30 @@
             </objects>
             <point key="canvasLocation" x="4480" y="-283"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="JYT-xH-ktB">
+            <objects>
+                <viewController id="VIk-Sl-DiE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tRn-Rt-ceH"/>
+                        <viewControllerLayoutGuide type="bottom" id="lnk-tk-XVJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SI9-kr-yCp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh3-cC-Vaw">
+                                <rect key="frame" x="215" y="333" width="181" height="39"/>
+                                <state key="normal" title="Log in with Facebook"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jh-nP-YDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="-265"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="YKc-fj-Oak">
             <objects>
@@ -363,7 +387,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
-                                                    <rect key="frame" x="29" y="13" width="149" height="21.5"/>
+                                                    <rect key="frame" x="29" y="13" width="425" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -372,20 +396,25 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="restaurantName" destination="lWW-DZ-8Ph" id="dnu-hT-5cg"/>
+                                            <segue destination="2VG-6Q-IKK" kind="show" id="PRk-Dn-PXD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="13O-2C-eAI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="addTableView" destination="lzF-hi-uB9" id="cPe-gA-b9e"/>
+                        <outlet property="mapView" destination="13O-2C-eAI" id="LMg-5d-dxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-oh-INC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="-1606"/>
+            <point key="canvasLocation" x="1535" y="-283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hfF-LL-KCi">
