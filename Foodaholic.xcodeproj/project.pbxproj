@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */; };
+		A50D9B0A1DACB1FB00238BAC /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D9B091DACB1FB00238BAC /* CoverViewController.swift */; };
+		A50D9B141DACBAA300238BAC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50D9B131DACBAA300238BAC /* FBSDKLoginKit.framework */; };
+		A50D9B161DACBAAD00238BAC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50D9B151DACBAAD00238BAC /* FBSDKCoreKit.framework */; };
 		A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */; };
 		A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */; };
 		A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D81DA4E07700ECA38C /* DetailViewController.swift */; };
@@ -30,6 +33,9 @@
 		3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodaholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.release.xcconfig"; sourceTree = "<group>"; };
 		75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.debug.xcconfig"; sourceTree = "<group>"; };
+		A50D9B091DACB1FB00238BAC /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
+		A50D9B131DACBAA300238BAC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A50D9B151DACBAAD00238BAC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewController.swift; sourceTree = "<group>"; };
 		A54657D81DA4E07700ECA38C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +63,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5F1E8A21DA626700028ABF5 /* MapKit.framework in Frameworks */,
+				A50D9B161DACBAAD00238BAC /* FBSDKCoreKit.framework in Frameworks */,
 				943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */,
+				A50D9B141DACBAA300238BAC /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +75,8 @@
 		501D79A4C471F0E502D5EA29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A50D9B151DACBAAD00238BAC /* FBSDKCoreKit.framework */,
+				A50D9B131DACBAA300238BAC /* FBSDKLoginKit.framework */,
 				A5F1E8A11DA626700028ABF5 /* MapKit.framework */,
 				3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */,
 			);
@@ -104,6 +114,7 @@
 		A5DF27881D9CDE7500CF5CEA /* Foodaholic */ = {
 			isa = PBXGroup;
 			children = (
+				A50D9B091DACB1FB00238BAC /* CoverViewController.swift */,
 				A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */,
 				A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */,
 				A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */,
@@ -254,6 +265,7 @@
 				A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */,
 				A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */,
 				A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */,
+				A50D9B0A1DACB1FB00238BAC /* CoverViewController.swift in Sources */,
 				A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */,
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
 				A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */,
@@ -374,6 +386,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/onechun/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;
@@ -389,6 +406,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/onechun/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;

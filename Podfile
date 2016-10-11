@@ -19,8 +19,11 @@ use_frameworks!
 pod 'Firebase'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'Firebase/Auth'
 pod 'GooglePlaces'
 pod 'GoogleMaps'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 pod 'Alamofire', '~> 3.4'
 pod 'FoursquareAPIClient'
 
