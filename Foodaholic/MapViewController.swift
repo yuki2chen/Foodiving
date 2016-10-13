@@ -179,37 +179,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     
-//    //Mark: retrieve restaurant auto id from firebase
-//    func retreiveData() {
-//        let restaurantID = FIRDatabase.database().reference()
-//        restaurantID.queryOrderedByChild("restaurants").observeSingleEventOfType(.Value, withBlock: {
-//            
-//            snapshot in
-//            print(snapshot)
-//            if let snapDic = snapshot.value! as? [String: AnyObject]{
-//                print(snapDic.keys.first!)
-//            }
-////            for each in snapshot.value as! [String:AnyObject]{
-////                print (each.0)
-////            }
-//        })
-//    
-////            print(snapshot.value)
-////            self.restInfo = snapshot.value as? [String:[String:String]]
-//////            let snapshots = snapshot.children
-////            for restaurantAutoId in self.restInfo{
-////                restIdList.append(restaurantAutoId.key)
-////            }
-////            },withCancelBlock:{error in print(error.description)
-////        })
-//        
-//
-//    }
-//    
-//            
-    
-    
-    
     
     //Mark: Navigation
 
@@ -273,7 +242,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
            
             let mylocation = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: myLat, longitude: myLng), addressDictionary: nil)
             
-            print("MYLOCATION IS \(mylocation)")
+            //print("MYLOCATION IS \(mylocation)")
         
             mapView.addAnnotation(mylocation)
         

@@ -41,7 +41,7 @@ class searchRestaurantModel {
                 
         
         
-        print(restaurants["name"]!)
+        //print(restaurants["name"]!)
         
         
     }

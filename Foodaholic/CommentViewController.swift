@@ -222,7 +222,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL,"restaurantId": mapViewContro.restId]
         
-        mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
+        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
         
     }
     
