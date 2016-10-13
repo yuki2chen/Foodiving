@@ -18,6 +18,8 @@ class ResaturantMealTableViewController: UITableViewController {
     var photoURL: String = ""
     
     var restDic: [String:AnyObject] = [:]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +56,13 @@ class ResaturantMealTableViewController: UITableViewController {
                 
             }
             
-            
             self.tableView.reloadData()
             
             }
         )
+     
+                
+        
         
     }
     

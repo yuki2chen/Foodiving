@@ -70,8 +70,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
-        
-        
+       
         
         mealNameTextField.delegate = self
         priceTextField.delegate = self
@@ -171,7 +170,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             
             
             let metadata = FIRStorageMetadata()
-            metadata.contentType = "photoImageView/jpeg"
+            metadata.contentType = "Image/jpeg"
             
             mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.8)!,metadata: metadata){(data,error) in
                 
@@ -211,15 +210,25 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let comment = commentTextField.text ?? ""
         meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
         
+        
+        
         //Mark: save data in firebase
         
-        let mealInfoDatabase: [String: AnyObject] = ["mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL]
         
         let mealReference = FIRDatabase.database().reference()
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let mapViewContro = MapViewController()
+        
+        
+        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL,"restaurantId": mapViewContro.restId]
         
         mealReference.child("Restaurants_comment").childByAutoId().setValue(mealInfoDatabase)
-
+        
     }
+    
+    
+    
+    
     
     
     //Mark: UITextFieldDelegate

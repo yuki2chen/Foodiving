@@ -23,8 +23,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     @IBOutlet weak var addTableView: UITableView!
     
-    
-    
+//    var restaurantAutoID = []
+    var restId: [String] = []
     
     override func viewDidLoad() {
         
@@ -42,6 +42,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         }
         fetchData()
+        
         
     }
     
@@ -78,7 +79,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             // print(NSString(data: data!, encoding: NSUTF8StringEncoding))
 
 
-            
             
             
         }
@@ -121,7 +121,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         myLocation()
+        
+
 //        print(searchRestaurant)
+        
     }
     
     
@@ -153,14 +156,57 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //Mark: save to firebase
     
+    
     func saveToFirebase(){
+        
         for restPerInfo in searchRestaurant{
+            var restaurantInfo: [String: AnyObject] = [:]
+            let id = restPerInfo["id"] as? String ?? ""
+            restaurantInfo["name"] = restPerInfo["name"]
+            restaurantInfo["restLat"] = restPerInfo["restLat"]
+            restaurantInfo["restLng"] = restPerInfo["restLng"]
+        
             let restReference = FIRDatabase.database().reference()
-            restReference.child("restaurants").childByAutoId().setValue(restPerInfo)
+            restReference.child("restaurants").child(id).setValue(restaurantInfo)
+            
+            restId.append(id)
+
         }
+        
     }
     
     
+    
+    
+    
+//    //Mark: retrieve restaurant auto id from firebase
+//    func retreiveData() {
+//        let restaurantID = FIRDatabase.database().reference()
+//        restaurantID.queryOrderedByChild("restaurants").observeSingleEventOfType(.Value, withBlock: {
+//            
+//            snapshot in
+//            print(snapshot)
+//            if let snapDic = snapshot.value! as? [String: AnyObject]{
+//                print(snapDic.keys.first!)
+//            }
+////            for each in snapshot.value as! [String:AnyObject]{
+////                print (each.0)
+////            }
+//        })
+//    
+////            print(snapshot.value)
+////            self.restInfo = snapshot.value as? [String:[String:String]]
+//////            let snapshots = snapshot.children
+////            for restaurantAutoId in self.restInfo{
+////                restIdList.append(restaurantAutoId.key)
+////            }
+////            },withCancelBlock:{error in print(error.description)
+////        })
+//        
+//
+//    }
+//    
+//            
     
     
     
@@ -170,7 +216,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         
-        if segue.identifier == "searchRestaurantsTableViewCell"{
+        if segue.identifier == "showInfo"{
         
             guard let selectIndexPath = selectedIndexPath else{
                 return

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--RestName-->
         <scene sceneID="5YE-Hn-Rgu">
             <objects>
                 <tableViewController storyboardIdentifier="ResaturantMealTableViewController" id="Sai-bb-y4a" customClass="ResaturantMealTableViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="Osk-F8-H1V">
+                    <navigationItem key="navigationItem" title="RestName" id="Osk-F8-H1V">
+                        <barButtonItem key="backBarButtonItem" title="back" id="hoC-KU-uT8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Fg-Hm-3R8">
                             <connections>
                                 <segue destination="WeB-NF-YVO" kind="presentation" id="Yqi-Ag-JNQ"/>
@@ -68,7 +69,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPa-cN-ZTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3276" y="-296"/>
+            <point key="canvasLocation" x="3400" y="-296"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Czo-VM-Os9">
@@ -188,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4388" y="-606"/>
+            <point key="canvasLocation" x="4288" y="-662"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
@@ -337,7 +338,7 @@
                 </tapGestureRecognizer>
                 <exit id="1vv-sy-jwi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5094" y="123"/>
+            <point key="canvasLocation" x="4994" y="107"/>
         </scene>
         <!--Cover View Controller-->
         <scene sceneID="JYT-xH-ktB">
@@ -351,13 +352,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh3-cC-Vaw">
-                                <rect key="frame" x="215" y="333" width="181" height="39"/>
-                                <state key="normal" title="Log in with Facebook"/>
-                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-a1-Sn6">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.95405434472378237" green="0.32646917633360489" blue="0.12928894783782016" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rWv-a1-Sn6" firstAttribute="centerY" secondItem="SI9-kr-yCp" secondAttribute="centerY" id="B8q-5X-r4D"/>
+                            <constraint firstItem="rWv-a1-Sn6" firstAttribute="centerX" secondItem="SI9-kr-yCp" secondAttribute="centerX" id="Jf6-A2-2EZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loadingSpinner" destination="rWv-a1-Sn6" id="Rjx-il-5TP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Jh-nP-YDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -366,24 +374,24 @@
         <!--Tab Bar Controller-->
         <scene sceneID="4jW-Ce-rBJ">
             <objects>
-                <tabBarController id="MLm-7I-bGI" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="MLm-7I-bGI" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Xtr-HA-9db">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="6zs-4f-jb6" kind="relationship" relationship="viewControllers" id="red-12-RD2"/>
-                        <segue destination="WZq-SD-d00" kind="relationship" relationship="viewControllers" id="5Cg-ne-XJh"/>
+                        <segue destination="12h-hY-Ksx" kind="relationship" relationship="viewControllers" id="Hha-Iu-tGk"/>
+                        <segue destination="WZq-SD-d00" kind="relationship" relationship="viewControllers" id="rih-QC-0ke"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r3-WF-ZmQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="-133"/>
+            <point key="canvasLocation" x="896" y="-133"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="Th5-sn-akN">
             <objects>
-                <viewController id="HpS-vr-rJH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="HpS-vr-rJH" customClass="ProfileViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KA9-u9-igm"/>
                         <viewControllerLayoutGuide type="bottom" id="85p-P2-1u3"/>
@@ -391,18 +399,59 @@
                     <view key="view" contentMode="scaleToFill" id="Ubz-Ak-IoS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Pn-lh-zjT">
+                                <rect key="frame" x="31" y="97" width="194" height="174"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-Mp-2JH">
+                                <rect key="frame" x="31" y="279" width="388" height="264"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8bO-X4-ODD">
+                                    <size key="itemSize" width="152" height="141"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="3yx-9q-Tio">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="141"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="152" height="141"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXE-a2-C2e">
+                                <rect key="frame" x="246" y="113" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pjE-Ss-aCn"/>
+                    <navigationItem key="navigationItem" id="pjE-Ss-aCn">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="d8C-3a-9Lc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="BO4-Dy-CJQ">
+                            <connections>
+                                <action selector="logOutButton:" destination="HpS-vr-rJH" id="taG-Wm-2x1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="profilePicture" destination="4Pn-lh-zjT" id="WZP-7o-hAQ"/>
+                        <outlet property="userName" destination="FXE-a2-C2e" id="aVj-tq-8Ob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldh-If-9d5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="454"/>
+            <point key="canvasLocation" x="2613" y="526"/>
         </scene>
-        <!--Search-->
+        <!--Map View Controller-->
         <scene sceneID="YKc-fj-Oak">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-oh-INC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MapViewController" id="6zs-4f-jb6" customClass="MapViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gxj-8D-kQu"/>
@@ -416,11 +465,11 @@
                                 <rect key="frame" x="0.0" y="251" width="600" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchRestaurantsTableViewCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchRestaurantsTableViewCell" rowHeight="50" id="EIO-Uq-HYZ" customClass="searchRestaurantsTableViewCell" customModule="Foodaholic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchRestaurantsTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchRestaurantsTableViewCell" rowHeight="50" id="EIO-Uq-HYZ" customClass="searchRestaurantsTableViewCell" customModule="Foodaholic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIO-Uq-HYZ" id="DkO-l9-PnP">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
@@ -433,44 +482,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="restaurantName" destination="lWW-DZ-8Ph" id="dnu-hT-5cg"/>
-                                            <segue destination="2VG-6Q-IKK" kind="show" id="PRk-Dn-PXD"/>
+                                            <segue destination="Sai-bb-y4a" kind="show" identifier="showInfo" id="BXt-dC-PAu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="13O-2C-eAI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="307"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="iz3-wv-2UY"/>
                     <navigationItem key="navigationItem" id="s2d-hn-oY0"/>
                     <connections>
                         <outlet property="addTableView" destination="lzF-hi-uB9" id="cPe-gA-b9e"/>
                         <outlet property="mapView" destination="13O-2C-eAI" id="LMg-5d-dxY"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-oh-INC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="-296"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hfF-LL-KCi">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2VG-6Q-IKK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vYj-Is-SqS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Sai-bb-y4a" kind="relationship" relationship="rootViewController" id="zUs-d3-lUb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7nm-jn-fg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2577" y="-287"/>
+            <point key="canvasLocation" x="2493" y="-318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZId-El-au0">
@@ -488,7 +519,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-fR-SAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4388" y="123"/>
+            <point key="canvasLocation" x="4256" y="99"/>
         </scene>
         <!--Profile-->
         <scene sceneID="kXA-Ir-aTq">
@@ -508,6 +539,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKY-p8-b9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1710" y="454"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="XQb-ie-rPT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="12h-hY-Ksx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="iz3-wv-2UY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="96v-MV-Zl2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6zs-4f-jb6" kind="relationship" relationship="rootViewController" id="z8u-rV-bgV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hZ-sV-SpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811" y="-296"/>
         </scene>
     </scenes>
     <resources>

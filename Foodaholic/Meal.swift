@@ -24,6 +24,7 @@ class Meal {
     var tasteRating: Int
     var comment: String
     
+    var restaurantAutoID: String?
     
     
     // MARK: Initialization
