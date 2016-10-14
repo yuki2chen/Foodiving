@@ -13,51 +13,33 @@ import FirebaseStorage
 class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
 
     //Mark: Properties
+    
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var mealNameTextField: UITextField!
-    
     @IBOutlet weak var priceNameLabel: UILabel!
     @IBOutlet weak var priceTextField: UITextField!
-    
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
-    
     @IBOutlet weak var serviceSwitch: UISwitch!
-    
     @IBAction func serviceAction(sender: AnyObject) {
         let onState = serviceSwitch.on
         if onState{
             serviceChargeNameLabel.text = "Service charge"
-            
         }else{
             serviceChargeNameLabel.text = "No Service charge"
         }
-        
-        
     }
-    
-       @IBOutlet weak var photoImageView: UIImageView!
-    
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var rateLabel: UILabel!
-    
-    
     @IBOutlet weak var tasteRateLabel: UILabel!
     @IBOutlet weak var tasteRatingControl: RatingControl!
     @IBOutlet weak var serviceRateLabel: UILabel!
-    
     @IBOutlet weak var revisitRateLabel: UILabel!
-    
     @IBOutlet weak var environmentRateLabel: UILabel!
-    
-    
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
-    
-    
     @IBOutlet weak var PostButton: UIBarButtonItem!
-    
-    
     var meal: Meal?
-    
+    var restDictionary: [String: AnyObject] = [:]
     
     
     
@@ -66,7 +48,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
@@ -109,28 +90,16 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         super.didReceiveMemoryWarning()
        
     }
-    
-
-    
-
-    
-    
-    
-    
-    
-    
+  
     
     //Mark: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker:UIImagePickerController){
         //當cancel時  忽略picker
         dismissViewControllerAnimated(true, completion: nil)
-        
-        
     }
     func imagePickerController(picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[String : AnyObject]){
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        //display
         photoImageView.image = selectedImage
         dismissViewControllerAnimated(true, completion: nil)
 
@@ -143,17 +112,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if PostButton === sender{
-            
-            
-            
-            
-            
-            //Mark: save image in storage
-            
-            
+        //Mark: save image in storage
             let storageRef = FIRStorage.storage().reference
             let maelPhotoFileName = NSUUID().UUIDString
             let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
@@ -207,10 +168,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
-        let mapViewContro = MapViewController()
+        let restaurantID = restDictionary["id"] as? String ?? ""
         
-        
-        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL,"restaurantId": mapViewContro.restId]
+        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL,"restaurantId": restaurantID]
         
         mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
         

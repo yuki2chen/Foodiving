@@ -154,6 +154,7 @@
 				A5DF27841D9CDE7500CF5CEA /* Resources */,
 				6F16A0BA8BCD03BDCB4651AE /* 📦 Embed Pods Frameworks */,
 				6330373B95B3C83A5D32655F /* 📦 Copy Pods Resources */,
+				A50D9B211DB06DB800238BAC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -242,6 +243,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A50D9B211DB06DB800238BAC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/Fabric/run 3f6e9c2056eeb09b399c451302727c964f993c98 c5ab26505bbdfe9414a2d40c9fbab09681239d4bba7f0b421ee6151f4f6f6888";
 		};
 		B15150DDCF684F0B61B52F34 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

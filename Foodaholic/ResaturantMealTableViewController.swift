@@ -14,21 +14,18 @@ import FirebaseStorage
 
 
 class ResaturantMealTableViewController: UITableViewController {
+    
+    //Mark: Properties
     var meals = [Meal]()
     var photoURL: String = ""
-    
     var restDic: [String:AnyObject] = [:]
-    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-    
-        retreiveData()
-    
-        self.navigationItem.title = String(restDic["name"])
         
+        retreiveData()
+        self.navigationItem.title = restDic["name"] as? String ?? ""
     }
     
     
@@ -53,17 +50,9 @@ class ResaturantMealTableViewController: UITableViewController {
                 let comment = commentSnap.value["comment"] as! String
                 
                 self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
-                
             }
-            
             self.tableView.reloadData()
-            
-            }
-        )
-     
-                
-        
-        
+            })
     }
     
     
@@ -81,9 +70,12 @@ class ResaturantMealTableViewController: UITableViewController {
                 mealDetailViewController.meal = selectedMeal
                 mealDetailViewController.photoURL = selectedPhoto
             }
-            
         }else if segue.identifier == "AddItem"{
             
+            let destinationnavigation = segue.destinationViewController as! UINavigationController
+            let destinationController = destinationnavigation.topViewController as! CommentViewController
+            print(restDic)
+            destinationController.restDictionary = self.restDic
             print("add new meal")
             
         }
@@ -97,9 +89,6 @@ class ResaturantMealTableViewController: UITableViewController {
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? CommentViewController, meal = sourceViewController.meal {
-            
-            
-            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing meal
                 meals[selectedIndexPath.row] = meal

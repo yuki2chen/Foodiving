@@ -13,6 +13,9 @@ import GooglePlaces
 import GoogleMaps
 import FoursquareAPIClient
 import FBSDKLoginKit
+import Fabric
+import Crashlytics
+
 
 
 @UIApplicationMain
@@ -29,9 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        
-        
-//        GMSServices .provideAPIKey("AIzaSyD4X4xxJjmvtUXR0w3gVIXkrQ2xhI-XIys")
+        Fabric.with([Crashlytics.self])
+
         return true
     }
     

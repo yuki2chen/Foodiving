@@ -26,5 +26,8 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'Alamofire', '~> 3.4'
 pod 'FoursquareAPIClient'
+pod 'Fabric'
+pod 'Crashlytics'
+
 
 end

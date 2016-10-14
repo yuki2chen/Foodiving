@@ -13,26 +13,21 @@ import Firebase
 
 class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate{
     
+    //Mark: Properties
     var jsonData: NSData!
-    
     var searchRestaurant: [[String: AnyObject]] = []
-    
     var selectedIndexPath: NSIndexPath?
-    
+    var restId: [String] = []
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var addTableView: UITableView!
     
-//    var restaurantAutoID = []
-    var restId: [String] = []
     
+    
+    //Mark: View Life Cycle
     override func viewDidLoad() {
         
         addTableView.delegate = self
         addTableView.dataSource = self
-        
-        
-        
         
         if CLLocationManager.locationServicesEnabled(){
         locationManager.delegate = self
@@ -49,7 +44,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     
-    
+    // Mark: fetch data from foursquare
     
     func fetchData(){
         let client = FoursquareAPIClient(clientId: "QI0IEIXIM255IVYTP1MIM0IWQZWC0LON5PFTRKCVO51OD5TL", clientSecret: "DUWMECG3XTFZGMHO2XZNNHGCLJBWZ5TMW3X30R530F5OR3KZ")
@@ -86,6 +81,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     
+    //Mark: transform data from fetchdata function
     
     func transformData(){
         do{
@@ -95,22 +91,17 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     return
                 }
                 
-                guard let venues = response["venues"] as? NSArray else{
-                    return
+                guard let venues = response["venues"] as? NSArray else{return
                 }
                 for restaurants in venues{
                     
                     let restaurant = searchRestaurantModel()
+                    
                     restaurant.restaurantHelper(restaurants)
                     
                     searchRestaurant.append(restaurant.restaurantDict)
-                    
-                    
-                    
-                    
+
                     self.addTableView.reloadData()
-                    
-                    
                 }
                 saveToFirebase()
             }
@@ -121,10 +112,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         myLocation()
-        
-
-//        print(searchRestaurant)
-        
     }
     
     
@@ -132,17 +119,13 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //Mark: TableView Data Source
     
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         return searchRestaurant.count
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchRestaurantsTableViewCell", forIndexPath: indexPath) as! searchRestaurantsTableViewCell
@@ -155,7 +138,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     //Mark: save to firebase
-    
     
     func saveToFirebase(){
         
@@ -170,41 +152,30 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             restReference.child("restaurants").child(id).setValue(restaurantInfo)
             
             restId.append(id)
-
         }
-        
     }
-    
-    
-    
-    
+
     
     
     //Mark: Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        
         if segue.identifier == "showInfo"{
         
-            guard let selectIndexPath = selectedIndexPath else{
-                return
+            print(searchRestaurant)
+            
+            
+            let destController = segue.destinationViewController as! ResaturantMealTableViewController
+
+            if let selectedCell = sender as? searchRestaurantsTableViewCell{
+                let indexPath = addTableView.indexPathForCell(selectedCell)
+                
+                destController.restDic = searchRestaurant[indexPath!.row]
             }
             
-            
-            let destController = segue.destinationViewController as? ResaturantMealTableViewController
-
-            destController!.restDic = searchRestaurant[selectIndexPath.row]
-            
-            
         }
-        
-        
-    }
-    
-    
-    
-    
+}
     
     
     
@@ -213,25 +184,18 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     let locationManager = CLLocationManager()
     
-    
     func locationManager(manager: CLLocationManager,didUpdateLocations locations:[CLLocation]){
         var locationValue: CLLocationCoordinate2D = manager.location!.coordinate
         manager.stopUpdatingLocation()
-        
-        
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error.localizedDescription)
-        
     }
-    
-    
-    
     
     func myLocation(){
         
-//        print("searchRest array: \(searchRestaurant.first)")
+        //print("searchRest array: \(searchRestaurant.first)")
         
         for mylocate in searchRestaurant{
             
@@ -249,18 +213,16 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
            
             let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
             centerMapOnLocation(lookLocation)
-        
-        
-        }
+          }
     }
-    
-    
     
     func centerMapOnLocation(location:CLLocation){
         let regionRadius: CLLocationDistance = 700
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    
     
 }
 

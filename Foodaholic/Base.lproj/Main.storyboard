@@ -62,7 +62,7 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="hoC-KU-uT8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Fg-Hm-3R8">
                             <connections>
-                                <segue destination="WeB-NF-YVO" kind="presentation" id="Yqi-Ag-JNQ"/>
+                                <segue destination="WeB-NF-YVO" kind="presentation" identifier="AddItem" id="Yqi-Ag-JNQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -417,7 +417,7 @@
                                     <constraint firstAttribute="width" constant="180" id="yJA-qq-YPA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-Mp-2JH">

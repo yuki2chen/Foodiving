@@ -15,22 +15,21 @@ import Firebase
 class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     //Mark: Properties
-    private let reuseIdentifier = "CollectionCell"
 
-    
     @IBOutlet weak var profilePicture: UIImageView!
-    
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    private let reuseIdentifier = "CollectionCell"
     var username = ""
     var userUid = ""
     var userPhotoURL: NSURL?
     var mealPhotoStringArray: [String] = []
     
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+
     
     //Mark: Actions
+    
     @IBAction func logOutButton(sender: AnyObject) {
         
         try! FIRAuth.auth()!.signOut()
@@ -64,6 +63,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
     
     
+    
+    
+    //Mark: upload to storage
+    
     func uploadUserInfo(){
     if let user = FIRAuth.auth()?.currentUser {
         
@@ -74,8 +77,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.userName.text = name
         
         
-        
-        //Mark: upload to storage
         
         let storage = FIRStorage.storage()
         let storageRef = storage.referenceForURL("gs://foodaholic-e6dde.appspot.com")
@@ -156,6 +157,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     // Mark: save FacebookInfo To Firebase
+    
     func saveFacebookInfoToFirebase(photoString: String){
         let facebookInfo: [String: AnyObject] = ["userName":username,"photoString":photoString]
         let facebookInfoReference = FIRDatabase.database().reference()
@@ -188,6 +190,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     //Mark: UICollectionView datasource
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
