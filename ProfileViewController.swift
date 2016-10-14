@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FirebaseAuth
 import FirebaseStorage
 import Firebase
+import Nuke
 
 class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -205,10 +206,15 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         cellsquare.backgroundColor = UIColor.whiteColor()
         let mealPhoto = mealPhotoStringArray[indexPath.row]
-        let mealPhotoURL = NSURL(string: mealPhoto)
-        print(mealPhotoURL)
-        let mealPhotoData = NSData(contentsOfURL: mealPhotoURL!)
-        cellsquare.mealPhoto.image = UIImage(data: mealPhotoData!)
+//        let mealPhotoURL = NSURL(string: mealPhoto)
+//        print(mealPhotoURL)
+//        let mealPhotoData = NSData(contentsOfURL: mealPhotoURL!)
+//        cellsquare.mealPhoto.image = UIImage(data: mealPhotoData!)
+        if let mealPhotoURL = NSURL(string: mealPhoto) {
+            
+            cellsquare.mealPhoto.nk_setImageWith(mealPhotoURL)
+        }
+        
         return cellsquare
     }
     

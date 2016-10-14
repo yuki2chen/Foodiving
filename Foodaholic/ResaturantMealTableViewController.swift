@@ -28,8 +28,20 @@ class ResaturantMealTableViewController: UITableViewController {
         
         print(restDic)
         retreiveData()
+        
+        
         self.navigationItem.title = restDic["name"] as? String ?? ""
 
+//        var nameString: String = restDic["name"] as? String ?? ""
+//        if let nameStringSplitArray = (nameString.characters.split{$0 == "(" || $0 == ")"}.map(String.init)){
+//        print(nameStringSplitArray[1])
+//        }else {
+//            print(nameStringSplitArray[0])
+//        }
+        
+            
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,7 +114,9 @@ class ResaturantMealTableViewController: UITableViewController {
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         meals = []
-
+        photoArray = []
+        
+        
         self.tableView.reloadData()
     }
     
@@ -138,7 +152,7 @@ class ResaturantMealTableViewController: UITableViewController {
         
         if let photoUrl = NSURL(string: photoString) {
 
-//            cell.photoImageView.hnk_setImageFromURL(photoUrl)
+            cell.photoImageView.nk_setImageWith(photoUrl)
             
         }
         
