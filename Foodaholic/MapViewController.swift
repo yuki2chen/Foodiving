@@ -247,7 +247,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             mapView.addAnnotation(mylocation)
         
            
-            let lookLocation = CLLocation.init(latitude: 25.0445735, longitude: 121.5548777)
+            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
             centerMapOnLocation(lookLocation)
         
         
@@ -257,7 +257,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     func centerMapOnLocation(location:CLLocation){
-        let regionRadius: CLLocationDistance = 200
+        let regionRadius: CLLocationDistance = 700
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }

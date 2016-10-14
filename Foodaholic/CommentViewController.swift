@@ -126,8 +126,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         //當cancel時  忽略picker
         dismissViewControllerAnimated(true, completion: nil)
         
-        picker.allowsEditing = true
-        presentViewController(picker, animated: true, completion: nil)
         
     }
     func imagePickerController(picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[String : AnyObject]){
@@ -142,15 +140,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     //Mark: Navigation
 
     @IBAction func cancel(sender: UIBarButtonItem) {
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
-        
-        
-        if isPresentingInAddMealMode{
-        dismissViewControllerAnimated(true, completion: nil)
-        }else{
-            navigationController!.popViewControllerAnimated(true)
-        }
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
