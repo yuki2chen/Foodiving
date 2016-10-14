@@ -44,7 +44,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     
     
-    
+    //Mark: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +52,11 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
        
-        
         mealNameTextField.delegate = self
         priceTextField.delegate = self
         priceTextField.keyboardType = .NumberPad //只能輸入數字
         commentTextField.delegate = self
 //        checkValidMealName()
-        
-        
-        
         self.hideKeyboardWhenTappedAround()
         
         //點選cell時 會有post的資訊
@@ -71,8 +67,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
 //            photoImageView.image = meal.photo
             commentTextField.text = meal.comment
             tasteRatingControl.rating = meal.tasteRating
-        
-            
         }
         
         
@@ -81,9 +75,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         //??
 //        navigationItem.title = mealNameTextField.text
         
-        
-        
-        
+  
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,35 +114,25 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
-            
             mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.8)!,metadata: metadata){(data,error) in
-                
                 if error == nil{
                     print("upload successful")
-                    
                     guard let photoURL = data?.downloadURL()?.absoluteString else{
                         print("fail to download photoURL")
                         return
                     }
-
                     print("photoURL: \(photoURL)")
-                    
-                    
                     //func save to database
                     self.saveToFirebase(photoURL)
                     
                 }else{
                     print(error?.localizedDescription)
                 }
-                
             }
-            
-           
+        
         }
-        
-        
-        
     }
+    
     
     //Mark: save To Firebase
     func saveToFirebase(photoURL: String){
@@ -161,10 +143,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let comment = commentTextField.text ?? ""
         meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
         
-        
-        
-        //Mark: save data in firebase
-        
+        //save data in firebase
         
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
@@ -226,9 +205,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     
      //Mark: Action
-    
-   
-    
+ 
     @IBAction func selectImage(sender: UITapGestureRecognizer) {
         //當點擊時 keyboard會關閉
         mealNameTextField.resignFirstResponder()
@@ -242,10 +219,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         presentViewController(imagePickerController, animated: true, completion: nil)
         
     }
-    
-    
-        
-    
 }
 
 

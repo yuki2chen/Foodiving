@@ -62,7 +62,7 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="hoC-KU-uT8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Fg-Hm-3R8">
                             <connections>
-                                <segue destination="WeB-NF-YVO" kind="presentation" identifier="AddItem" id="Yqi-Ag-JNQ"/>
+                                <segue destination="Aly-U5-KVA" kind="show" identifier="AddItem" id="2dy-mO-wBp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -342,7 +342,7 @@
                 </tapGestureRecognizer>
                 <exit id="1vv-sy-jwi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4994" y="107"/>
+            <point key="canvasLocation" x="4278" y="137"/>
         </scene>
         <!--Cover View Controller-->
         <scene sceneID="JYT-xH-ktB">
@@ -548,25 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-oh-INC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="-318"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZId-El-au0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WeB-NF-YVO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2AQ-dd-5K3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Aly-U5-KVA" kind="relationship" relationship="rootViewController" id="cNK-2V-DER"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-fR-SAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4256" y="99"/>
+            <point key="canvasLocation" x="2581" y="-318"/>
         </scene>
         <!--Profile-->
         <scene sceneID="kXA-Ir-aTq">

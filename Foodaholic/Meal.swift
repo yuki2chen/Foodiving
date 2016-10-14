@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 
-
-
-
-
 class Meal {
     
     // MARK: Properties
@@ -24,7 +20,7 @@ class Meal {
     var tasteRating: Int
     var comment: String
     
-    var restaurantAutoID: String?
+    var restaurantID: String?
     
     
     // MARK: Initialization
