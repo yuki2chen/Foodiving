@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
-
-
+import Nuke
 
 class ResaturantMealTableViewController: UITableViewController {
     
@@ -54,14 +53,12 @@ class ResaturantMealTableViewController: UITableViewController {
             print(snapshot.value)
             let snapshots = snapshot.children.allObjects
             for commentSnap in snapshots{
-                
                 let mealName = commentSnap.value["mealName"] as? String ?? ""
                 let price = commentSnap.value["price"] as? String ?? ""
                 let photoString = commentSnap.value["photoString"] as? String ?? ""
                 let tasteRating = commentSnap.value["tasteRating"] as?  Int ?? 0
                 print(photoString)
                 let comment = commentSnap.value["comment"] as? String ?? ""
-                
                 
                 self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
                 self.photoArray.append(photoString)
@@ -138,10 +135,12 @@ class ResaturantMealTableViewController: UITableViewController {
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = String(meal.price)
         cell.ratingControl.rating = Int(meal.tasteRating)
-        let photoUrl = NSURL(string: photoString)
-        let photoData = NSData(contentsOfURL: photoUrl!)
-        cell.photoImageView.image = UIImage(data: photoData!)
         
+        if let photoUrl = NSURL(string: photoString) {
+
+//            cell.photoImageView.hnk_setImageFromURL(photoUrl)
+            
+        }
         
         return cell
         
