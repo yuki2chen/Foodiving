@@ -12,11 +12,13 @@ import UIKit
 
 class Meal {
     
+    
+    
     // MARK: Properties
     
     var mealName: String
     var price: String
-    var photoURL: String?
+    var photoString: String?
     var tasteRating: Int
     var comment: String
     
@@ -28,7 +30,7 @@ class Meal {
     init(mealName: String, price: String,tasteRating: Int,comment: String) {
         self.mealName = mealName
         self.price = price
-//        self.photoURL = photoURL
+//        self.photoString = photoString
         self.tasteRating = tasteRating
         self.comment = comment
         

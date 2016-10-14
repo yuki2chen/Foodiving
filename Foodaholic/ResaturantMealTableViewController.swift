@@ -18,7 +18,8 @@ class ResaturantMealTableViewController: UITableViewController {
     //Mark: Properties
     
     var meals = [Meal]()
-    var photoString: String = ""
+//    var photoString: String = ""
+    var photoArray:[AnyObject] = []
     var restDic: [String: AnyObject] = [:]
     
     //Mark: View Life Cycle
@@ -56,12 +57,15 @@ class ResaturantMealTableViewController: UITableViewController {
                 
                 let mealName = commentSnap.value["mealName"] as? String ?? ""
                 let price = commentSnap.value["price"] as? String ?? ""
-                self.photoString = commentSnap.value["photoString"] as? String ?? ""
+                let photoString = commentSnap.value["photoString"] as? String ?? ""
                 let tasteRating = commentSnap.value["tasteRating"] as?  Int ?? 0
+                print(photoString)
                 let comment = commentSnap.value["comment"] as? String ?? ""
                 
                 
                 self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
+                self.photoArray.append(photoString)
+                
             }
             
             
@@ -80,9 +84,9 @@ class ResaturantMealTableViewController: UITableViewController {
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
-                let selectedPhoto = photoString
+                let selectedPhoto = photoArray[indexPath.row]
                 mealDetailViewController.meal = selectedMeal
-                mealDetailViewController.photoURL = selectedPhoto
+                mealDetailViewController.photoURL = selectedPhoto as? String ?? ""
             }
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController
@@ -129,6 +133,7 @@ class ResaturantMealTableViewController: UITableViewController {
         
         
         let meal = meals[indexPath.row]
+        let photoString = photoArray[indexPath.row] as? String ?? ""
         
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = String(meal.price)
