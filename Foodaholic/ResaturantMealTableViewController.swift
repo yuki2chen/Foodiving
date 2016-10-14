@@ -18,7 +18,7 @@ class ResaturantMealTableViewController: UITableViewController {
     //Mark: Properties
     
     var meals = [Meal]()
-    var photoURL: String = ""
+    var photoString: String = ""
     var restDic: [String: AnyObject] = [:]
     
     //Mark: View Life Cycle
@@ -29,6 +29,7 @@ class ResaturantMealTableViewController: UITableViewController {
         print(restDic)
         retreiveData()
         self.navigationItem.title = restDic["name"] as? String ?? ""
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,9 +56,10 @@ class ResaturantMealTableViewController: UITableViewController {
                 
                 let mealName = commentSnap.value["mealName"] as? String ?? ""
                 let price = commentSnap.value["price"] as? String ?? ""
-                self.photoURL = commentSnap.value["photoURL"] as? String ?? ""
+                self.photoString = commentSnap.value["photoString"] as? String ?? ""
                 let tasteRating = commentSnap.value["tasteRating"] as?  Int ?? 0
                 let comment = commentSnap.value["comment"] as? String ?? ""
+                
                 
                 self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
             }
@@ -78,7 +80,7 @@ class ResaturantMealTableViewController: UITableViewController {
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
-                let selectedPhoto = photoURL
+                let selectedPhoto = photoString
                 mealDetailViewController.meal = selectedMeal
                 mealDetailViewController.photoURL = selectedPhoto
             }
@@ -98,12 +100,10 @@ class ResaturantMealTableViewController: UITableViewController {
     // Mark: Action
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        meals = []
+
+        self.tableView.reloadData()
     }
-    
-    
-    
-  
-    
     
     
     
@@ -133,7 +133,7 @@ class ResaturantMealTableViewController: UITableViewController {
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = String(meal.price)
         cell.ratingControl.rating = Int(meal.tasteRating)
-        let photoUrl = NSURL(string: photoURL)
+        let photoUrl = NSURL(string: photoString)
         let photoData = NSData(contentsOfURL: photoUrl!)
         cell.photoImageView.image = UIImage(data: photoData!)
         

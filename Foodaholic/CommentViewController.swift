@@ -72,10 +72,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
         
-        //??
-//        navigationItem.title = mealNameTextField.text
         
-  
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,6 +104,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if PostButton === sender{
         //Mark: save image in storage
+            
             let storageRef = FIRStorage.storage().reference
             let maelPhotoFileName = NSUUID().UUIDString
             let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
@@ -122,12 +120,15 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
                         return
                     }
                     print("photoURL: \(photoURL)")
-                    //func save to database
+                    
+                    
                     self.saveToFirebase(photoURL)
+                    
                     
                 }else{
                     print(error?.localizedDescription)
                 }
+                
             }
         
         }
@@ -135,10 +136,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     
     //Mark: save To Firebase
-    func saveToFirebase(photoURL: String){
+    func saveToFirebase(photoString: String){
         let mealName = mealNameTextField.text ?? ""
         let price = priceTextField.text ?? "0"
-        //            let photo = photoImageView.image
+//        let photo = photoImageView.image
         let tasteRating = Int(tasteRatingControl.rating)
         let comment = commentTextField.text ?? ""
         meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
@@ -149,7 +150,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let uid = FIRAuth.auth()?.currentUser?.uid
         let restaurantID = restDictionary["id"] as? String ?? ""
         
-        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoURL": photoURL,"restaurantId": restaurantID]
+        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID]
         
         mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
         
