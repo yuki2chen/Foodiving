@@ -20,8 +20,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var restId: [String] = []
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addTableView: UITableView!
-    
-    
+//    var nowLat: Double = 0.0
+//    var nowLng: Double = 0.0
+
+    var startLocation: CLLocation!
     
     //Mark: View Life Cycle
     override func viewDidLoad() {
@@ -34,13 +36,17 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        
         }
+        
         fetchData()
+
         
         
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     
     
@@ -50,7 +56,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let client = FoursquareAPIClient(clientId: "QI0IEIXIM255IVYTP1MIM0IWQZWC0LON5PFTRKCVO51OD5TL", clientSecret: "DUWMECG3XTFZGMHO2XZNNHGCLJBWZ5TMW3X30R530F5OR3KZ")
         
         let parameter: [String: String] = [
-            "ll": "25.0445735,121.5548777",
+            "ll": "25.131071,121.742297",
             "categoryId": "4d4b7105d754a06374d81259",
             "limit": "10"
         ]
@@ -111,7 +117,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             print(error.localizedDescription)
         }
         
-        myLocation()
+        
     }
     
     
@@ -163,7 +169,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         if segue.identifier == "showInfo"{
         
-            print(searchRestaurant)
+//            print(searchRestaurant)
             
             
             let destController = segue.destinationViewController as! ResaturantMealTableViewController
@@ -185,8 +191,25 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     let locationManager = CLLocationManager()
     
     func locationManager(manager: CLLocationManager,didUpdateLocations locations:[CLLocation]){
+        
+        
         var locationValue: CLLocationCoordinate2D = manager.location!.coordinate
-        manager.stopUpdatingLocation()
+//        print(locationValue)
+        let locationLat = locationValue.latitude
+        let locationLng = locationValue.longitude
+        let myNowLocation = CLLocation.init(latitude: locationLat, longitude: locationLng)
+        
+        
+//        print("locations = \(locationValue.latitude) \(locationValue.longitude)")
+//        print("\(locationsLat) \(locationLng)")
+        centerMapOnLocation(myNowLocation)
+        
+        
+//        if startLocation == nil {
+//            startLocation = locations as! CLLocation
+//            locationManager.stopUpdatingLocation()
+//        }
+        
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -211,8 +234,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             mapView.addAnnotation(mylocation)
         
            
-            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
-            centerMapOnLocation(lookLocation)
+//            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
+//            centerMapOnLocation(lookLocation)
           }
     }
     

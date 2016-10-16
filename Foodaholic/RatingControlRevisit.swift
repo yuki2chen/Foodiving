@@ -1,15 +1,15 @@
 //
-//  RatingControl.swift
+//  RatingControlRevisit.swift
 //  Foodaholic
 //
-//  Created by onechun🌾 on 2016/9/30.
+//  Created by onechun🌾 on 2016/10/15.
 //  Copyright © 2016年 onechun. All rights reserved.
 //
 
 import UIKit
 
-class RatingControl: UIView {
-
+class RatingControlRevisit: UIView {
+    
     //Mark: Properties
     
     var rating = 0{
@@ -26,7 +26,7 @@ class RatingControl: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let filledRatePicture = UIImage(named: "tongueface")
+        let filledRatePicture = UIImage(named: "loveface")
         let emptyRatePicture = UIImage(named: "blackface")
         
         for _ in 0..<5{
@@ -40,10 +40,10 @@ class RatingControl: UIView {
             // ???
             button.reversesTitleShadowWhenHighlighted = false
             button.highlighted = false
-//            button.showsTouchWhenHighlighted = false
-//            button.adjustsImageWhenHighlighted = false
+            //            button.showsTouchWhenHighlighted = false
+            //            button.adjustsImageWhenHighlighted = false
             
-            button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(_:)), forControlEvents: .TouchDown)
+            button.addTarget(self, action: #selector(RatingControlRevisit.ratingButtonTapped(_:)), forControlEvents: .TouchDown)
             ratingButtons += [button]
             addSubview(button)
         }
@@ -59,7 +59,7 @@ class RatingControl: UIView {
         }
         updateButtonSelectionStates()
     }
-
+    
     
     
     
@@ -87,7 +87,8 @@ class RatingControl: UIView {
             button.selected = index < rating
         }
     }
-
+    
     
     
 }
+

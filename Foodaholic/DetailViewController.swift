@@ -12,25 +12,24 @@ class DetailViewController: UIViewController {
 
     var meal: Meal?
     var photoURL: String = ""
-
     @IBOutlet weak var photoDetail: UIImageView!
     @IBOutlet weak var mealNameDetail: UILabel!
-   
     @IBOutlet weak var priceDetail: UILabel!
     @IBOutlet weak var tasteRateDetail: RatingControl!
-    
+    @IBOutlet weak var serviceRateDetail: RatingControlService!
+    @IBOutlet weak var revisitRateDetail: RatingControlRevisit!
+    @IBOutlet weak var environmentRateDetail: RatingControlEnvironment!
     @IBOutlet weak var commentDetail: UILabel!
    
-   
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mealNameDetail.text = meal?.mealName
         priceDetail.text = meal?.price
         tasteRateDetail.rating = Int(meal!.tasteRating)
+//        serviceRateDetail.rating = Int(meal!.serviceRating)
+//        revisitRateDetail.rating = Int(meal!.revisitRating)
+//        environmentRateDetail.rating = Int(meal!.environmentRating)
         commentDetail.text = meal?.comment
         let photoUrl = NSURL(string: photoURL)
         let photoData = NSData(contentsOfURL: photoUrl!)

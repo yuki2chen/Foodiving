@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		943468E59DD7D89DE10AB055 /* Pods_Foodaholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */; };
+		A5048E741DB2185100837BCF /* RatingControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048E731DB2185100837BCF /* RatingControlService.swift */; };
+		A5048E771DB2198100837BCF /* RatingControlRevisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048E761DB2198100837BCF /* RatingControlRevisit.swift */; };
+		A5048E791DB21A4000837BCF /* RatingControlEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048E781DB21A4000837BCF /* RatingControlEnvironment.swift */; };
 		A50D9B0A1DACB1FB00238BAC /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D9B091DACB1FB00238BAC /* CoverViewController.swift */; };
 		A50D9B141DACBAA300238BAC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50D9B131DACBAA300238BAC /* FBSDKLoginKit.framework */; };
 		A50D9B161DACBAAD00238BAC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50D9B151DACBAAD00238BAC /* FBSDKCoreKit.framework */; };
@@ -35,6 +38,9 @@
 		3B60B9125588CC1F21DD20E2 /* Pods_Foodaholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodaholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C03BB6EDA463E40FE28213 /* Pods-Foodaholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.release.xcconfig"; sourceTree = "<group>"; };
 		75D53D1456D4D20DE4725320 /* Pods-Foodaholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodaholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodaholic/Pods-Foodaholic.debug.xcconfig"; sourceTree = "<group>"; };
+		A5048E731DB2185100837BCF /* RatingControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlService.swift; sourceTree = "<group>"; };
+		A5048E761DB2198100837BCF /* RatingControlRevisit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlRevisit.swift; sourceTree = "<group>"; };
+		A5048E781DB21A4000837BCF /* RatingControlEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlEnvironment.swift; sourceTree = "<group>"; };
 		A50D9B091DACB1FB00238BAC /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
 		A50D9B131DACBAA300238BAC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A50D9B151DACBAAD00238BAC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -96,6 +102,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A5048E751DB2195800837BCF /* RatingControl */ = {
+			isa = PBXGroup;
+			children = (
+				A5048E781DB21A4000837BCF /* RatingControlEnvironment.swift */,
+				A5FD5AD11D9E3E210062C276 /* RatingControl.swift */,
+				A5048E731DB2185100837BCF /* RatingControlService.swift */,
+				A5048E761DB2198100837BCF /* RatingControlRevisit.swift */,
+			);
+			name = RatingControl;
+			sourceTree = "<group>";
+		};
 		A5DF277D1D9CDE7500CF5CEA = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +143,7 @@
 				A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */,
 				A54657D81DA4E07700ECA38C /* DetailViewController.swift */,
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
-				A5FD5AD11D9E3E210062C276 /* RatingControl.swift */,
+				A5048E751DB2195800837BCF /* RatingControl */,
 				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
@@ -280,16 +297,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C7C44F1DA7A63100DDFDBA /* searchRestaurantModel.swift in Sources */,
+				A5048E771DB2198100837BCF /* RatingControlRevisit.swift in Sources */,
 				A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */,
 				A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */,
 				A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */,
 				A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */,
 				A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */,
 				A50D9B0A1DACB1FB00238BAC /* CoverViewController.swift in Sources */,
+				A5048E741DB2185100837BCF /* RatingControlService.swift in Sources */,
 				A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */,
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
 				A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */,
 				A50D9B201DAF85F300238BAC /* ProfileCollectionViewCell.swift in Sources */,
+				A5048E791DB21A4000837BCF /* RatingControlEnvironment.swift in Sources */,
 				A50D9B181DACDB6C00238BAC /* ProfileViewController.swift in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,
 				A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */,

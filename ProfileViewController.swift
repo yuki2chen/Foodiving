@@ -63,6 +63,12 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         retriveData()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
+
     
     
     
@@ -206,21 +212,13 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         cellsquare.backgroundColor = UIColor.whiteColor()
         let mealPhoto = mealPhotoStringArray[indexPath.row]
-//        let mealPhotoURL = NSURL(string: mealPhoto)
-//        print(mealPhotoURL)
-//        let mealPhotoData = NSData(contentsOfURL: mealPhotoURL!)
-//        cellsquare.mealPhoto.image = UIImage(data: mealPhotoData!)
+        
         if let mealPhotoURL = NSURL(string: mealPhoto) {
             
             cellsquare.mealPhoto.nk_setImageWith(mealPhotoURL)
         }
         
         return cellsquare
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
     }
     
     

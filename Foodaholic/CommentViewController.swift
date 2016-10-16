@@ -33,7 +33,10 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var tasteRateLabel: UILabel!
     @IBOutlet weak var tasteRatingControl: RatingControl!
     @IBOutlet weak var serviceRateLabel: UILabel!
+    @IBOutlet weak var serviceRatingControl: RatingControlService!
     @IBOutlet weak var revisitRateLabel: UILabel!
+    @IBOutlet weak var revisitRatingControl: RatingControlRevisit!
+    @IBOutlet weak var environmentRatingControl: RatingControlEnvironment!
     @IBOutlet weak var environmentRateLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
@@ -60,14 +63,15 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         self.hideKeyboardWhenTappedAround()
         
         //點選cell時 會有post的資訊
-        if let meal = meal{
-            navigationItem.title = meal.mealName
-            mealNameTextField.text = meal.mealName
-            priceTextField.text = meal.price
-//            photoImageView.image = meal.photo
-            commentTextField.text = meal.comment
-            tasteRatingControl.rating = meal.tasteRating
-        }
+//        if let meal = meal{
+//            navigationItem.title = meal.mealName
+//            mealNameTextField.text = meal.mealName
+//            priceTextField.text = meal.price
+////            photoImageView.image = meal.photo
+//            commentTextField.text = meal.comment
+//            tasteRatingControl.rating = meal.tasteRating
+//            
+//        }
         
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
@@ -98,7 +102,15 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     //Mark: Navigation
 
     @IBAction func cancel(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let isPresentingInAddMealMode = presentingViewController is CommentViewController
+        
+        if isPresentingInAddMealMode {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController!.popViewControllerAnimated(true)
+        }
+    
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -109,10 +121,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             let maelPhotoFileName = NSUUID().UUIDString
             let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
             
-            
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
-            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.8)!,metadata: metadata){(data,error) in
+            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.5)!,metadata: metadata){(data,error) in
                 if error == nil{
                     print("upload successful")
                     guard let photoURL = data?.downloadURL()?.absoluteString else{
@@ -141,8 +152,11 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let price = priceTextField.text ?? "0"
 //        let photo = photoImageView.image
         let tasteRating = Int(tasteRatingControl.rating)
+        let serviceRating = Int(serviceRatingControl.rating)
+        let revisitRating = Int(revisitRatingControl.rating)
+        let environmentRating = Int(environmentRatingControl.rating)
         let comment = commentTextField.text ?? ""
-        meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating,  comment: comment)
+        meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
         
         //save data in firebase
         
@@ -150,7 +164,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let uid = FIRAuth.auth()?.currentUser?.uid
         let restaurantID = restDictionary["id"] as? String ?? ""
         
-        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID]
+        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID]
         
         mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
         

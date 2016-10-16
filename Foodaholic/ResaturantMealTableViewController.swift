@@ -17,9 +17,10 @@ class ResaturantMealTableViewController: UITableViewController {
     //Mark: Properties
     
     var meals = [Meal]()
-//    var photoString: String = ""
     var photoArray:[AnyObject] = []
     var restDic: [String: AnyObject] = [:]
+    
+    
     
     //Mark: View Life Cycle
 
@@ -29,8 +30,10 @@ class ResaturantMealTableViewController: UITableViewController {
         print(restDic)
         retreiveData()
         
-        
+        let menuImage = UIImage(named: "menuImage")
+        let menuImageView = UIImageView(image: menuImage)
         self.navigationItem.title = restDic["name"] as? String ?? ""
+        self.navigationItem.titleView = menuImageView
 
 //        var nameString: String = restDic["name"] as? String ?? ""
 //        if let nameStringSplitArray = (nameString.characters.split{$0 == "(" || $0 == ")"}.map(String.init)){
@@ -69,11 +72,17 @@ class ResaturantMealTableViewController: UITableViewController {
                 let price = commentSnap.value["price"] as? String ?? ""
                 let photoString = commentSnap.value["photoString"] as? String ?? ""
                 let tasteRating = commentSnap.value["tasteRating"] as?  Int ?? 0
+                let serviceRating = commentSnap.value["serviceRating"] as?  Int ?? 0
+                let revisitRating = commentSnap.value["revisitRating"] as?  Int ?? 0
+                let environmentRating = commentSnap.value["environmentRating"] as?  Int ?? 0
                 print(photoString)
                 let comment = commentSnap.value["comment"] as? String ?? ""
                 
-                self.meals.append(Meal(mealName: mealName,price: price,tasteRating: tasteRating, comment: comment))
+                self.meals.append(Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment))
                 self.photoArray.append(photoString)
+                
+                
+                
                 
             }
             

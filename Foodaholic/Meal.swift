@@ -20,18 +20,23 @@ class Meal {
     var price: String
     var photoString: String?
     var tasteRating: Int
+    var serviceRating: Int
+    var revisitRating: Int
+    var environmentRating: Int
     var comment: String
-    
+
     var restaurantID: String?
     
     
     // MARK: Initialization
     
-    init(mealName: String, price: String,tasteRating: Int,comment: String) {
+    init(mealName: String, price: String,tasteRating: Int,serviceRating:Int,revisitRating:Int,environmentRating:Int,comment: String) {
         self.mealName = mealName
         self.price = price
-//        self.photoString = photoString
         self.tasteRating = tasteRating
+        self.serviceRating = serviceRating
+        self.revisitRating = revisitRating
+        self.environmentRating = environmentRating
         self.comment = comment
         
         //if mealName.isEmpty || tasteRating < 0 {
