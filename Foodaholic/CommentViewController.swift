@@ -11,8 +11,7 @@ import Firebase
 import FirebaseStorage
 //import Checkbox
 
-
-class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
+class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate {
 
     //Mark: Properties
     
@@ -22,9 +21,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
     @IBOutlet weak var serviceSwitch: UISwitch!
-    
-    
-    
+   
     @IBAction func serviceAction(sender: AnyObject) {
         let onState = serviceSwitch.on
         if onState{
@@ -138,6 +135,8 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
                     print("photoURL: \(photoURL)")
                     
                     
+//                    self.delegate?.photoDidUpload(photoURL)
+                    
                     self.saveToFirebase(photoURL)
                     
                     
@@ -153,6 +152,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     //Mark: save To Firebase
     func saveToFirebase(photoString: String){
+        
         let mealName = mealNameTextField.text ?? ""
         let price = priceTextField.text ?? "0"
 //        let photo = photoImageView.image

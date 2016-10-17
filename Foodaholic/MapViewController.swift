@@ -20,10 +20,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var restId: [String] = []
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addTableView: UITableView!
-//    var nowLat: Double = 0.0
-//    var nowLng: Double = 0.0
-
-    var startLocation: CLLocation!
+    let locationManager = CLLocationManager()
+    var locationLat: Double = 0.0
+    var locationLng: Double = 0.0
+    
     
     //Mark: View Life Cycle
     override func viewDidLoad() {
@@ -32,31 +32,39 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         addTableView.dataSource = self
         
         if CLLocationManager.locationServicesEnabled(){
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+            locationManager.requestAlwaysAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
         }
         
-        fetchData()
-
+        
+        guard
+            let lat = locationManager.location?.coordinate.latitude,
+            let lng = locationManager.location?.coordinate.longitude
+            else{return}
+        self.locationLat = lat
+        self.locationLng = lng
+        fetchData(locationLat, longitude: locationLng)
+        
+        centerMapOnLocation(locationManager.location!)
+        locationManager.stopUpdatingLocation()
+        
         
         
     }
     
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        return
     }
-    
-    
     
     // Mark: fetch data from foursquare
     
-    func fetchData(){
+    func fetchData(latitude: Double, longitude: Double){
         let client = FoursquareAPIClient(clientId: "QI0IEIXIM255IVYTP1MIM0IWQZWC0LON5PFTRKCVO51OD5TL", clientSecret: "DUWMECG3XTFZGMHO2XZNNHGCLJBWZ5TMW3X30R530F5OR3KZ")
         
         let parameter: [String: String] = [
-            "ll": "25.131071,121.742297",
+            "ll": "\(latitude),\(longitude)",
             "categoryId": "4d4b7105d754a06374d81259",
             "limit": "10"
         ]
@@ -73,16 +81,13 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             let datajson = NSString(data: data!, encoding: NSUTF8StringEncoding)
             let data = datajson!.dataUsingEncoding(NSUTF8StringEncoding)
             self.jsonData = data
-            // print(datajson)
+            print("get data")
             
             self.transformData()
             
             // print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-
-
             
-            
-        }
+            }
         
     }
     
@@ -106,9 +111,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     restaurant.restaurantHelper(restaurants)
                     
                     searchRestaurant.append(restaurant.restaurantDict)
-
+                    
                     self.addTableView.reloadData()
                 }
+                print("put data")
                 saveToFirebase()
             }
             
@@ -117,6 +123,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             print(error.localizedDescription)
         }
         
+        restLocation()
         
     }
     
@@ -153,27 +160,27 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             restaurantInfo["name"] = restPerInfo["name"]
             restaurantInfo["restLat"] = restPerInfo["restLat"]
             restaurantInfo["restLng"] = restPerInfo["restLng"]
-        
+            
             let restReference = FIRDatabase.database().reference()
             restReference.child("restaurants").child(id).setValue(restaurantInfo)
             
             restId.append(id)
         }
     }
-
+    
     
     
     //Mark: Navigation
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showInfo"{
-        
-//            print(searchRestaurant)
+            
+            //            print(searchRestaurant)
             
             
             let destController = segue.destinationViewController as! ResaturantMealTableViewController
-
+            
             if let selectedCell = sender as? searchRestaurantsTableViewCell{
                 let indexPath = addTableView.indexPathForCell(selectedCell)
                 
@@ -181,66 +188,43 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             }
             
         }
-}
-    
-    
-    
-    
-    //Mark: location
-    
-    let locationManager = CLLocationManager()
-    
-    func locationManager(manager: CLLocationManager,didUpdateLocations locations:[CLLocation]){
-        
-        
-        var locationValue: CLLocationCoordinate2D = manager.location!.coordinate
-//        print(locationValue)
-        let locationLat = locationValue.latitude
-        let locationLng = locationValue.longitude
-        let myNowLocation = CLLocation.init(latitude: locationLat, longitude: locationLng)
-        
-        
-//        print("locations = \(locationValue.latitude) \(locationValue.longitude)")
-//        print("\(locationsLat) \(locationLng)")
-        centerMapOnLocation(myNowLocation)
-        
-        
-//        if startLocation == nil {
-//            startLocation = locations as! CLLocation
-//            locationManager.stopUpdatingLocation()
-//        }
-        
     }
+    
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error.localizedDescription)
     }
     
-    func myLocation(){
+    
+    
+    
+    //Mark: rest annotation place
+    
+    func restLocation(){
         
         //print("searchRest array: \(searchRestaurant.first)")
         
-        for mylocate in searchRestaurant{
+        for restlocate in searchRestaurant{
             
-            guard let myLat = mylocate["restLat"] as? Double else{
+            guard let restLat = restlocate["restLat"] as? Double else{
                 return}
-            guard let myLng = mylocate["restLng"] as? Double else{
+            guard let restLng = restlocate["restLng"] as? Double else{
                 return}
-           
-            let mylocation = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: myLat, longitude: myLng), addressDictionary: nil)
+            
+            let mylocation = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: restLat, longitude: restLng), addressDictionary: nil)
             
             //print("MYLOCATION IS \(mylocation)")
-        
+            
             mapView.addAnnotation(mylocation)
-        
-           
-//            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
-//            centerMapOnLocation(lookLocation)
-          }
+            
+            
+            //            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
+            //            centerMapOnLocation(lookLocation)
+        }
     }
     
-    func centerMapOnLocation(location:CLLocation){
-        let regionRadius: CLLocationDistance = 700
+    func centerMapOnLocation(location: CLLocation){
+        let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }

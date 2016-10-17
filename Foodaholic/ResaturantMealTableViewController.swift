@@ -17,7 +17,7 @@ class ResaturantMealTableViewController: UITableViewController {
     //Mark: Properties
     
     var meals = [Meal]()
-    var photoArray:[AnyObject] = []
+//    var photoArray:[AnyObject] = []
     var restDic: [String: AnyObject] = [:]
     
     
@@ -68,6 +68,7 @@ class ResaturantMealTableViewController: UITableViewController {
             print(snapshot.value)
             let snapshots = snapshot.children.allObjects
             for commentSnap in snapshots{
+                
                 let mealName = commentSnap.value["mealName"] as? String ?? ""
                 let price = commentSnap.value["price"] as? String ?? ""
                 let photoString = commentSnap.value["photoString"] as? String ?? ""
@@ -75,14 +76,13 @@ class ResaturantMealTableViewController: UITableViewController {
                 let serviceRating = commentSnap.value["serviceRating"] as?  Int ?? 0
                 let revisitRating = commentSnap.value["revisitRating"] as?  Int ?? 0
                 let environmentRating = commentSnap.value["environmentRating"] as?  Int ?? 0
-                print(photoString)
                 let comment = commentSnap.value["comment"] as? String ?? ""
                 
-                self.meals.append(Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment))
-                self.photoArray.append(photoString)
+                let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                 
+                meal.photoString = photoString
                 
-                
+                self.meals.append(meal)
                 
             }
             
@@ -102,9 +102,8 @@ class ResaturantMealTableViewController: UITableViewController {
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
-                let selectedPhoto = photoArray[indexPath.row]
                 mealDetailViewController.meal = selectedMeal
-                mealDetailViewController.photoURL = selectedPhoto as? String ?? ""
+                mealDetailViewController.photoString = selectedMeal.photoString ?? ""
             }
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController
@@ -123,7 +122,6 @@ class ResaturantMealTableViewController: UITableViewController {
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         meals = []
-        photoArray = []
         
         
         self.tableView.reloadData()
@@ -153,7 +151,7 @@ class ResaturantMealTableViewController: UITableViewController {
         
         
         let meal = meals[indexPath.row]
-        let photoString = photoArray[indexPath.row] as? String ?? ""
+        let photoString = meal.photoString ?? ""
         
         cell.mealNameLabel.text = meal.mealName
         cell.priceLabel.text = String(meal.price)

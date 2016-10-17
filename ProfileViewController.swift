@@ -39,8 +39,12 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name:"Main",bundle: nil)
-        let CoverViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("CoverViewController")
-        self.presentViewController(CoverViewController, animated: true, completion: nil)
+        let coverViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("CoverViewController")
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = coverViewController
+        
+//        self.presentViewController(CoverViewController, animated: true, completion: nil)
     }
     
     
@@ -184,11 +188,16 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         mealInfoReference.child("RestaurantsComments").observeEventType(.Value, withBlock:
             { snapshot in
                 let snapshots = snapshot.children.allObjects
-                for mealPhotoString in snapshots{
-                    let photoURL = mealPhotoString.value!["photoURL"] as! String
+                
+                for mealPhotoString in snapshots {
+                    guard
+                        let photoURL = mealPhotoString.value!["photoURL"] as? String
+                        else { continue }
+                    
                     self.mealPhotoStringArray.append(photoURL)
                     print(photoURL)
                 }
+                
         })
         
         self.collectionView.reloadData()

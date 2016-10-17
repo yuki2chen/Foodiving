@@ -11,7 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     var meal: Meal?
-    var photoURL: String = ""
+    var photoString: String = ""
     @IBOutlet weak var photoDetail: UIImageView!
     @IBOutlet weak var mealNameDetail: UILabel!
     @IBOutlet weak var priceDetail: UILabel!
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
 //        revisitRateDetail.rating = Int(meal!.revisitRating)
 //        environmentRateDetail.rating = Int(meal!.environmentRating)
         commentDetail.text = meal?.comment
-        let photoUrl = NSURL(string: photoURL)
+        let photoUrl = NSURL(string: photoString)
         let photoData = NSData(contentsOfURL: photoUrl!)
         self.photoDetail.image = UIImage(data: photoData!)
 

@@ -47,9 +47,6 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="silver-cutlery" translatesAutoresizingMaskIntoConstraints="NO" id="1b4-D9-tte">
                                             <rect key="frame" x="138" y="10" width="25" height="25"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dining-meal-covered" translatesAutoresizingMaskIntoConstraints="NO" id="CKM-vg-TB8">
-                                            <rect key="frame" x="398" y="13" width="25" height="25"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -57,7 +54,7 @@
                                     <outlet property="photoImageView" destination="L7p-dI-6hA" id="Mj9-Ms-MU4"/>
                                     <outlet property="priceLabel" destination="31h-5p-ty2" id="HM7-Me-BYr"/>
                                     <outlet property="ratingControl" destination="mMu-zf-eWD" id="5dg-5M-blO"/>
-                                    <segue destination="uyR-YG-zrV" kind="show" identifier="ShowDetail" id="FFs-wZ-N7p"/>
+                                    <segue destination="uyR-YG-zrV" kind="show" identifier="ShowDetail" id="tlT-lp-ZzH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -545,8 +542,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13O-2C-eAI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="330"/>
+                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lzF-hi-uB9">
-                                <rect key="frame" x="0.0" y="251" width="600" height="349"/>
+                                <rect key="frame" x="0.0" y="270" width="600" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchRestaurantsTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchRestaurantsTableViewCell" rowHeight="50" id="EIO-Uq-HYZ" customClass="searchRestaurantsTableViewCell" customModule="Foodaholic" customModuleProvider="target">
@@ -556,13 +556,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
                                                     <rect key="frame" x="29" y="13" width="425" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="425" id="Bqd-hl-pvT"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lWW-DZ-8Ph" firstAttribute="centerY" secondItem="DkO-l9-PnP" secondAttribute="centerY" id="Hae-WI-mZj"/>
+                                                <constraint firstItem="lWW-DZ-8Ph" firstAttribute="top" secondItem="DkO-l9-PnP" secondAttribute="topMargin" constant="5" id="bLm-np-cXJ"/>
+                                                <constraint firstItem="lWW-DZ-8Ph" firstAttribute="leading" secondItem="DkO-l9-PnP" secondAttribute="leadingMargin" constant="21" id="jKl-GP-uME"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="restaurantName" destination="lWW-DZ-8Ph" id="dnu-hT-5cg"/>
@@ -571,21 +579,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13O-2C-eAI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="307"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="13O-2C-eAI" firstAttribute="leading" secondItem="VD6-sG-EEo" secondAttribute="leadingMargin" constant="-20" id="2jK-8Y-MhC"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="top" secondItem="gxj-8D-kQu" secondAttribute="bottom" constant="187" id="36h-ha-Lt9"/>
-                            <constraint firstItem="lzF-hi-uB9" firstAttribute="leading" secondItem="VD6-sG-EEo" secondAttribute="leadingMargin" constant="-20" id="Nkp-nF-oLB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="13O-2C-eAI" secondAttribute="trailing" constant="-20" id="469-jR-RMd"/>
+                            <constraint firstAttribute="bottom" secondItem="lzF-hi-uB9" secondAttribute="bottom" id="8Mz-rG-Ggc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lzF-hi-uB9" secondAttribute="trailing" constant="-20" id="OSh-tf-amn"/>
+                            <constraint firstItem="lzF-hi-uB9" firstAttribute="height" secondItem="13O-2C-eAI" secondAttribute="height" id="SAP-sv-vHL"/>
+                            <constraint firstItem="HQX-ns-ncD" firstAttribute="top" secondItem="13O-2C-eAI" secondAttribute="bottom" constant="221" id="Xzb-hz-nJI"/>
+                            <constraint firstItem="lzF-hi-uB9" firstAttribute="top" secondItem="gxj-8D-kQu" secondAttribute="bottom" constant="206" id="aj9-au-2kN"/>
+                            <constraint firstItem="13O-2C-eAI" firstAttribute="centerX" secondItem="VD6-sG-EEo" secondAttribute="centerX" id="bfU-z6-cex"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="bottom" secondItem="VD6-sG-EEo" secondAttribute="bottomMargin" id="h0x-Tp-9eG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lzF-hi-uB9" secondAttribute="trailing" constant="-20" id="hFA-sC-VtP"/>
+                            <constraint firstItem="lzF-hi-uB9" firstAttribute="top" secondItem="13O-2C-eAI" secondAttribute="bottom" constant="-56" id="hkd-tX-fhT"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="centerX" secondItem="VD6-sG-EEo" secondAttribute="centerX" id="ite-yQ-cE9"/>
+                            <constraint firstItem="13O-2C-eAI" firstAttribute="top" secondItem="VD6-sG-EEo" secondAttribute="topMargin" id="oso-Pn-N1I"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="leading" secondItem="VD6-sG-EEo" secondAttribute="leadingMargin" constant="-20" id="sur-7g-JZK"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="centerX" secondItem="VD6-sG-EEo" secondAttribute="centerX" id="vZB-66-z4B"/>
+                            <constraint firstItem="13O-2C-eAI" firstAttribute="top" secondItem="VD6-sG-EEo" secondAttribute="top" id="ygx-We-b65"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oso-Pn-N1I"/>
+                                <exclude reference="36h-ha-Lt9"/>
+                                <exclude reference="SAP-sv-vHL"/>
+                                <exclude reference="h0x-Tp-9eG"/>
+                                <exclude reference="hkd-tX-fhT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="s2d-hn-oY0"/>
                     <connections>
@@ -638,7 +660,6 @@
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
-        <image name="dining-meal-covered" width="64" height="64"/>
         <image name="money-bag" width="64" height="64"/>
         <image name="pin" width="64" height="64"/>
         <image name="placeholder" width="32" height="32"/>
