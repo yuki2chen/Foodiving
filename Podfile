@@ -17,4 +17,6 @@ target 'Foodaholic' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'Nuke', '3.1.3'
+    pod 'Fusuma'
+    
 end

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+//import Checkbox
+
 
 class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
 
@@ -20,6 +22,9 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
     @IBOutlet weak var serviceSwitch: UISwitch!
+    
+    
+    
     @IBAction func serviceAction(sender: AnyObject) {
         let onState = serviceSwitch.on
         if onState{
