@@ -23,7 +23,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
-                                            <rect key="frame" x="-7" y="0.0" width="126" height="119.5"/>
+                                            <rect key="frame" x="-7" y="0.0" width="126" height="120"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
                                             <rect key="frame" x="170" y="8" width="212" height="30"/>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4288" y="-662"/>
+            <point key="canvasLocation" x="4324" y="410"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
@@ -376,7 +376,7 @@
                 </tapGestureRecognizer>
                 <exit id="1vv-sy-jwi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4278" y="137"/>
+            <point key="canvasLocation" x="4310" y="-847"/>
         </scene>
         <!--Cover View Controller-->
         <scene sceneID="JYT-xH-ktB">
@@ -454,9 +454,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-Mp-2JH">
-                                <rect key="frame" x="0.0" y="206" width="600" height="337"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="3" id="8bO-X4-ODD">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-Mp-2JH">
+                                <rect key="frame" x="0.0" y="206" width="600" height="345"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="8bO-X4-ODD">
                                     <size key="itemSize" width="96" height="96"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -490,6 +490,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="mealPhoto" destination="x7P-vK-9la" id="fdp-w6-gRp"/>
+                                            <segue destination="uyR-YG-zrV" kind="show" identifier="DetailFromPicture" id="e7h-P2-KtH"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -556,8 +557,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
-                                                    <rect key="frame" x="29" y="13" width="425" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
+                                                    <rect key="frame" x="29" y="13" width="425" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="425" id="Bqd-hl-pvT"/>
                                                     </constraints>
@@ -636,7 +637,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKY-p8-b9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="454"/>
+            <point key="canvasLocation" x="1786" y="420"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XQb-ie-rPT">
@@ -666,4 +667,7 @@
         <image name="silver-cutlery" width="64" height="64"/>
         <image name="user" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="e7h-P2-KtH"/>
+    </inferredMetricsTieBreakers>
 </document>

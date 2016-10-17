@@ -123,6 +123,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             let maelPhotoFileName = NSUUID().UUIDString
             let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
             
+            
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
             mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.5)!,metadata: metadata){(data,error) in

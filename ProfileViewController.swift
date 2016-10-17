@@ -26,8 +26,9 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     var userUid = ""
     var userPhotoURL: NSURL?
     var mealPhotoStringArray: [String] = []
-    
+    var meals = [Meal]()
 
+    
     
     //Mark: Actions
     
@@ -181,27 +182,69 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     
+    
     //Mark: retrieve meal photo data
     
     func retriveData(){
+        
+        meals = []
         let mealInfoReference = FIRDatabase.database().reference()
+        
         mealInfoReference.child("RestaurantsComments").observeEventType(.Value, withBlock:
             { snapshot in
                 let snapshots = snapshot.children.allObjects
                 
-                for mealPhotoString in snapshots {
+                for mealInfo in snapshots {
                     guard
-                        let photoURL = mealPhotoString.value!["photoURL"] as? String
+                    let mealName = mealInfo.value["mealName"] as? String,
+                    let price = mealInfo.value["price"] as? String,
+                    let photoString = mealInfo.value["photoString"] as? String,
+                    let tasteRating = mealInfo.value["tasteRating"] as? Int,
+                    let serviceRating = mealInfo.value["serviceRating"] as?  Int,
+                    let revisitRating = mealInfo.value["revisitRating"] as?  Int,
+                    let environmentRating = mealInfo.value["environmentRating"] as?  Int,
+                    let comment = mealInfo.value["comment"] as? String
                         else { continue }
+                    let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
-                    self.mealPhotoStringArray.append(photoURL)
-                    print(photoURL)
+                    meal.photoString = photoString
+                    
+                    self.meals.append(meal)
+                    self.mealPhotoStringArray.append(photoString)
+//                    print(photoString)
                 }
                 
         })
         
         self.collectionView.reloadData()
     }
+    
+    
+    
+    
+    //Mark: look collection detail
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DetailFromPicture"{
+            let destinationController = segue.destinationViewController as! DetailViewController
+
+            
+            if let selectedCellsquare = sender as? ProfileCollectionViewCell{
+                let indexPath = collectionView.indexPathForCell(selectedCellsquare)
+                let selectedPhoto = meals[indexPath!.row]
+                destinationController.meal = selectedPhoto
+            }
+            
+        }
+    }
+    
+    
+
+    
+    
+    
+    
+    
     
     
     
@@ -220,8 +263,9 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         
         cellsquare.backgroundColor = UIColor.whiteColor()
+//        let meal = meals[indexPath.row]
         let mealPhoto = mealPhotoStringArray[indexPath.row]
-        
+//        let mealPic = meal.photoString!
         if let mealPhotoURL = NSURL(string: mealPhoto) {
             
             cellsquare.mealPhoto.nk_setImageWith(mealPhotoURL)

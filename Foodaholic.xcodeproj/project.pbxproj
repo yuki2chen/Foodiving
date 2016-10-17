@@ -135,8 +135,8 @@
 		A5DF27881D9CDE7500CF5CEA /* Foodaholic */ = {
 			isa = PBXGroup;
 			children = (
-				A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */,
 				A50D9B091DACB1FB00238BAC /* CoverViewController.swift */,
+				A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */,
 				A50D9B171DACDB6C00238BAC /* ProfileViewController.swift */,
 				A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */,
 				A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */,

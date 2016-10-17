@@ -218,8 +218,20 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             mapView.addAnnotation(mylocation)
             
             
-            //            let lookLocation = CLLocation.init(latitude: 25.042349, longitude: 121.565022)
-            //            centerMapOnLocation(lookLocation)
+//            mapView.removeAnnotations(mapView.annotations)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = mylocation.coordinate
+//            annotation.title = mylocation.name
+//            if let city = mylocation.locality,
+//                let state = mylocation.administrativeArea {
+//                annotation.subtitle = "\(city) \(state)"
+//            }
+//            mapView.addAnnotation(annotation)
+//            let span = MKCoordinateSpanMake(0.05, 0.05)
+//            let region = MKCoordinateRegionMake(mylocation.coordinate, span)
+//            mapView.setRegion(region, animated: true)
+            
+      
         }
     }
     
