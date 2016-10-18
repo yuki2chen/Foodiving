@@ -53,6 +53,10 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "otherUserProfile"{
             let destinationController = segue.destinationViewController as? OtherUserViewController
