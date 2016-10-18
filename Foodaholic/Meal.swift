@@ -28,7 +28,7 @@ class Meal {
     var restaurantID: String?
     var userID: String = ""
     var userName: String = ""
-    
+    var userPhotoString: String = ""
     
     // MARK: Initialization
     

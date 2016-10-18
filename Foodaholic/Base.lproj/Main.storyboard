@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
@@ -224,10 +224,10 @@
             </objects>
             <point key="canvasLocation" x="4324" y="410"/>
         </scene>
-        <!--View Controller-->
+        <!--Other User View Controller-->
         <scene sceneID="Z2l-lJ-VBc">
             <objects>
-                <viewController id="LFN-uv-mId" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OtherUserViewController" id="LFN-uv-mId" customClass="OtherUserViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2fb-Mh-oxe"/>
                         <viewControllerLayoutGuide type="bottom" id="yhm-cf-qkI"/>
@@ -251,7 +251,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
                                 <rect key="frame" x="0.0" y="206" width="600" height="345"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="82d-ri-o6N">
                                     <size key="itemSize" width="96" height="96"/>
@@ -260,7 +260,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="1" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ProfileCollectionViewCell" reuseIdentifier="CollectionCell" id="Ico-fE-kh9" customClass="ProfileCollectionViewCell" customModule="Foodaholic" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="OtherUserCollectionViewCell" reuseIdentifier="OtherCollectionCell" id="Ico-fE-kh9" customClass="OtherUserCollectionViewCell" customModule="Foodaholic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -286,13 +286,13 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outlet property="mealPhoto" destination="3A7-Hn-v6e" id="Uiv-Kk-SbM"/>
+                                            <outlet property="photoImage" destination="3A7-Hn-v6e" id="Z3B-od-ef2"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="HpS-vr-rJH" id="4Ss-ri-4ei"/>
-                                    <outlet property="delegate" destination="HpS-vr-rJH" id="WoX-fW-ebT"/>
+                                    <outlet property="dataSource" destination="LFN-uv-mId" id="XSp-Fw-lGO"/>
+                                    <outlet property="delegate" destination="LFN-uv-mId" id="QEF-6y-LpO"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -310,6 +310,11 @@
                             <constraint firstItem="Y4V-g8-6Xe" firstAttribute="bottom" secondItem="AG7-1v-viI" secondAttribute="bottom" id="zpg-s1-lDA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="otherUserMealView" destination="TqL-Ur-shw" id="UYE-sA-CPi"/>
+                        <outlet property="userNameLabel" destination="AG7-1v-viI" id="ftb-Rz-8HM"/>
+                        <outlet property="userPhotoImage" destination="Y4V-g8-6Xe" id="ip7-AM-43a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VzP-wv-f86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -649,7 +654,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIO-Uq-HYZ" id="DkO-l9-PnP">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">
@@ -763,6 +768,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tlT-lp-ZzH"/>
+        <segue reference="e7h-P2-KtH"/>
     </inferredMetricsTieBreakers>
 </document>

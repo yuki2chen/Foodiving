@@ -102,7 +102,7 @@ class ResaturantMealTableViewController: UITableViewController {
             let snapshots = snapshot.children.allObjects
             for commentsnap in snapshots{
             meal.userName = commentsnap.value?["userName"] as? String ?? ""
-            
+            meal.userPhotoString = commentsnap.value?["photoString"] as? String ?? ""
             self.meals.append(meal)
             
             self.tableView.reloadData()

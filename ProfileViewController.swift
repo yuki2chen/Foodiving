@@ -45,8 +45,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = coverViewController
         
-//        self.presentViewController(CoverViewController, animated: true, completion: nil)
+        //self.presentViewController(CoverViewController, animated: true, completion: nil)
     }
+    
+    
     
     
     
