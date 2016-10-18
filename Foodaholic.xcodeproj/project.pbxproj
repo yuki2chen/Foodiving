@@ -28,6 +28,7 @@
 		A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */; };
 		A5F1E8A21DA626700028ABF5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F1E8A11DA626700028ABF5 /* MapKit.framework */; };
 		A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */; };
+		A5F4165D1DB5C8EF0053C18C /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */; };
 		A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */; };
 		A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD11D9E3E210062C276 /* RatingControl.swift */; };
 		A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */; };
@@ -61,6 +62,7 @@
 		A5F1E8A11DA626700028ABF5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5F1E8AF1DA659B50028ABF5 /* FoursquareAPIClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoursquareAPIClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserViewController.swift; sourceTree = "<group>"; };
 		A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A5FD5AD11D9E3E210062C276 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
 				A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */,
+				A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */,
 				A5FD5AD51D9FA2200062C276 /* Meal.swift */,
 				A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */,
 				A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */,
@@ -300,6 +303,7 @@
 				A5048E771DB2198100837BCF /* RatingControlRevisit.swift in Sources */,
 				A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */,
 				A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */,
+				A5F4165D1DB5C8EF0053C18C /* OtherUserViewController.swift in Sources */,
 				A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */,
 				A5FD5AD61D9FA2200062C276 /* Meal.swift in Sources */,
 				A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */,

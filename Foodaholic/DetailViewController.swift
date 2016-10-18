@@ -11,7 +11,6 @@ import UIKit
 class DetailViewController: UIViewController {
 
     var meal: Meal?
-    var photoString: String = ""
     @IBOutlet weak var photoDetail: UIImageView!
     @IBOutlet weak var mealNameDetail: UILabel!
     @IBOutlet weak var priceDetail: UILabel!
@@ -21,20 +20,31 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var environmentRateDetail: RatingControlEnvironment!
     @IBOutlet weak var commentDetail: UILabel!
    
+    @IBOutlet weak var userNameDisplay: UIButton!
+    @IBAction func usernamebutton(sender: AnyObject) {
+        
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         mealNameDetail.text = meal?.mealName
         priceDetail.text = meal?.price
         tasteRateDetail.rating = Int(meal!.tasteRating)
+        
 //        serviceRateDetail.rating = Int(meal!.serviceRating)
 //        revisitRateDetail.rating = Int(meal!.revisitRating)
 //        environmentRateDetail.rating = Int(meal!.environmentRating)
         commentDetail.text = meal?.comment
+//        userNameDisplay.titleLabel?.text = meal!.userName
+        userNameDisplay.setTitle("\(meal!.userName)",forState: .Normal)
         let photoUrl = NSURL(string: meal!.photoString!)
         let photoData = NSData(contentsOfURL: photoUrl!)
         self.photoDetail.image = UIImage(data: photoData!)
-
         // Do any additional setup after loading the view.
     }
 

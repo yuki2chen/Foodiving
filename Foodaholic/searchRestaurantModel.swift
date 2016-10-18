@@ -23,20 +23,20 @@ class searchRestaurantModel {
         
         
         
-        
         guard let locationInfo = restaurantsInfo["location"] as? NSDictionary else{
             return
         }
         let restLat = locationInfo.valueForKey("lat") as? Double ?? 0.0
         let restLng = locationInfo.valueForKey("lng") as? Double ?? 0.0
-        
-        
+        let restCity = locationInfo.valueForKey("city") as? String ?? ""
+        let restCountry = locationInfo.valueForKey("country") as? String ?? ""
         
         restaurantDict["id"] = id
         restaurantDict["name"] = name
         restaurantDict["restLat"] = restLat
         restaurantDict["restLng"] = restLng
-        
+        restaurantDict["restCity"] = restCity
+        restaurantDict["restCountry"] = restCountry
         
                 
         

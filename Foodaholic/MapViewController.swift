@@ -160,6 +160,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             restaurantInfo["name"] = restPerInfo["name"]
             restaurantInfo["restLat"] = restPerInfo["restLat"]
             restaurantInfo["restLng"] = restPerInfo["restLng"]
+            restaurantInfo["restCity"] = restPerInfo["restCity"]
+            restaurantInfo["restCountry"] = restPerInfo["restCountry"]
             
             let restReference = FIRDatabase.database().reference()
             restReference.child("restaurants").child(id).setValue(restaurantInfo)

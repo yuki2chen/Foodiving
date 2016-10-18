@@ -126,7 +126,7 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
             
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
-            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.5)!,metadata: metadata){(data,error) in
+            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.4)!,metadata: metadata){(data,error) in
                 if error == nil{
                     print("upload successful")
                     guard let photoURL = data?.downloadURL()?.absoluteString else{

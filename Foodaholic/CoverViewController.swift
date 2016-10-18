@@ -24,10 +24,12 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate {
         
         
         FIRAuth.auth()?.addAuthStateDidChangeListener{ auth, user in
-        if let user = user{
+        if user != nil{
             let mainStoryboard: UIStoryboard = UIStoryboard(name:"Main",bundle: nil)
             let TabBarController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("TabBarController")
-            self.presentViewController(TabBarController, animated: true, completion: nil)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = TabBarController
+//            self.presentViewController(TabBarController, animated: true, completion: nil)
         }else{
             
             self.loginButton.center = self.view.center
