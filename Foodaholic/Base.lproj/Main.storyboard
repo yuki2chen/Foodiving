@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -90,21 +91,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGM-Tz-sI5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGM-Tz-sI5">
                                 <rect key="frame" x="171" y="364" width="0.0" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="FzJ-98-At9"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Taste：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VX-8J-FMP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taste：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VX-8J-FMP">
                                 <rect key="frame" x="38" y="364" width="59" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="0X6-yE-htC"/>
-                                    <constraint firstAttribute="width" constant="59" id="K1I-r2-Jon"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -139,13 +133,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
-                                <rect key="frame" x="198" y="84" width="204" height="161"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="161" id="h67-Ng-Jn8"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-fu-2eh">
                                 <rect key="frame" x="219" y="364" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -168,15 +155,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZx-PJ-9Kw">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZx-PJ-9Kw" customClass="RatingControlService" customModule="Foodaholic" customModuleProvider="target">
                                 <rect key="frame" x="167" y="397" width="1" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kj9-8u-ZKb">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kj9-8u-ZKb" customClass="RatingControlRevisit" customModule="Foodaholic" customModuleProvider="target">
                                 <rect key="frame" x="167" y="426" width="1" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cpt-Fd-qSU">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cpt-Fd-qSU" customClass="RatingControlEnvironment" customModule="Foodaholic" customModuleProvider="target">
                                 <rect key="frame" x="167" y="462" width="1" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -201,13 +188,14 @@
                                     <segue destination="LFN-uv-mId" kind="show" identifier="otherUserProfile" id="out-1z-46w"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
+                                <rect key="frame" x="0.0" y="73" width="270" height="174"/>
+                                <gestureRecognizers/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="V4C-eK-7qc" firstAttribute="centerX" secondItem="tAS-vZ-Lmj" secondAttribute="centerX" id="Oh8-JM-l56"/>
-                            <constraint firstItem="V4C-eK-7qc" firstAttribute="top" secondItem="zFF-Y1-BS4" secondAttribute="bottom" constant="20" id="a1a-Ck-VcU"/>
-                        </constraints>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
@@ -215,14 +203,14 @@
                         <outlet property="photoDetail" destination="V4C-eK-7qc" id="Tyh-IM-wPU"/>
                         <outlet property="priceDetail" destination="pje-li-KDU" id="4VF-YL-mA9"/>
                         <outlet property="revisitRateDetail" destination="Kj9-8u-ZKb" id="t31-lV-lK7"/>
-                        <outlet property="serviceRateDetail" destination="DZx-PJ-9Kw" id="MLt-Md-w7e"/>
+                        <outlet property="serviceRateDetail" destination="DZx-PJ-9Kw" id="TRh-Cw-NYZ"/>
                         <outlet property="tasteRateDetail" destination="IRL-vX-nlB" id="UDs-XS-Cgr"/>
                         <outlet property="userNameDisplay" destination="mNR-5q-THt" id="SbM-rc-NhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4324" y="410"/>
+            <point key="canvasLocation" x="4329" y="322"/>
         </scene>
         <!--Other User View Controller-->
         <scene sceneID="Z2l-lJ-VBc">
@@ -236,14 +224,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-g8-6Xe">
-                                <rect key="frame" x="25" y="91" width="101" height="93"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-g8-6Xe">
+                                <rect key="frame" x="25" y="47" width="101" height="101"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="Y4V-g8-6Xe" secondAttribute="height" multiplier="1:1" id="2w4-uF-T9U"/>
                                     <constraint firstAttribute="width" constant="101" id="8fs-zy-89P"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-1v-viI">
-                                <rect key="frame" x="146" y="163" width="180" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-1v-viI">
+                                <rect key="frame" x="146" y="119" width="180" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="JsH-E6-6d8"/>
                                 </constraints>
@@ -251,8 +240,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
-                                <rect key="frame" x="0.0" y="206" width="600" height="345"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
+                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="82d-ri-o6N">
                                     <size key="itemSize" width="96" height="96"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -287,6 +276,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="photoImage" destination="3A7-Hn-v6e" id="Z3B-od-ef2"/>
+                                            <segue destination="uyR-YG-zrV" kind="show" identifier="showMealDetail" id="QZa-Fa-Ng9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -318,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VzP-wv-f86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5063" y="410"/>
+            <point key="canvasLocation" x="5042" y="410"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
@@ -697,6 +687,7 @@
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="centerX" secondItem="VD6-sG-EEo" secondAttribute="centerX" id="ite-yQ-cE9"/>
                             <constraint firstItem="13O-2C-eAI" firstAttribute="top" secondItem="VD6-sG-EEo" secondAttribute="topMargin" id="oso-Pn-N1I"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="leading" secondItem="VD6-sG-EEo" secondAttribute="leadingMargin" constant="-20" id="sur-7g-JZK"/>
+                            <constraint firstItem="HQX-ns-ncD" firstAttribute="top" secondItem="lzF-hi-uB9" secondAttribute="bottom" id="t5L-4U-cyo"/>
                             <constraint firstItem="lzF-hi-uB9" firstAttribute="centerX" secondItem="VD6-sG-EEo" secondAttribute="centerX" id="vZB-66-z4B"/>
                             <constraint firstItem="13O-2C-eAI" firstAttribute="top" secondItem="VD6-sG-EEo" secondAttribute="top" id="ygx-We-b65"/>
                         </constraints>
@@ -707,6 +698,7 @@
                                 <exclude reference="SAP-sv-vHL"/>
                                 <exclude reference="h0x-Tp-9eG"/>
                                 <exclude reference="hkd-tX-fhT"/>
+                                <exclude reference="t5L-4U-cyo"/>
                             </mask>
                         </variation>
                     </view>
@@ -768,6 +760,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e7h-P2-KtH"/>
+        <segue reference="tlT-lp-ZzH"/>
     </inferredMetricsTieBreakers>
 </document>

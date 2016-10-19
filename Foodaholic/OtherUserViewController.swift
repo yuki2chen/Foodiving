@@ -29,10 +29,13 @@ class OtherUserViewController: UIViewController ,UICollectionViewDelegate,UIColl
         otherUserMealView.dataSource = self
         
         userNameLabel.text = meal?.userName
-        let userphotoURL = NSURL(string: (meal?.userPhotoString)!)
-        let userphotoData = NSData(contentsOfURL: userphotoURL!)
-        userPhotoImage.image = UIImage(data: userphotoData!)
+//        let task = ImageView.nk_setImageWith(NSURL(string: (meal?.userPhotoString)!)!)
+//        let userphotoURL = NSURL(string: (meal?.userPhotoString)!)
+//        let userphotoData = NSData(contentsOfURL: userphotoURL!)
+//        userPhotoImage.image = UIImage(data: userphotoData!)
         
+        self.userPhotoImage.nk_setImageWith(NSURL(string: (meal?.userPhotoString)!)!)
+        navigationItem.title = "Profile"
         retriveData()
         
     }
@@ -82,7 +85,19 @@ class OtherUserViewController: UIViewController ,UICollectionViewDelegate,UIColl
     }
     
 
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMealDetail"{
+            let destinationController = segue.destinationViewController as? DetailViewController
+
+            if let selectedCellSquare = sender as? OtherUserCollectionViewCell{
+                let indexPath = otherUserMealView.indexPathForCell(selectedCellSquare)
+                let selectedPhoto = meals[indexPath!.row]
+                destinationController!.meal = selectedPhoto
+            }
+        
+        
+        }
+    }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
