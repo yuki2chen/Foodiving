@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 class searchRestaurantModel {
     
     
@@ -30,6 +31,9 @@ class searchRestaurantModel {
         let restLng = locationInfo.valueForKey("lng") as? Double ?? 0.0
         let restCity = locationInfo.valueForKey("city") as? String ?? ""
         let restCountry = locationInfo.valueForKey("country") as? String ?? ""
+        let postalCode = locationInfo.valueForKey("postalCode") as? String ?? ""
+        let address = locationInfo.valueForKey("formattedAddress") as? [String] ?? []
+        
         
         restaurantDict["id"] = id
         restaurantDict["name"] = name
@@ -37,8 +41,12 @@ class searchRestaurantModel {
         restaurantDict["restLng"] = restLng
         restaurantDict["restCity"] = restCity
         restaurantDict["restCountry"] = restCountry
-        
+        restaurantDict["postalCode"] = postalCode
+        restaurantDict["address"] = address
                 
+        
+        
+        
         
         
         //print(restaurants["name"]!)

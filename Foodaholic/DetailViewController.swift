@@ -8,6 +8,8 @@
 
 import UIKit
 import Nuke
+import FirebaseAuth
+
 class DetailViewController: UIViewController {
 
     //Mark: properties
@@ -22,9 +24,10 @@ class DetailViewController: UIViewController {
    
     @IBOutlet weak var serviceRateDetail: RatingControlService!
     @IBOutlet weak var userNameDisplay: UIButton!
-    @IBAction func usernamebutton(sender: AnyObject) {
-        
-    }
+    
+     
+    var deleteButton: UIBarButtonItem!
+    
     
     
     
@@ -46,8 +49,19 @@ class DetailViewController: UIViewController {
         userNameDisplay.setTitle("\(meal.userName)",forState: .Normal)
         self.photoDetail.nk_setImageWith(NSURL(string: meal.photoString!)!)
         
-//        let task = Nuke.taskWith(NSURL(string: meal.photoString!)!).resume()
-//        print(task.state)
+        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            let uid = user.uid
+            if (meal.userID) == uid {
+            self.navigationItem.rightBarButtonItem = self.deleteButton
+            }else{
+                self.navigationItem.rightBarButtonItem = nil
+            }
+
+        }
+
+        
         
     }
 
@@ -55,8 +69,6 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

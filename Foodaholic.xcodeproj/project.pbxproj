@@ -30,6 +30,8 @@
 		A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */; };
 		A5F4165D1DB5C8EF0053C18C /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */; };
 		A5F4165F1DB604060053C18C /* OtherUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4165E1DB604060053C18C /* OtherUserCollectionViewCell.swift */; };
+		A5F416611DB770570053C18C /* postcode.json in Resources */ = {isa = PBXBuildFile; fileRef = A5F416601DB770570053C18C /* postcode.json */; };
+		A5F416631DB770D10053C18C /* PostalCodesConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F416621DB770D10053C18C /* PostalCodesConvert.swift */; };
 		A5FD5AD01D9E14880062C276 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */; };
 		A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD11D9E3E210062C276 /* RatingControl.swift */; };
 		A5FD5AD41D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */; };
@@ -65,6 +67,8 @@
 		A5F1E8AF1DA659B50028ABF5 /* FoursquareAPIClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoursquareAPIClient-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserViewController.swift; sourceTree = "<group>"; };
 		A5F4165E1DB604060053C18C /* OtherUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5F416601DB770570053C18C /* postcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postcode.json; sourceTree = "<group>"; };
+		A5F416621DB770D10053C18C /* PostalCodesConvert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalCodesConvert.swift; sourceTree = "<group>"; };
 		A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A5FD5AD11D9E3E210062C276 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 				A5DF27981D9CDE7500CF5CEA /* Info.plist */,
 				A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */,
 				A52973CB1D9CEB39002DBD01 /* GoogleService-Info.plist */,
+				A5F416601DB770570053C18C /* postcode.json */,
+				A5F416621DB770D10053C18C /* PostalCodesConvert.swift */,
 			);
 			path = Foodaholic;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 			files = (
 				A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */,
 				A52973CC1D9CEB39002DBD01 /* GoogleService-Info.plist in Resources */,
+				A5F416611DB770570053C18C /* postcode.json in Resources */,
 				A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */,
 				A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */,
 			);
@@ -315,6 +322,7 @@
 				A5048E741DB2185100837BCF /* RatingControlService.swift in Sources */,
 				A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */,
 				A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */,
+				A5F416631DB770D10053C18C /* PostalCodesConvert.swift in Sources */,
 				A5FD5AD21D9E3E210062C276 /* RatingControl.swift in Sources */,
 				A50D9B201DAF85F300238BAC /* ProfileCollectionViewCell.swift in Sources */,
 				A5048E791DB21A4000837BCF /* RatingControlEnvironment.swift in Sources */,

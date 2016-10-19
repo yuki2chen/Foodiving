@@ -206,29 +206,36 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         //print("searchRest array: \(searchRestaurant.first)")
         
-        for restlocate in searchRestaurant{
+        for restInfo in searchRestaurant{
             
-            guard let restLat = restlocate["restLat"] as? Double else{
+            guard let restLat = restInfo["restLat"] as? Double else{
                 return}
-            guard let restLng = restlocate["restLng"] as? Double else{
+            guard let restLng = restInfo["restLng"] as? Double else{
                 return}
+            guard let restCountry = restInfo["restCity"] as? String else{
+                return}
+            guard let restCity = restInfo["restCountry"] as? String else{
+                return}
+            guard let restName = restInfo["name"] as? String else{
+                return}
+            
             
             let mylocation = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: restLat, longitude: restLng), addressDictionary: nil)
             
-            //print("MYLOCATION IS \(mylocation)")
+
             
-            mapView.addAnnotation(mylocation)
             
+           
             
 //            mapView.removeAnnotations(mapView.annotations)
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = mylocation.coordinate
-//            annotation.title = mylocation.name
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = mylocation.coordinate
+            annotation.title = restName
 //            if let city = mylocation.locality,
 //                let state = mylocation.administrativeArea {
 //                annotation.subtitle = "\(city) \(state)"
 //            }
-//            mapView.addAnnotation(annotation)
+            mapView.addAnnotation(annotation)
 //            let span = MKCoordinateSpanMake(0.05, 0.05)
 //            let region = MKCoordinateRegionMake(mylocation.coordinate, span)
 //            mapView.setRegion(region, animated: true)

@@ -196,6 +196,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fI4-4L-7xQ">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="wa5-BS-xAp"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
@@ -641,7 +644,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchRestaurantsTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchRestaurantsTableViewCell" rowHeight="50" id="EIO-Uq-HYZ" customClass="searchRestaurantsTableViewCell" customModule="Foodaholic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIO-Uq-HYZ" id="DkO-l9-PnP">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
