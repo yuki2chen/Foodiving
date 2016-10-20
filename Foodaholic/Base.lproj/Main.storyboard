@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
@@ -184,7 +184,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="userName"/>
                                 <connections>
-                                    <action selector="usernamebutton:" destination="uyR-YG-zrV" eventType="touchUpInside" id="4gA-C8-4dM"/>
                                     <segue destination="LFN-uv-mId" kind="show" identifier="otherUserProfile" id="out-1z-46w"/>
                                 </connections>
                             </button>
@@ -196,9 +195,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="fI4-4L-7xQ">
-                        <barButtonItem key="rightBarButtonItem" title="Delete" id="wa5-BS-xAp"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="fI4-4L-7xQ"/>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
@@ -647,7 +644,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIO-Uq-HYZ" id="DkO-l9-PnP">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">

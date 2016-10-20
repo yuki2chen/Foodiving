@@ -81,7 +81,6 @@ class ResaturantMealTableViewController: UITableViewController {
                 
                 meal.photoString = photoString
                 meal.userID = userID
-                
                 self.retreiveUserData(meal)
                 
             }
@@ -146,7 +145,7 @@ class ResaturantMealTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    
+        
     
     // MARK: - Table view data source
 

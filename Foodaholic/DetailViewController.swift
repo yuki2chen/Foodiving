@@ -9,6 +9,7 @@
 import UIKit
 import Nuke
 import FirebaseAuth
+import FirebaseDatabase
 
 class DetailViewController: UIViewController {
 
@@ -25,9 +26,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var serviceRateDetail: RatingControlService!
     @IBOutlet weak var userNameDisplay: UIButton!
     
+    
      
     var deleteButton: UIBarButtonItem!
-    
+    var mealCommentObject: String = ""
     
     
     
@@ -43,28 +45,32 @@ class DetailViewController: UIViewController {
         
         tasteRateDetail.rating = meal.tasteRating
         serviceRateDetail.rating = meal.serviceRating
-        revisitRateDetail.rating = Int(meal.revisitRating)
-        environmentRateDetail.rating = Int(meal.environmentRating)
+        revisitRateDetail.rating = meal.revisitRating
+        environmentRateDetail.rating = meal.environmentRating
         commentDetail.text = meal.comment
         userNameDisplay.setTitle("\(meal.userName)",forState: .Normal)
         self.photoDetail.nk_setImageWith(NSURL(string: meal.photoString!)!)
         
-        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deleteFunction(_:)))
         
         if let user = FIRAuth.auth()?.currentUser {
             let uid = user.uid
             if (meal.userID) == uid {
-            self.navigationItem.rightBarButtonItem = self.deleteButton
+                self.navigationItem.rightBarButtonItem = self.deleteButton
             }else{
                 self.navigationItem.rightBarButtonItem = nil
             }
-
+            
         }
 
-        
+        retrievedCommentID()
         
     }
 
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,13 +81,46 @@ class DetailViewController: UIViewController {
         if segue.identifier == "otherUserProfile"{
             let destinationController = segue.destinationViewController as? OtherUserViewController
             destinationController!.meal = self.meal
+        }
+    }
+ 
+    
+    
+    
+    
+    
+    
+    
+    func retrievedCommentID(){
+        let reference = FIRDatabase.database().reference()
+        guard let meal = meal else{ return}
+        reference.child("RestaurantsComments").queryOrderedByKey().observeEventType(.ChildAdded, withBlock:{
+            snapshot in
+            let mealCommentObject = snapshot.key
+            self.mealCommentObject = mealCommentObject
+        })
+    }
+
+    func deleteFunction (sender: UIBarButtonItem) {
+        
+        if deleteButton == sender {
+        
+//        deleteFunction(childsWantToDelete: valueWantToDelete!)
+        
+            let firebase = FIRDatabase.database().reference()
+            firebase.child("RestaurantsComments").child("\(mealCommentObject)").removeValueWithCompletionBlock{(error, ref) in
+                if error != nil{
+                print("error:\(error)")
+                }else{
+                    self.navigationController?.popViewControllerAnimated(true)
+                    
+                    
+                }
+            
+            }
+            
             
         }
     }
     
-
-    
-    
-    
-  
 }
