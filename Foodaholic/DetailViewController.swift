@@ -27,10 +27,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var serviceRateDetail: RatingControlService!
     @IBOutlet weak var userNameDisplay: UIButton!
     
-    @IBOutlet weak var testButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+   
     
      
-    var deleteButton: UIBarButtonItem!
+//    var deleteButton: UIBarButtonItem!
     var mealCommentObject: String = ""
     var restaurantPlace: String = ""
     
@@ -53,7 +54,7 @@ class DetailViewController: UIViewController {
         userNameDisplay.setTitle("\(meal.userName)",forState: .Normal)
         self.photoDetail.nk_setImageWith(NSURL(string: meal.photoString!)!)
         
-        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deleteFunction(_:)))
+//        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deleteFunction(_:)))
         
         if let user = FIRAuth.auth()?.currentUser {
             let uid = user.uid
@@ -61,7 +62,7 @@ class DetailViewController: UIViewController {
                 self.navigationItem.rightBarButtonItem = self.deleteButton
             }else{
                 self.navigationItem.rightBarButtonItem = nil
-                self.navigationItem.leftBarButtonItem = nil
+                
 
             }
             
@@ -89,7 +90,15 @@ class DetailViewController: UIViewController {
         if segue.identifier == "otherUserProfile"{
             let destinationController = segue.destinationViewController as? OtherUserViewController
             destinationController!.meal = self.meal
+        }else if deleteButton === sender{
+            let firebase = FIRDatabase.database().reference()
+            firebase.child("RestaurantsComments").child(mealCommentObject).removeValueWithCompletionBlock{(error, ref) in
+                if error != nil{
+                    print("error:\(error)")
+                    
+                }
         }
+    }
     }
  
     
@@ -128,22 +137,5 @@ class DetailViewController: UIViewController {
     }
 
     
-    func deleteFunction (sender: UIBarButtonItem) {
-        
-        if deleteButton == sender {
-            
-            let firebase = FIRDatabase.database().reference()
-            firebase.child("RestaurantsComments").child(mealCommentObject).removeValueWithCompletionBlock{(error, ref) in
-                if error != nil{
-                    print("error:\(error)")
-                    
-                }else{
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName("didRemoveItem", object: nil)
-                    
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
-        }
-    }
+    
 }

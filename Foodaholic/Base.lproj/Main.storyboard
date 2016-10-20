@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="3400" y="-296"/>
         </scene>
-        <!--i-->
+        <!--Detail View Controller-->
         <scene sceneID="Czo-VM-Os9">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="uyR-YG-zrV" customClass="DetailViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,11 +195,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="i" id="D0d-sP-mmu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="KUw-zu-KbY"/>
+                    <navigationItem key="navigationItem" id="D0d-sP-mmu">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="KUw-zu-KbY">
+                            <connections>
+                                <segue destination="X1F-LM-AGw" kind="unwind" unwindAction="unwindToMealList:" id="Hh4-mv-404"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
+                        <outlet property="deleteButton" destination="KUw-zu-KbY" id="mYu-Iq-2Py"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
                         <outlet property="mealNameDetail" destination="SQH-eh-pgu" id="uGA-1l-WM3"/>
                         <outlet property="photoDetail" destination="V4C-eK-7qc" id="Tyh-IM-wPU"/>
@@ -208,11 +213,11 @@
                         <outlet property="revisitRateDetail" destination="Kj9-8u-ZKb" id="t31-lV-lK7"/>
                         <outlet property="serviceRateDetail" destination="DZx-PJ-9Kw" id="TRh-Cw-NYZ"/>
                         <outlet property="tasteRateDetail" destination="IRL-vX-nlB" id="UDs-XS-Cgr"/>
-                        <outlet property="testButton" destination="KUw-zu-KbY" id="79G-86-Zfx"/>
                         <outlet property="userNameDisplay" destination="mNR-5q-THt" id="SbM-rc-NhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="X1F-LM-AGw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3807" y="728"/>
         </scene>
@@ -648,7 +653,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIO-Uq-HYZ" id="DkO-l9-PnP">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-DZ-8Ph">

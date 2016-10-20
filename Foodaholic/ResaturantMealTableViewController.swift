@@ -33,7 +33,7 @@ class ResaturantMealTableViewController: UITableViewController {
 
         self.navigationItem.title = restDic["name"] as? String ?? ""
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.reloadDatas), name:"didRemoveItem", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.reloadDatas), name:"didRemoveItem", object: nil)
         
     
     }
@@ -44,22 +44,13 @@ class ResaturantMealTableViewController: UITableViewController {
 
     
     
-    func reloadDatas(){
-        meals = []
-        
-        tableView.reloadData()
-        
-        retreiveData()
-        
-    }
-
+    
     
     // Mark: Retrieve data
     
     func retreiveData() {
         
         meals = []
-//        tableView.reloadData()
         
         let restaurantId = restDic["id"] as? String ?? ""
         //print(restaurantId)
