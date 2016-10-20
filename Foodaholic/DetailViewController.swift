@@ -23,14 +23,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var environmentRateDetail: RatingControlEnvironment!
     @IBOutlet weak var commentDetail: UILabel!
    
+    @IBOutlet weak var restPlace: UILabel!
     @IBOutlet weak var serviceRateDetail: RatingControlService!
     @IBOutlet weak var userNameDisplay: UIButton!
     
+    @IBOutlet weak var testButton: UIBarButtonItem!
     
      
     var deleteButton: UIBarButtonItem!
     var mealCommentObject: String = ""
-    
+    var restaurantPlace: String = ""
     
     
     //Mark: View Life Cycle
@@ -40,9 +42,9 @@ class DetailViewController: UIViewController {
         guard let meal = meal else {return}
 
         photoDetail.clipsToBounds = true
+        
         mealNameDetail.text = meal.mealName
         priceDetail.text = meal.price
-        
         tasteRateDetail.rating = meal.tasteRating
         serviceRateDetail.rating = meal.serviceRating
         revisitRateDetail.rating = meal.revisitRating
@@ -59,11 +61,17 @@ class DetailViewController: UIViewController {
                 self.navigationItem.rightBarButtonItem = self.deleteButton
             }else{
                 self.navigationItem.rightBarButtonItem = nil
+                self.navigationItem.leftBarButtonItem = nil
+
             }
             
         }
 
         retrievedCommentID()
+        
+        let restaurantID = meal.restaurantID
+        retrievedRestaurantLocation(restaurantID!)
+        
         
     }
 
@@ -87,13 +95,31 @@ class DetailViewController: UIViewController {
     
     
     
+    func retrievedRestaurantLocation(restaurantID: String){
+        let reference = FIRDatabase.database().reference()
+        reference.child("restaurants").queryOrderedByKey().queryEqualToValue("\(restaurantID)").observeEventType(.Value, withBlock: {snapshot in
+            let  snapshots = snapshot.children.allObjects
+            for restInfo in snapshots{
+                let restCountry = restInfo.value["restCountry"] as? String ?? ""
+                let restCity = restInfo.value["restCity"] as? String ?? ""
+                
+                self.restaurantPlace = restCity + "," + restCountry
+                self.restPlace.text = self.restaurantPlace
+            }
+            })
+        
+    }
     
     
     
+    
+    
+    
+    
+    //Mark: download RestaurantsComments key and delete it
     
     func retrievedCommentID(){
         let reference = FIRDatabase.database().reference()
-        guard let meal = meal else{ return}
         reference.child("RestaurantsComments").queryOrderedByKey().observeEventType(.ChildAdded, withBlock:{
             snapshot in
             let mealCommentObject = snapshot.key
@@ -101,26 +127,23 @@ class DetailViewController: UIViewController {
         })
     }
 
+    
     func deleteFunction (sender: UIBarButtonItem) {
         
         if deleteButton == sender {
-        
-//        deleteFunction(childsWantToDelete: valueWantToDelete!)
-        
+            
             let firebase = FIRDatabase.database().reference()
-            firebase.child("RestaurantsComments").child("\(mealCommentObject)").removeValueWithCompletionBlock{(error, ref) in
+            firebase.child("RestaurantsComments").child(mealCommentObject).removeValueWithCompletionBlock{(error, ref) in
                 if error != nil{
-                print("error:\(error)")
+                    print("error:\(error)")
+                    
                 }else{
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("didRemoveItem", object: nil)
+                    
                     self.navigationController?.popViewControllerAnimated(true)
-                    
-                    
                 }
-            
             }
-            
-            
         }
     }
-    
 }

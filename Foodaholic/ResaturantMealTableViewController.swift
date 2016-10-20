@@ -12,6 +12,9 @@ import FirebaseDatabase
 import FirebaseStorage
 import Nuke
 
+
+
+
 class ResaturantMealTableViewController: UITableViewController {
     
     //Mark: Properties
@@ -27,21 +30,12 @@ class ResaturantMealTableViewController: UITableViewController {
         
         print(restDic)
         retreiveData()
-//        let menuImage = UIImage(named: "menuImage")
-//        let menuImageView = UIImageView(image: menuImage)
-        self.navigationItem.title = restDic["name"] as? String ?? ""
-//        self.navigationItem.titleView = menuImageView
 
-//        var nameString: String = restDic["name"] as? String ?? ""
-//        if let nameStringSplitArray = (nameString.characters.split{$0 == "(" || $0 == ")"}.map(String.init)){
-//        print(nameStringSplitArray[1])
-//        }else {
-//            print(nameStringSplitArray[0])
-//        }
+        self.navigationItem.title = restDic["name"] as? String ?? ""
         
-            
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.reloadDatas), name:"didRemoveItem", object: nil)
         
-        
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,12 +44,23 @@ class ResaturantMealTableViewController: UITableViewController {
 
     
     
+    func reloadDatas(){
+        meals = []
+        
+        tableView.reloadData()
+        
+        retreiveData()
+        
+    }
+
     
     // Mark: Retrieve data
     
     func retreiveData() {
         
         meals = []
+//        tableView.reloadData()
+        
         let restaurantId = restDic["id"] as? String ?? ""
         //print(restaurantId)
         let mealInfoDatabase = FIRDatabase.database().reference()
@@ -76,17 +81,18 @@ class ResaturantMealTableViewController: UITableViewController {
                 let environmentRating = commentSnap.value["environmentRating"] as?  Int ?? 0
                 let comment = commentSnap.value["comment"] as? String ?? ""
                 let userID = commentSnap.value["userID"] as? String ?? ""
+                let restID = commentSnap.value["restaurantId"] as? String ?? ""
                 
                 let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                 
                 meal.photoString = photoString
                 meal.userID = userID
+                meal.restaurantID = restID
                 self.retreiveUserData(meal)
                 
             }
             
-            
-            
+             self.tableView.reloadData()
         })
        
     }
@@ -140,9 +146,8 @@ class ResaturantMealTableViewController: UITableViewController {
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         meals = []
-        
-        
-        self.tableView.reloadData()
+
+    self.tableView.reloadData()
     }
     
         

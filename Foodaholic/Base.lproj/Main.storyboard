@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="3400" y="-296"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--i-->
         <scene sceneID="Czo-VM-Os9">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="uyR-YG-zrV" customClass="DetailViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,22 +195,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="fI4-4L-7xQ"/>
+                    <navigationItem key="navigationItem" title="i" id="D0d-sP-mmu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="KUw-zu-KbY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
                         <outlet property="mealNameDetail" destination="SQH-eh-pgu" id="uGA-1l-WM3"/>
                         <outlet property="photoDetail" destination="V4C-eK-7qc" id="Tyh-IM-wPU"/>
                         <outlet property="priceDetail" destination="pje-li-KDU" id="4VF-YL-mA9"/>
+                        <outlet property="restPlace" destination="BtD-a1-pzC" id="YR2-h8-d13"/>
                         <outlet property="revisitRateDetail" destination="Kj9-8u-ZKb" id="t31-lV-lK7"/>
                         <outlet property="serviceRateDetail" destination="DZx-PJ-9Kw" id="TRh-Cw-NYZ"/>
                         <outlet property="tasteRateDetail" destination="IRL-vX-nlB" id="UDs-XS-Cgr"/>
+                        <outlet property="testButton" destination="KUw-zu-KbY" id="79G-86-Zfx"/>
                         <outlet property="userNameDisplay" destination="mNR-5q-THt" id="SbM-rc-NhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4329" y="322"/>
+            <point key="canvasLocation" x="3807" y="728"/>
         </scene>
         <!--Other User View Controller-->
         <scene sceneID="Z2l-lJ-VBc">
@@ -619,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldh-If-9d5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613" y="526"/>
+            <point key="canvasLocation" x="2661" y="712"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="YKc-fj-Oak">

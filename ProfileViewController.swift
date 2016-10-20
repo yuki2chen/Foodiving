@@ -190,6 +190,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     func retriveData(){
         
         meals = []
+
         let mealInfoReference = FIRDatabase.database().reference()
         
         mealInfoReference.child("RestaurantsComments").observeEventType(.Value, withBlock:
@@ -215,10 +216,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     self.mealPhotoStringArray.append(photoString)
 //                    print(photoString)
                 }
-                
+                self.collectionView.reloadData()
         })
         
-        self.collectionView.reloadData()
+        
     }
     
     
@@ -263,11 +264,8 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cellsquare = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ProfileCollectionViewCell
         
-        
         cellsquare.backgroundColor = UIColor.whiteColor()
-//        let meal = meals[indexPath.row]
         let mealPhoto = mealPhotoStringArray[indexPath.row]
-//        let mealPic = meal.photoString!
         if let mealPhotoURL = NSURL(string: mealPhoto) {
             
             cellsquare.mealPhoto.nk_setImageWith(mealPhotoURL)
