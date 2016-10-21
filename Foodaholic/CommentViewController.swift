@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import Fusuma
 //import Checkbox
 
-class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate {
+class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate {
 
     //Mark: Properties
     
@@ -47,8 +48,28 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
     var restDictionary: [String: AnyObject] = [:]
     
     
+    //Mark: delegate camera withFusuma
+    func fusumaLibrary(){
+        let fusuma = FusumaViewController()
+        fusuma.delegate = self
+        fusuma.hasVideo = false
+        self.presentViewController(fusuma, animated: true, completion: nil)
+    }
     
+    func fusumaImageSelected(photoImageView: UIImage){
+        print("image selected")
+        
+    }
+    func fusumaDismissedWithImage(image: UIImage) {
+        print("Called just fusumaViewController is dismissed.")
+    }
     
+    func fusumaVideoCompleted(withFileURL fileURL: NSURL) {
+        print("Called just after a video has been selected")
+    }
+    func fusumaCameraRollUnauthorized() {
+        print("Camera roll unauthorized")
+    }
     //Mark: View Life Cycle
     
     override func viewDidLoad() {
@@ -97,7 +118,6 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         photoImageView.image = selectedImage
         dismissViewControllerAnimated(true, completion: nil)
-
     }
     
     
@@ -229,14 +249,15 @@ class CommentViewController: UIViewController,UIImagePickerControllerDelegate,UI
  
     @IBAction func selectImage(sender: UITapGestureRecognizer) {
         //當點擊時 keyboard會關閉
+        fusumaLibrary()
         mealNameTextField.resignFirstResponder()
 //        priceTextField.resignFirstResponder()
 //        commentTextField.resignFirstResponder()
         //Mark: create a image picker controller
         let imagePickerController = UIImagePickerController()
         
-        imagePickerController.sourceType = .PhotoLibrary
-        imagePickerController.delegate = self
+//        imagePickerController.sourceType = .PhotoLibrary
+//        imagePickerController.delegate = self
         presentViewController(imagePickerController, animated: true, completion: nil)
         
     }

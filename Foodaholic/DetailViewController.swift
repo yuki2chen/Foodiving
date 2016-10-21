@@ -69,11 +69,10 @@ class DetailViewController: UIViewController {
         }
 
        
-        retrievedCommentID()
+//        retrievedCommentID()
 
         let restaurantID = meal.restaurantID
         retrievedRestaurantLocation(restaurantID!)
-        
         
     }
 
@@ -94,7 +93,9 @@ class DetailViewController: UIViewController {
         }else if deleteButton === sender{
             
             let firebase = FIRDatabase.database().reference()
-            firebase.child("RestaurantsComments").child(mealCommentObject).removeValueWithCompletionBlock{(error, ref) in
+            let restCommentID = meal!.restCommentID
+//            firebase.child("RestaurantsComments").queryOrderedByKey().queryEqualToValue("\(restCommentID)").removeAllObservers()
+            firebase.child("RestaurantsComments").child(restCommentID).removeValueWithCompletionBlock{(error, ref) in
                 if error != nil{
                     print("error:\(error)")
                     
@@ -129,16 +130,32 @@ class DetailViewController: UIViewController {
     
     //Mark: download RestaurantsComments key and delete it
     
-    func retrievedCommentID(){
+    func retrievedCommentID(key: String){
         let reference = FIRDatabase.database().reference()
-        reference.child("RestaurantsComments").queryOrderedByKey().observeEventType(.ChildAdded, withBlock:{
+        reference.child("RestaurantsComments").queryOrderedByKey().observeEventType(.Value, withBlock:{
             snapshot in
             
-            let mealCommentObject = snapshot.key
+//            let mealCommentObject = snapshot.value?.allObject as? [String] ?? []
+//            if snapshot.value is NSNull{
+//                print("no key for comment")
+//            }else{
+//                for mealcommentID in snapshot.children{
+//                    let key = mealcommentID.key as String
+//                    print(key)
+//                    self.meal?.comment = key
+//                }
+//            }
+            
+            
+            
+//            for mealcommentID in mealCommentObject{
+//            print(mealcommentID)
 //            self.mealCommentObject.append(mealCommentObject)
 //            guard let meal = self.meal else {return}
-//            meal.restCommentID = mealCommentObject
-            self.mealCommentObject = mealCommentObject
+//            self.meal.restCommentID = mealCommentObject
+//            self.mealCommentObject = mealCommentObject
+//            }
+//            
         })
     }
 

@@ -82,9 +82,9 @@ class ResaturantMealTableViewController: UITableViewController {
                 meal.userID = userID
                 meal.restaurantID = restID
                 self.retreiveUserData(meal)
-                
+                //self.retrievedCommentID()
+
             }
-            
              self.tableView.reloadData()
         })
        
@@ -108,6 +108,26 @@ class ResaturantMealTableViewController: UITableViewController {
         })
 
     }
+    
+    
+    func retrievedCommentID(meal:Meal){
+        let reference = FIRDatabase.database().reference()
+        reference.child("RestaurantsComments").observeEventType(.Value, withBlock:{
+            snapshot in
+            
+            //let mealCommentObject = snapshot.value?.allObject as? [String] ?? []
+            if snapshot.value is NSNull{
+                print("no key for comment")
+            }else{
+                for mealcommentID in snapshot.children{
+                    let key = mealcommentID.key as String
+                    print(key)
+                    meal.restCommentID = key
+                }
+            }
+                   })
+    }
+
     
     
     // Mark: Navigation
