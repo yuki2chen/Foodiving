@@ -62,27 +62,30 @@ class ResaturantMealTableViewController: UITableViewController {
   
             snapshot in
             print(snapshot.value)
-            let snapshots = snapshot.children.allObjects
-            for commentSnap in snapshots{
+            
+            for snapshot in snapshot.children {
                 
-                let mealName = commentSnap.value["mealName"] as? String ?? ""
-                let price = commentSnap.value["price"] as? String ?? ""
-                let photoString = commentSnap.value["photoString"] as? String ?? ""
-                let tasteRating = commentSnap.value["tasteRating"] as?  Int ?? 0
-                let serviceRating = commentSnap.value["serviceRating"] as?  Int ?? 0
-                let revisitRating = commentSnap.value["revisitRating"] as?  Int ?? 0
-                let environmentRating = commentSnap.value["environmentRating"] as?  Int ?? 0
-                let comment = commentSnap.value["comment"] as? String ?? ""
-                let userID = commentSnap.value["userID"] as? String ?? ""
-                let restID = commentSnap.value["restaurantId"] as? String ?? ""
+                let commentSnap = snapshot as! FIRDataSnapshot
+                
+                let mealName = commentSnap.value?["mealName"] as? String ?? ""
+                let price = commentSnap.value?["price"] as? String ?? ""
+                let photoString = commentSnap.value?["photoString"] as? String ?? ""
+                let tasteRating = commentSnap.value?["tasteRating"] as?  Int ?? 0
+                let serviceRating = commentSnap.value?["serviceRating"] as?  Int ?? 0
+                let revisitRating = commentSnap.value?["revisitRating"] as?  Int ?? 0
+                let environmentRating = commentSnap.value?["environmentRating"] as?  Int ?? 0
+                let comment = commentSnap.value?["comment"] as? String ?? ""
+                let userID = commentSnap.value?["userID"] as? String ?? ""
+                let restID = commentSnap.value?["restaurantId"] as? String ?? ""
                 
                 let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                 
                 meal.photoString = photoString
                 meal.userID = userID
                 meal.restaurantID = restID
+                meal.restCommentID = commentSnap.key
+                
                 self.retreiveUserData(meal)
-                //self.retrievedCommentID()
 
             }
              self.tableView.reloadData()
