@@ -32,6 +32,8 @@ class ResaturantMealTableViewController: UITableViewController {
         retreiveData()
 
         self.navigationItem.title = restDic["name"] as? String ?? ""
+        tableView.separatorStyle = .None
+        
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.reloadDatas), name:"didRemoveItem", object: nil)
         

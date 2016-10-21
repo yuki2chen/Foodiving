@@ -29,7 +29,7 @@ class Meal {
     var userID: String = ""
     var userName: String = ""
     var userPhotoString: String = ""
-    
+    var restCommentID: String = ""
     // MARK: Initialization
     
     init(mealName: String, price: String,tasteRating: Int,serviceRating:Int,revisitRating:Int,environmentRating:Int,comment: String) {

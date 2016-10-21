@@ -190,10 +190,11 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     func retriveData(){
         
         meals = []
+        
 
         let mealInfoReference = FIRDatabase.database().reference()
         
-        mealInfoReference.child("RestaurantsComments").observeEventType(.Value, withBlock:
+        mealInfoReference.child("RestaurantsComments").queryOrderedByChild("userID").queryEqualToValue(userUid).observeEventType(.Value, withBlock:
             { snapshot in
                 let snapshots = snapshot.children.allObjects
                 
@@ -206,12 +207,15 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     let serviceRating = mealInfo.value["serviceRating"] as?  Int,
                     let revisitRating = mealInfo.value["revisitRating"] as?  Int,
                     let environmentRating = mealInfo.value["environmentRating"] as?  Int,
-                    let comment = mealInfo.value["comment"] as? String
+                    let comment = mealInfo.value["comment"] as? String,
+                    let userID = mealInfo.value["userID"] as? String,
+                    let restID = mealInfo.value["restaurantId"] as? String
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
                     meal.photoString = photoString
-                    
+                    meal.userID = userID
+                    meal.restaurantID = restID
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
 //                    print(photoString)

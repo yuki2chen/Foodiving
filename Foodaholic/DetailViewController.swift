@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
         userNameDisplay.setTitle("\(meal.userName)",forState: .Normal)
         self.photoDetail.nk_setImageWith(NSURL(string: meal.photoString!)!)
         
-//        self.deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deleteFunction(_:)))
+        
         
         if let user = FIRAuth.auth()?.currentUser {
             let uid = user.uid
@@ -68,8 +68,9 @@ class DetailViewController: UIViewController {
             
         }
 
+       
         retrievedCommentID()
-        
+
         let restaurantID = meal.restaurantID
         retrievedRestaurantLocation(restaurantID!)
         
@@ -82,7 +83,7 @@ class DetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     
@@ -91,6 +92,7 @@ class DetailViewController: UIViewController {
             let destinationController = segue.destinationViewController as? OtherUserViewController
             destinationController!.meal = self.meal
         }else if deleteButton === sender{
+            
             let firebase = FIRDatabase.database().reference()
             firebase.child("RestaurantsComments").child(mealCommentObject).removeValueWithCompletionBlock{(error, ref) in
                 if error != nil{
@@ -112,7 +114,7 @@ class DetailViewController: UIViewController {
                 let restCountry = restInfo.value["restCountry"] as? String ?? ""
                 let restCity = restInfo.value["restCity"] as? String ?? ""
                 
-                self.restaurantPlace = restCity + "," + restCountry
+                self.restaurantPlace = restCity + " , " + restCountry
                 self.restPlace.text = self.restaurantPlace
             }
             })
@@ -131,7 +133,11 @@ class DetailViewController: UIViewController {
         let reference = FIRDatabase.database().reference()
         reference.child("RestaurantsComments").queryOrderedByKey().observeEventType(.ChildAdded, withBlock:{
             snapshot in
+            
             let mealCommentObject = snapshot.key
+//            self.mealCommentObject.append(mealCommentObject)
+//            guard let meal = self.meal else {return}
+//            meal.restCommentID = mealCommentObject
             self.mealCommentObject = mealCommentObject
         })
     }

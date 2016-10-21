@@ -68,12 +68,15 @@ class OtherUserViewController: UIViewController ,UICollectionViewDelegate,UIColl
                         let revisitRating = mealInfo.value["revisitRating"] as?  Int,
                         let environmentRating = mealInfo.value["environmentRating"] as?  Int,
                         let comment = mealInfo.value["comment"] as? String,
-                        let userID = mealInfo.value["userID"] as? String
+                        let userID = mealInfo.value["userID"] as? String,
+                        let restID = mealInfo.value["restaurantId"] as? String
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
                     meal.photoString = photoString
                     meal.userID = userID
+                    meal.restaurantID = restID
+
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
                 }

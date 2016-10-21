@@ -51,7 +51,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         locationManager.stopUpdatingLocation()
         
         
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,6 +141,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchRestaurantsTableViewCell", forIndexPath: indexPath) as! searchRestaurantsTableViewCell
+        
+        
         
         let restaurant = searchRestaurant[indexPath.row]
         cell.restaurantName.text = restaurant["name"] as? String ?? ""
