@@ -54,10 +54,12 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         fusuma.delegate = self
         fusuma.hasVideo = false
         self.presentViewController(fusuma, animated: true, completion: nil)
+//        fusumaBackgroundColor =  UIColor
     }
     
-    func fusumaImageSelected(photoImageView: UIImage){
-        print("image selected")
+    func fusumaImageSelected(image: UIImage){
+        
+        photoImageView.image = image
         
     }
     func fusumaDismissedWithImage(image: UIImage) {
@@ -110,15 +112,15 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     
     //Mark: UIImagePickerControllerDelegate
     
-    func imagePickerControllerDidCancel(picker:UIImagePickerController){
-        //當cancel時  忽略picker
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    func imagePickerController(picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[String : AnyObject]){
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photoImageView.image = selectedImage
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+//    func imagePickerControllerDidCancel(picker:UIImagePickerController){
+//        //當cancel時  忽略picker
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    func imagePickerController(picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[String : AnyObject]){
+//        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        photoImageView.image = selectedImage
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     
     //Mark: Navigation
@@ -253,6 +255,8 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         mealNameTextField.resignFirstResponder()
 //        priceTextField.resignFirstResponder()
 //        commentTextField.resignFirstResponder()
+        
+        
         //Mark: create a image picker controller
         let imagePickerController = UIImagePickerController()
         
