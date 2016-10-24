@@ -15,7 +15,7 @@ import Nuke
 
 
 
-class ResaturantMealTableViewController: UITableViewController {
+class ResaturantMealTableViewController: UITableViewController  {
     
     //Mark: Properties
     
@@ -148,7 +148,7 @@ class ResaturantMealTableViewController: UITableViewController {
             print(restDic)
             destinationController.restDictionary = self.restDic
             
-            .dataDelegate = self
+            destinationController.delegate = self
             print("add new meal")
             
         }
@@ -208,4 +208,11 @@ class ResaturantMealTableViewController: UITableViewController {
         return cell
         
     }
+}
+
+extension ResaturantMealTableViewController: CommentViewControllerdelegate {
+    func  didget(){
+    retreiveData()
+    }
+    
 }

@@ -13,7 +13,7 @@ import Fusuma
 //import Checkbox
 
 
-protocol datadelegate: class {
+protocol CommentViewControllerdelegate: class {
     func didget()
 }
 
@@ -53,7 +53,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var PostButton: UIBarButtonItem!
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
-    weak var delegate: datadelegate?
+    weak var delegate: CommentViewControllerdelegate?
     
     //Mark: delegate camera withFusuma
     func fusumaLibrary(){
@@ -204,12 +204,12 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
         
-        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
-        
+        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase, withCompletionBlock:
+            error, ref in
         
         delegate?.didget()
         
-    }
+    )}
     
     
     
