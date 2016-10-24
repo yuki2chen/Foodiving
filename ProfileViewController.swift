@@ -16,7 +16,7 @@ import Nuke
 class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     //Mark: Properties
-
+    
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     var userPhotoURL: NSURL?
     var mealPhotoStringArray: [String] = []
     var meals = [Meal]()
-
+    
     
     
     //Mark: Actions
@@ -66,7 +66,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         self.navigationController?.navigationBar.tintColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)]
-
+        
         self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
         self.profilePicture.clipsToBounds = true
         
@@ -81,98 +81,98 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
     }
     
-
+    
     
     
     
     //Mark: upload to storage
     
     func uploadUserInfo(){
-    if let user = FIRAuth.auth()?.currentUser {
-        
-        let name = user.displayName
-        let uid = user.uid
-        username = name!
-        userUid = uid
-        self.userName.text = name
-        
-        
-        
-        let storage = FIRStorage.storage()
-        let storageRef = storage.referenceForURL("gs://foodaholic-e6dde.appspot.com")
-        let profilePicRef = storageRef.child(user.uid + ".jpg")
-        
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        profilePicRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
-            if (error != nil) {
-                
-                print("unable to download image")
-            } else {
-                
-                if (data != nil ){
+        if let user = FIRAuth.auth()?.currentUser {
+            
+            let name = user.displayName
+            let uid = user.uid
+            username = name!
+            userUid = uid
+            self.userName.text = name
+            
+            
+            
+            let storage = FIRStorage.storage()
+            let storageRef = storage.referenceForURL("gs://foodaholic-e6dde.appspot.com")
+            let profilePicRef = storageRef.child(user.uid + ".jpg")
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            profilePicRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
+                if (error != nil) {
                     
-                    print("User already has an image to download , no need to download from facebook")
-                    self.profilePicture.image = UIImage(data: data!)
+                    print("unable to download image")
+                } else {
+                    
+                    if (data != nil ){
+                        
+                        print("User already has an image to download , no need to download from facebook")
+                        self.profilePicture.image = UIImage(data: data!)
+                    }
                 }
             }
-        }
-        
-        
-        
-        if (self.profilePicture.image == nil){
             
-            let profilePic = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "picture.type(large)"],HTTPMethod: "GET")
-            profilePic.startWithCompletionHandler({(connection, result, error) -> Void in
-                if(error == nil)
-                {
-                    
-                    let result = result as! [String: AnyObject]
-                    
-                    print(result)
-                    
-                    guard
-                        let picture = result["picture"] as? [String:AnyObject],
-                        let data = picture["data"] as? [String:AnyObject],
-                        let urlString = data["url"] as? String,
-                        let url = NSURL(string: urlString)
-                        else {return}
-                    
-                    
-                    let metadata = FIRStorageMetadata()
-                    metadata.contentType = "image/jpeg"
-                    
-                    if let imageData = NSData(contentsOfURL: url){
+            
+            
+            if (self.profilePicture.image == nil){
+                
+                let profilePic = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "picture.type(large)"],HTTPMethod: "GET")
+                profilePic.startWithCompletionHandler({(connection, result, error) -> Void in
+                    if(error == nil)
+                    {
                         
-                        profilePicRef.putData(imageData,metadata: metadata) {
-                            metadata,error in
+                        let result = result as! [String: AnyObject]
+                        
+                        print(result)
+                        
+                        guard
+                            let picture = result["picture"] as? [String:AnyObject],
+                            let data = picture["data"] as? [String:AnyObject],
+                            let urlString = data["url"] as? String,
+                            let url = NSURL(string: urlString)
+                            else {return}
+                        
+                        
+                        let metadata = FIRStorageMetadata()
+                        metadata.contentType = "image/jpeg"
+                        
+                        if let imageData = NSData(contentsOfURL: url){
                             
-                            if(error == nil){
+                            profilePicRef.putData(imageData,metadata: metadata) {
+                                metadata,error in
                                 
-                                print("upload successful")
-                                
-                                guard let photoURL = metadata?.downloadURL() else {
-                                    print("fail to download photoURL")
-                                    return}
-                                
-                                guard let photoData = NSData(contentsOfURL: photoURL) else { return }
-                                
-                                self.profilePicture.image = UIImage(data: photoData)
-                                
-                                guard let photoString = metadata?.downloadURL()?.absoluteString else{return}
-                                self.saveFacebookInfoToFirebase(photoString)
-                                self.retriveData()
-                                
-                            }
-                            else{
-                                print("Error in download image ")
+                                if(error == nil){
+                                    
+                                    print("upload successful")
+                                    
+                                    guard let photoURL = metadata?.downloadURL() else {
+                                        print("fail to download photoURL")
+                                        return}
+                                    
+                                    guard let photoData = NSData(contentsOfURL: photoURL) else { return }
+                                    
+                                    self.profilePicture.image = UIImage(data: photoData)
+                                    
+                                    guard let photoString = metadata?.downloadURL()?.absoluteString else{return}
+                                    self.saveFacebookInfoToFirebase(photoString)
+                                    self.retriveData()
+                                    
+                                }
+                                else{
+                                    print("Error in download image ")
+                                }
                             }
                         }
                     }
-                }
-            })
+                })
+            }
         }
     }
-}
     
     
     
@@ -197,7 +197,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         meals = []
         
-
+        
         let mealInfoReference = FIRDatabase.database().reference()
         
         mealInfoReference.child("RestaurantsComments").queryOrderedByChild("userID").queryEqualToValue(userUid).observeEventType(.Value, withBlock:
@@ -206,16 +206,16 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 
                 for mealInfo in snapshots {
                     guard
-                    let mealName = mealInfo.value["mealName"] as? String,
-                    let price = mealInfo.value["price"] as? String,
-                    let photoString = mealInfo.value["photoString"] as? String,
-                    let tasteRating = mealInfo.value["tasteRating"] as? Int,
-                    let serviceRating = mealInfo.value["serviceRating"] as?  Int,
-                    let revisitRating = mealInfo.value["revisitRating"] as?  Int,
-                    let environmentRating = mealInfo.value["environmentRating"] as?  Int,
-                    let comment = mealInfo.value["comment"] as? String,
-                    let userID = mealInfo.value["userID"] as? String,
-                    let restID = mealInfo.value["restaurantId"] as? String
+                        let mealName = mealInfo.value["mealName"] as? String,
+                        let price = mealInfo.value["price"] as? String,
+                        let photoString = mealInfo.value["photoString"] as? String,
+                        let tasteRating = mealInfo.value["tasteRating"] as? Int,
+                        let serviceRating = mealInfo.value["serviceRating"] as?  Int,
+                        let revisitRating = mealInfo.value["revisitRating"] as?  Int,
+                        let environmentRating = mealInfo.value["environmentRating"] as?  Int,
+                        let comment = mealInfo.value["comment"] as? String,
+                        let userID = mealInfo.value["userID"] as? String,
+                        let restID = mealInfo.value["restaurantId"] as? String
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
@@ -224,7 +224,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     meal.restaurantID = restID
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
-//                    print(photoString)
                 }
                 self.collectionView.reloadData()
         })
@@ -240,7 +239,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailFromPicture"{
             let destinationController = segue.destinationViewController as! DetailViewController
-
+            
             
             if let selectedCellsquare = sender as? ProfileCollectionViewCell{
                 let indexPath = collectionView.indexPathForCell(selectedCellsquare)
@@ -250,12 +249,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         }
     }
-    
-    
-
-    
-    
-    
     
     
     
@@ -286,3 +279,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
 }
+
+
+

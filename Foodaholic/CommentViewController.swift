@@ -19,7 +19,7 @@ protocol CommentViewControllerdelegate: class {
 
 
 
-class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate {
+class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate,UITextViewDelegate {
 
     //Mark: Properties
     
@@ -30,14 +30,14 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var serviceChargeNameLabel: UILabel!
     @IBOutlet weak var serviceSwitch: UISwitch!
    
-    @IBAction func serviceAction(sender: AnyObject) {
-        let onState = serviceSwitch.on
-        if onState{
-            serviceChargeNameLabel.text = "Service charge"
-        }else{
-            serviceChargeNameLabel.text = "No Service charge"
-        }
-    }
+//    @IBAction func serviceAction(sender: AnyObject) {
+//        let onState = serviceSwitch.on
+//        if onState{
+//            serviceChargeNameLabel.text = "Service charge"
+//        }else{
+//            serviceChargeNameLabel.text = "No Service charge"
+//        }
+//    }
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var tasteRateLabel: UILabel!
@@ -49,11 +49,15 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var environmentRatingControl: RatingControlEnvironment!
     @IBOutlet weak var environmentRateLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var commentTextField: UITextField!
+    
+    @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var PostButton: UIBarButtonItem!
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
     weak var delegate: CommentViewControllerdelegate?
+    
+    
+    
     
     //Mark: delegate camera withFusuma
     func fusumaLibrary(){
@@ -92,8 +96,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         mealNameTextField.delegate = self
         priceTextField.delegate = self
         priceTextField.keyboardType = .NumberPad //只能輸入數字
-        commentTextField.delegate = self
-//        checkValidMealName()
         self.hideKeyboardWhenTappedAround()
         
         //點選cell時 會有post的資訊
@@ -106,10 +108,19 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
 //            tasteRatingControl.rating = meal.tasteRating
 //            
 //        }
+        //Mark: commentTextView
+        commentTextView.delegate = self
         
+        func textViewDidBeginEditing(textView: UITextView){
+            print("textViewDidBeginEditing")}
         
-//        navigationItem.leftBarButtonItem = editButtonItem()
+        func textViewDidEndEditing(textView: UITextView){
+            print(textViewDidEndEditing)}
         
+        commentTextView.editable = true
+        commentTextView.layer.borderWidth = 1
+        commentTextView.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).CGColor
+
         
     }
 
@@ -157,20 +168,21 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
             
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
-            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.4)!,metadata: metadata){(data,error) in
+            mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.2)!,metadata: metadata){(data,error) in
                 if error == nil{
                     print("upload successful")
                     guard let photoURL = data?.downloadURL()?.absoluteString else{
                         print("fail to download photoURL")
                         return
                     }
-                    print("photoURL: \(photoURL)")
+//                    print("photoURL: \(photoURL)")
                     
                     
 //                    self.delegate?.photoDidUpload(photoURL)
                     
                     self.saveToFirebase(photoURL)
                     
+//                    self.res.tableView.reloadData()
                     
                 }else{
                     print(error?.localizedDescription)
@@ -180,7 +192,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         }
     }
-    
     
     //Mark: save To Firebase
     func saveToFirebase(photoString: String){
@@ -192,7 +203,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         let serviceRating = Int(serviceRatingControl.rating)
         let revisitRating = Int(revisitRatingControl.rating)
         let environmentRating = Int(environmentRatingControl.rating)
-        let comment = commentTextField.text ?? ""
+        let comment = commentTextView.text ?? ""
         meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
         
         //save data in firebase
@@ -204,11 +215,13 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
         
-        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase, withCompletionBlock:
-            error, ref in
+        mealReference.child("RestaurantsComments").childByAutoId().setValue(
+            mealInfoDatabase,
+            withCompletionBlock:
+            {(error, ref) in
         
-        delegate?.didget()
-        
+                self.delegate?.didget()
+            }
     )}
     
     
@@ -278,6 +291,10 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         presentViewController(imagePickerController, animated: true, completion: nil)
         
     }
+    
+    
+    
+    
 }
 
 
@@ -292,5 +309,4 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
-
 

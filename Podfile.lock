@@ -59,6 +59,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
+  - HanekeSwift (0.10.1)
   - Nuke (3.1.3)
 
 DEPENDENCIES:
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Fusuma
   - GoogleMaps
   - GooglePlaces
+  - HanekeSwift
   - Nuke (= 3.1.3)
 
 SPEC CHECKSUMS:
@@ -99,8 +101,9 @@ SPEC CHECKSUMS:
   GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Nuke: d951142c7499e18f242e59ae7fb95a021a2a4974
 
-PODFILE CHECKSUM: d1baae0a97d9045b21f3656ba84f93746b450bbc
+PODFILE CHECKSUM: c4f40c0766aef7768581fe0b1f751e0f64d2e303
 
 COCOAPODS: 1.0.0

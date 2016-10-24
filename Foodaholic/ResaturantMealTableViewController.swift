@@ -11,8 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import Nuke
-
-
+import Haneke
 
 
 class ResaturantMealTableViewController: UITableViewController  {
@@ -22,13 +21,14 @@ class ResaturantMealTableViewController: UITableViewController  {
     var meals = [Meal]()
     var restDic: [String: AnyObject] = [:]
     
+    @IBOutlet weak var mealDefaultPhoto: UIImageView!
     
     //Mark: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(restDic)
+//        print(restDic)
         retreiveData()
 
         self.navigationItem.title = restDic["name"] as? String ?? ""
@@ -39,12 +39,10 @@ class ResaturantMealTableViewController: UITableViewController  {
     
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    
-    
     
     
     // Mark: Retrieve data
@@ -60,7 +58,7 @@ class ResaturantMealTableViewController: UITableViewController  {
         mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: {
   
             snapshot in
-            print(snapshot.value)
+//            print(snapshot.value)
             
             for snapshot in snapshot.children {
                 
@@ -78,7 +76,7 @@ class ResaturantMealTableViewController: UITableViewController  {
                 let restID = commentSnap.value?["restaurantId"] as? String ?? ""
                 let timestamp = commentSnap.value?["timestamp"] as? [String: String] ?? [:]
                 
-                print(timestamp)
+//                print(timestamp)
                 
                 
                 let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
@@ -91,10 +89,15 @@ class ResaturantMealTableViewController: UITableViewController  {
 
                 self.retreiveUserData(meal)
 //                meals = []
-                self.tableView.reloadData()
+            
+                if self.tableView != nil{
+                    
+                    self.tableView.reloadData()
+                }
+                
             }
 //            self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
-             
+            
         })
        
     }
@@ -105,7 +108,7 @@ class ResaturantMealTableViewController: UITableViewController  {
         let userInfoDatabase = FIRDatabase.database().reference()
         userInfoDatabase.child("Users").queryOrderedByKey().queryEqualToValue(meal.userID).observeEventType(.Value, withBlock: {
             snapshot in
-            print (snapshot.value)
+//            print (snapshot.value)
             let snapshots = snapshot.children.allObjects
             for commentsnap in snapshots{
             meal.userName = commentsnap.value?["userName"] as? String ?? ""
@@ -142,14 +145,16 @@ class ResaturantMealTableViewController: UITableViewController  {
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
                 mealDetailViewController.meal = selectedMeal
+                
+                mealDetailViewController.detailDelegate = self
             }
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController
-            print(restDic)
+//            print(restDic)
             destinationController.restDictionary = self.restDic
             
             destinationController.delegate = self
-            print("add new meal")
+//            print("add new meal")
             
         }
     }
@@ -165,9 +170,6 @@ class ResaturantMealTableViewController: UITableViewController  {
     }
     
     @IBAction func unwindToMealList2(sender: UIStoryboardSegue) {
-        meals = []
-        
-        self.tableView.reloadData()
     }
   
     
@@ -185,7 +187,13 @@ class ResaturantMealTableViewController: UITableViewController  {
         return meals.count
     }
     
-    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cellIdentifier = "MealTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier,forIndexPath: indexPath) as! ResaturantMealTableViewCell
+        
+        cell.photoImageView.image = nil
+        
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "MealTableViewCell"
@@ -199,20 +207,28 @@ class ResaturantMealTableViewController: UITableViewController  {
         cell.priceLabel.text = String(meal.price)
         cell.ratingControl.rating = Int(meal.tasteRating)
         
+    
         if let photoUrl = NSURL(string: photoString) {
 
-            cell.photoImageView.nk_setImageWith(photoUrl)
+            cell.photoImageView.hnk_setImageFromURL(photoUrl)
+        
+            print(photoUrl)
+            
             
         }
+        
+        
         
         return cell
         
     }
 }
 
-extension ResaturantMealTableViewController: CommentViewControllerdelegate {
+extension ResaturantMealTableViewController: CommentViewControllerdelegate, DetailViewControllerDelegate {
     func  didget(){
-    retreiveData()
+        retreiveData()
     }
-    
+    func didGetData() {
+        retreiveData()
+    }
 }

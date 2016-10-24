@@ -20,12 +20,9 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
-                                            <rect key="frame" x="-7" y="0.0" width="126" height="120"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal食物" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
                                             <rect key="frame" x="170" y="8" width="212" height="30"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="26"/>
@@ -47,6 +44,9 @@
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1476777634_71" translatesAutoresizingMaskIntoConstraints="NO" id="1b4-D9-tte">
                                             <rect key="frame" x="138" y="10" width="25" height="25"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-dI-6hA">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="120"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -173,7 +173,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="TUN-kX-s4z">
                                 <rect key="frame" x="174" y="324" width="22" height="22"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
                                 <rect key="frame" x="165" y="72" width="270" height="174"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -339,11 +339,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ryn-gh-QLn">
-                                <rect key="frame" x="22" y="479" width="558" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-H4-3He">
                                 <rect key="frame" x="22" y="450" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -374,47 +369,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-cT-eHC">
-                                <rect key="frame" x="186" y="85" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkJ-6E-GJZ">
-                                <rect key="frame" x="186" y="123" width="56" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHS-vg-l7Y">
-                                <rect key="frame" x="245" y="82" width="322" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-Be-i0p">
-                                <rect key="frame" x="245" y="120" width="40" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
-                                <rect key="frame" x="17" y="74" width="161" height="161"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="restaurant (3)" translatesAutoresizingMaskIntoConstraints="NO" id="A45-de-9GS">
+                                <rect key="frame" x="20" y="82" width="120" height="120"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="cyW-d8-78K" appends="YES" id="HF8-mH-qo0"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Service charge：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d15-Xd-n94">
-                                <rect key="frame" x="245" y="152" width="132" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z47-9w-gBu">
-                                <rect key="frame" x="287" y="119" width="51" height="31"/>
-                                <connections>
-                                    <action selector="serviceAction:" destination="Aly-U5-KVA" eventType="primaryActionTriggered" id="mkL-7h-h19"/>
-                                </connections>
-                            </switch>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFg-Wk-pBn" customClass="RatingControlService" customModule="Foodaholic" customModuleProvider="target">
                                 <rect key="frame" x="165" y="325" width="200" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -431,6 +392,34 @@
                                 <rect key="frame" x="165" y="285" width="200" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-cT-eHC">
+                                <rect key="frame" x="157" y="85" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkJ-6E-GJZ">
+                                <rect key="frame" x="157" y="123" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHS-vg-l7Y">
+                                <rect key="frame" x="216" y="82" width="322" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-Be-i0p">
+                                <rect key="frame" x="216" y="120" width="40" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fe1-1S-ZN3">
+                                <rect key="frame" x="20" y="485" width="507" height="63"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -450,7 +439,7 @@
                     <connections>
                         <outlet property="PostButton" destination="U7U-UY-n5B" id="chg-wh-NXE"/>
                         <outlet property="commentLabel" destination="gcR-H4-3He" id="O1I-b9-SGS"/>
-                        <outlet property="commentTextField" destination="Ryn-gh-QLn" id="2iN-8h-zEp"/>
+                        <outlet property="commentTextView" destination="fe1-1S-ZN3" id="daU-Dy-FUo"/>
                         <outlet property="environmentRateLabel" destination="wLc-Rw-v7E" id="cJC-Eg-YdJ"/>
                         <outlet property="environmentRatingControl" destination="Hrv-D2-bgX" id="zzI-1f-hCv"/>
                         <outlet property="mealNameLabel" destination="Ol8-cT-eHC" id="2Lj-Mc-4ax"/>
@@ -461,10 +450,8 @@
                         <outlet property="rateLabel" destination="oOW-1v-z7B" id="16s-HB-oEs"/>
                         <outlet property="revisitRateLabel" destination="LKb-jv-68K" id="qcN-dj-76S"/>
                         <outlet property="revisitRatingControl" destination="l1w-Dh-QUX" id="5FD-Mj-SRp"/>
-                        <outlet property="serviceChargeNameLabel" destination="d15-Xd-n94" id="ROR-NS-YUz"/>
                         <outlet property="serviceRateLabel" destination="Bdg-vn-aol" id="qhb-md-NY6"/>
                         <outlet property="serviceRatingControl" destination="FFg-Wk-pBn" id="VVJ-uK-797"/>
-                        <outlet property="serviceSwitch" destination="Z47-9w-gBu" id="9rU-CS-JBn"/>
                         <outlet property="tasteRateLabel" destination="mYU-AZ-2C1" id="rmr-4S-bEY"/>
                         <outlet property="tasteRatingControl" destination="Eg3-zY-xaE" id="e2K-aQ-ZJx"/>
                     </connections>
@@ -773,9 +760,10 @@
     <resources>
         <image name="1476777634_71" width="128" height="128"/>
         <image name="1476777792_pen_stroke_sketch_doodle_lineart_165" width="128" height="128"/>
-        <image name="defaultPhoto" width="540" height="540"/>
         <image name="pin" width="64" height="64"/>
         <image name="placeholder" width="32" height="32"/>
+        <image name="restaurant" width="128" height="128"/>
+        <image name="restaurant (3)" width="128" height="128"/>
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
