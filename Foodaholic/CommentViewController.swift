@@ -12,11 +12,12 @@ import FirebaseStorage
 import Fusuma
 //import Checkbox
 
-protocol CommentViewControllerDelegate: class {
-    
-    func didPost()
-    
+
+protocol datadelegate: class {
+    func didget()
 }
+
+
 
 class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate {
 
@@ -52,8 +53,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var PostButton: UIBarButtonItem!
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
-    weak var delegate: CommentViewControllerDelegate?
-    
+    weak var delegate: datadelegate?
     
     //Mark: delegate camera withFusuma
     func fusumaLibrary(){
@@ -172,7 +172,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
                     self.saveToFirebase(photoURL)
                     
                     
-                    
                 }else{
                     print(error?.localizedDescription)
                 }
@@ -205,13 +204,10 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
         
-        mealReference.child("RestaurantsComments").childByAutoId().setValue(
-            mealInfoDatabase,
-            withCompletionBlock: { error, ref in
-                
-                self.delegate?.didPost()
-                
-        })
+        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
+        
+        
+        delegate?.didget()
         
     }
     
@@ -296,3 +292,5 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
+
+

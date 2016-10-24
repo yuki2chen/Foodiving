@@ -56,14 +56,16 @@ class ResaturantMealTableViewController: UITableViewController {
         let restaurantId = restDic["id"] as? String ?? ""
         //print(restaurantId)
         let mealInfoDatabase = FIRDatabase.database().reference()
-//        let serverTimestamp = FIRServerValue.timestamp()
-        mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: { snapshot in
-            
-            print("snap childcount: \(snapshot.childrenCount)")
+        let serverTimestamp = FIRServerValue.timestamp()
+        mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: {
+  
+            snapshot in
+            print(snapshot.value)
             
             for snapshot in snapshot.children {
                 
                 let commentSnap = snapshot as! FIRDataSnapshot
+//                print(commentSnap)
                 let mealName = commentSnap.value?["mealName"] as? String ?? ""
                 let price = commentSnap.value?["price"] as? String ?? ""
                 let photoString = commentSnap.value?["photoString"] as? String ?? ""
@@ -85,12 +87,14 @@ class ResaturantMealTableViewController: UITableViewController {
                 meal.userID = userID
                 meal.restaurantID = restID
                 meal.restCommentID = commentSnap.key
+                
 
                 self.retreiveUserData(meal)
-                
+//                meals = []
+                self.tableView.reloadData()
             }
 //            self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
-            
+             
         })
        
     }
@@ -99,20 +103,16 @@ class ResaturantMealTableViewController: UITableViewController {
     func retreiveUserData(meal: Meal){
         
         let userInfoDatabase = FIRDatabase.database().reference()
-        userInfoDatabase.child("Users").queryOrderedByKey().queryEqualToValue(meal.userID).observeEventType(.Value, withBlock: { snapshot in
-            
+        userInfoDatabase.child("Users").queryOrderedByKey().queryEqualToValue(meal.userID).observeEventType(.Value, withBlock: {
+            snapshot in
             print (snapshot.value)
-            
             let snapshots = snapshot.children.allObjects
-            
-            for commentsnap in snapshots {
-                
-                meal.userName = commentsnap.value?["userName"] as? String ?? ""
-                meal.userPhotoString = commentsnap.value?["photoString"] as? String ?? ""
-                self.meals.append(meal)
+            for commentsnap in snapshots{
+            meal.userName = commentsnap.value?["userName"] as? String ?? ""
+            meal.userPhotoString = commentsnap.value?["photoString"] as? String ?? ""
+            self.meals.append(meal)
             
             }
-            
             self.tableView.reloadData()
 
         })
@@ -146,8 +146,9 @@ class ResaturantMealTableViewController: UITableViewController {
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController
             print(restDic)
-            destinationController.delegate = self
             destinationController.restDictionary = self.restDic
+            
+            .dataDelegate = self
             print("add new meal")
             
         }
@@ -157,16 +158,16 @@ class ResaturantMealTableViewController: UITableViewController {
     
     
     
-    
-    
     // Mark: Action
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        
+       
     }
     
     @IBAction func unwindToMealList2(sender: UIStoryboardSegue) {
-        retreiveData()
+        meals = []
+        
+        self.tableView.reloadData()
     }
   
     
@@ -183,6 +184,8 @@ class ResaturantMealTableViewController: UITableViewController {
         
         return meals.count
     }
+    
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "MealTableViewCell"
@@ -205,15 +208,4 @@ class ResaturantMealTableViewController: UITableViewController {
         return cell
         
     }
-}
-
-
-extension ResaturantMealTableViewController: CommentViewControllerDelegate {
-    
-    func didPost() {
-        
-        retreiveData()
-        
-    }
-    
 }
