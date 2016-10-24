@@ -39,6 +39,9 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate {
             self.view!.addSubview(self.loginButton)
             self.loginButton.hidden = false
 
+            
+            self.view.backgroundColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 1)
+            
             }
         
         }

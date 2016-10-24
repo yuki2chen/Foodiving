@@ -30,6 +30,12 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         addTableView.delegate = self
         addTableView.dataSource = self
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 0)
+        
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)]
+        self.tabBarController?.tabBar.barTintColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 1)
+        self.tabBarController?.tabBar.tintColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
@@ -49,6 +55,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         centerMapOnLocation(locationManager.location!)
         locationManager.stopUpdatingLocation()
+        
+        
+        
+        
         
         
     }

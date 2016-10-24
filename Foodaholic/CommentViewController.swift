@@ -12,6 +12,12 @@ import FirebaseStorage
 import Fusuma
 //import Checkbox
 
+protocol CommentViewControllerDelegate: class {
+    
+    func didPost()
+    
+}
+
 class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate {
 
     //Mark: Properties
@@ -46,6 +52,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var PostButton: UIBarButtonItem!
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
+    weak var delegate: CommentViewControllerDelegate?
     
     
     //Mark: delegate camera withFusuma
@@ -54,7 +61,9 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         fusuma.delegate = self
         fusuma.hasVideo = false
         self.presentViewController(fusuma, animated: true, completion: nil)
-//        fusumaBackgroundColor =  UIColor
+        fusumaBackgroundColor =  UIColor.blackColor()
+        fusumaTintColor = UIColor.whiteColor()
+        fusumaCropImage = false
     }
     
     func fusumaImageSelected(image: UIImage){
@@ -163,6 +172,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
                     self.saveToFirebase(photoURL)
                     
                     
+                    
                 }else{
                     print(error?.localizedDescription)
                 }
@@ -191,10 +201,17 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
         let restaurantID = restDictionary["id"] as? String ?? ""
+        let timestamp = FIRServerValue.timestamp()
         
-        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID]
+        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
         
-        mealReference.child("RestaurantsComments").childByAutoId().setValue(mealInfoDatabase)
+        mealReference.child("RestaurantsComments").childByAutoId().setValue(
+            mealInfoDatabase,
+            withCompletionBlock: { error, ref in
+                
+                self.delegate?.didPost()
+                
+        })
         
     }
     

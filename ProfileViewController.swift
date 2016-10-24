@@ -62,12 +62,18 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 0)
         
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)]
+
         self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
         self.profilePicture.clipsToBounds = true
         
         uploadUserInfo()
         retriveData()
+        
+        self.collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
