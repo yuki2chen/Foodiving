@@ -175,14 +175,9 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
                         print("fail to download photoURL")
                         return
                     }
-//                    print("photoURL: \(photoURL)")
-                    
-                    
-//                    self.delegate?.photoDidUpload(photoURL)
                     
                     self.saveToFirebase(photoURL)
-                    
-//                    self.res.tableView.reloadData()
+                    FIRAnalytics.logEventWithName("post_comment", parameters: nil)
                     
                 }else{
                     print(error?.localizedDescription)
@@ -198,7 +193,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealName = mealNameTextField.text ?? ""
         let price = priceTextField.text ?? "0"
-//        let photo = photoImageView.image
         let tasteRating = Int(tasteRatingControl.rating)
         let serviceRating = Int(serviceRatingControl.rating)
         let revisitRating = Int(revisitRatingControl.rating)

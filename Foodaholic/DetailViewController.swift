@@ -8,13 +8,14 @@
 
 import UIKit
 import Nuke
+import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
 
-protocol DetailViewControllerDelegate: class {
-    func didGetData()
-}
+//protocol DetailViewControllerDelegate: class {
+//    func didGetData()
+//}
 
 class DetailViewController: UIViewController {
 
@@ -39,7 +40,7 @@ class DetailViewController: UIViewController {
 //    var deleteButton: UIBarButtonItem!
     var mealCommentObject: String = ""
     var restaurantPlace: String = ""
-    weak var detailDelegate: DetailViewControllerDelegate?
+//    weak var detailDelegate: DetailViewControllerDelegate?
     
     //Mark: View Life Cycle
     override func viewDidLoad() {
@@ -97,17 +98,19 @@ class DetailViewController: UIViewController {
             
             
         }else if deleteButton === sender{
-            
+            FIRAnalytics.logEventWithName("delete_comment", parameters: nil)
             let firebase = FIRDatabase.database().reference()
             let restCommentID = meal!.restCommentID
             firebase.child("RestaurantsComments").child(restCommentID).removeValueWithCompletionBlock{(error, ref) in
                 if error != nil{
                     print("error:\(error)")
                  
-                   
-                }else{
-                   self.detailDelegate?.didGetData()
                 }
+//                else{
+//                   self.detailDelegate?.didGetData()
+//                    
+//
+//                }
         }
     }
     }

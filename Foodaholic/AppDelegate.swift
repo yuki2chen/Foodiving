@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 import Firebase
-import GooglePlaces
-import GoogleMaps
 import FoursquareAPIClient
 import FBSDKLoginKit
 import Fabric
@@ -34,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self])
 
+        
+//        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: [kFIRParameterContentType: "cont" as NSObject,kFIRParameterItemID: "1" as NSObject])
+        
         return true
     }
     

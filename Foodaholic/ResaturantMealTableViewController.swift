@@ -88,7 +88,6 @@ class ResaturantMealTableViewController: UITableViewController  {
                 
 
                 self.retreiveUserData(meal)
-//                meals = []
             
                 if self.tableView != nil{
                     
@@ -146,15 +145,14 @@ class ResaturantMealTableViewController: UITableViewController  {
                 let selectedMeal = meals[indexPath.row]
                 mealDetailViewController.meal = selectedMeal
                 
-                mealDetailViewController.detailDelegate = self
+//                mealDetailViewController.detailDelegate = self
             }
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController
-//            print(restDic)
             destinationController.restDictionary = self.restDic
             
             destinationController.delegate = self
-//            print("add new meal")
+            print("add new meal")
             
         }
     }
@@ -170,6 +168,9 @@ class ResaturantMealTableViewController: UITableViewController  {
     }
     
     @IBAction func unwindToMealList2(sender: UIStoryboardSegue) {
+        meals = []
+        retreiveData()
+        self.tableView.reloadData()
     }
   
     
@@ -224,11 +225,12 @@ class ResaturantMealTableViewController: UITableViewController  {
     }
 }
 
-extension ResaturantMealTableViewController: CommentViewControllerdelegate, DetailViewControllerDelegate {
+extension ResaturantMealTableViewController: CommentViewControllerdelegate {
     func  didget(){
         retreiveData()
     }
-    func didGetData() {
-        retreiveData()
-    }
+//    func didGetData() {
+//        retreiveData()
+//        
+//    }
 }

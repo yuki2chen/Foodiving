@@ -222,6 +222,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     meal.photoString = photoString
                     meal.userID = userID
                     meal.restaurantID = restID
+                    
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
                 }
