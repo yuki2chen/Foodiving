@@ -32,15 +32,12 @@ class ResaturantMealTableViewController: UITableViewController  {
         self.navigationItem.title = restDic["name"] as? String ?? ""
         tableView.separatorStyle = .None
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.reloadDatas), name:"didRemoveItem", object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.methodOfReceivedNotification), name:"didRemoveItem", object: nil)
         
-    
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     
     // Mark: Retrieve data
@@ -50,7 +47,6 @@ class ResaturantMealTableViewController: UITableViewController  {
         meals = []
         
         let restaurantId = restDic["id"] as? String ?? ""
-        //print(restaurantId)
         let mealInfoDatabase = FIRDatabase.database().reference()
 //        let serverTimestamp = FIRServerValue.timestamp()
         mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -58,7 +54,6 @@ class ResaturantMealTableViewController: UITableViewController  {
             for snapshot in snapshot.children {
                 
                 let commentSnap = snapshot as! FIRDataSnapshot
-//                print(commentSnap)
                 let mealName = commentSnap.value?["mealName"] as? String ?? ""
                 let price = commentSnap.value?["price"] as? String ?? ""
                 let photoString = commentSnap.value?["photoString"] as? String ?? ""
@@ -71,7 +66,6 @@ class ResaturantMealTableViewController: UITableViewController  {
                 let restID = commentSnap.value?["restaurantId"] as? String ?? ""
                 let timestamp = commentSnap.value?["timestamp"] as? [String: String] ?? [:]
                 
-//                print(timestamp)
                 
                 
                 let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
@@ -97,6 +91,8 @@ class ResaturantMealTableViewController: UITableViewController  {
     }
     
     
+    
+    
     func retreiveUserData(meal: Meal){
         
         
@@ -118,6 +114,19 @@ class ResaturantMealTableViewController: UITableViewController  {
     }
     
    
+    
+    
+    //Mark: notification from delete button
+    
+    func methodOfReceivedNotification(notification: NSNotification){
+        
+        meals = []
+        retreiveData()
+        self.tableView.reloadData()
+    }
+    
+    
+
     
     //Mark: retreive server value
     

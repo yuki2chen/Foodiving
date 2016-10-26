@@ -42,6 +42,64 @@ class DetailViewController: UIViewController {
     var restaurantPlace: String = ""
 //    weak var detailDelegate: DetailViewControllerDelegate?
     
+    //Mark: Action
+    
+  
+    @IBAction func myOptionalButton(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default){(action:UIAlertAction) -> Void in
+      
+            })
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: .Destructive){(action:UIAlertAction) -> Void in
+            
+            self.deleteComment()
+            })
+
+        alert.addAction(UIAlertAction(title: "Canacel", style: .Cancel, handler: {(action: UIAlertAction) -> Void in
+            
+            
+        }))
+        
+        
+        presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
+
+        
+    func deleteComment(){
+        FIRAnalytics.logEventWithName("delete_comment", parameters: nil)
+        let firebase = FIRDatabase.database().reference()
+        let restCommentID = meal!.restCommentID
+        firebase.child("RestaurantsComments").child(restCommentID).removeValueWithCompletionBlock{(error, ref) in
+            if let error = error{
+                print("error:\(error)")
+                
+            }else{
+//                self.dismissViewControllerAnimated(true, completion: nil)
+                
+                NSNotificationCenter.defaultCenter().postNotificationName("didRemoveItem", object: nil)
+//                let ResaturantMealTableVC = self.navigationController?.viewControllers[1] as! ResaturantMealTableViewController
+//                self.navigationController?.popToViewController(ResaturantMealTableViewController, animated: true)
+                
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [ResaturantMealTableViewController];
+                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+                
+            }
+            
+        }
+        
+    }
+   
+
+
+    
+    
+    
+    
     //Mark: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,11 +164,12 @@ class DetailViewController: UIViewController {
                     print("error:\(error)")
                  
                 }
-//                else{
+                else{
 //                   self.detailDelegate?.didGetData()
-//                    
-//
-//                }
+
+
+
+                }
         }
     }
     }

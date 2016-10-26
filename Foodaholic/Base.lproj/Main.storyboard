@@ -189,6 +189,13 @@
                                     <segue destination="LFN-uv-mId" kind="show" identifier="otherUserProfile" id="out-1z-46w"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hg7-yF-a6k">
+                                <rect key="frame" x="32" y="133" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="myOptionalButton:" destination="uyR-YG-zrV" eventType="touchUpInside" id="79P-fu-ZvR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -319,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VzP-wv-f86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5290" y="394"/>
+            <point key="canvasLocation" x="5346" y="1166"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
@@ -762,6 +769,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e7h-P2-KtH"/>
+        <segue reference="QZa-Fa-Ng9"/>
     </inferredMetricsTieBreakers>
 </document>
