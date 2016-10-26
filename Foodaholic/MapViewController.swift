@@ -75,7 +75,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let parameter: [String: String] = [
             "ll": "\(latitude),\(longitude)",
             "categoryId": "4d4b7105d754a06374d81259",
-            "limit": "10"
+            "radius": "150",
+            "limit": "1000"
         ]
         
         client.requestWithPath("venues/search", method: .GET, parameter: parameter) {
@@ -256,7 +257,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     func centerMapOnLocation(location: CLLocation){
-        let regionRadius: CLLocationDistance = 1000
+        let regionRadius: CLLocationDistance = 100
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
