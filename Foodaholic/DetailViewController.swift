@@ -51,6 +51,14 @@ class DetailViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default){(action:UIAlertAction) -> Void in
       
+            self.performSegueWithIdentifier("EditViewController", sender: self)
+            override func prepareForSegue(UIStoryBoardSegue!, sender: AnyObject){
+            
+                if segue.identifier == "EditViewController"{
+                    let destinationController = segue.destinationViewController as? OtherUserViewController
+                    destinationController!.meal = self.meal
+                }
+            }
             })
         
         alert.addAction(UIAlertAction(title: "Delete", style: .Destructive){(action:UIAlertAction) -> Void in
@@ -85,9 +93,16 @@ class DetailViewController: UIViewController {
 //                let ResaturantMealTableVC = self.navigationController?.viewControllers[1] as! ResaturantMealTableViewController
 //                self.navigationController?.popToViewController(ResaturantMealTableViewController, animated: true)
                 
-                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [ResaturantMealTableViewController];
-                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+//                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [ResaturantMealTableViewController];
+//                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
                 
+                for aViewController in viewControllers {
+                    if(aViewController is ResaturantMealTableViewController){
+                        self.navigationController!.popToViewController(aViewController, animated: true);
+                    }
+                }
+
             }
             
         }
@@ -166,8 +181,6 @@ class DetailViewController: UIViewController {
                 }
                 else{
 //                   self.detailDelegate?.didGetData()
-
-
 
                 }
         }

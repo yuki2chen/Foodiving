@@ -27,6 +27,7 @@
 		A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */; };
 		A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */; };
 		A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */; };
+		A5EF45051DC0CB2D0032BEDB /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */; };
 		A5F1E8A21DA626700028ABF5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F1E8A11DA626700028ABF5 /* MapKit.framework */; };
 		A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */; };
 		A5F4165D1DB5C8EF0053C18C /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */; };
@@ -64,6 +65,7 @@
 		A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DF27961D9CDE7500CF5CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5DF27981D9CDE7500CF5CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A5F1E8A11DA626700028ABF5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5F1E8AF1DA659B50028ABF5 /* FoursquareAPIClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoursquareAPIClient-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				A54657D81DA4E07700ECA38C /* DetailViewController.swift */,
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */,
+				A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */,
 				A5048E751DB2195800837BCF /* RatingControl */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
 				A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */,
@@ -332,6 +335,7 @@
 				A50D9B181DACDB6C00238BAC /* ProfileViewController.swift in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,
 				A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */,
+				A5EF45051DC0CB2D0032BEDB /* EditViewController.swift in Sources */,
 				A574E2591DC0418A00CC46D7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
