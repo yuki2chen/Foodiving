@@ -145,18 +145,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     
     //Mark: Navigation
 
-//    @IBAction func cancel(sender: UIBarButtonItem) {
-//        
-//        let isPresentingInAddMealMode = presentingViewController is CommentViewController
-//        
-//        if isPresentingInAddMealMode {
-//            dismissViewControllerAnimated(true, completion: nil)
-//        } else {
-//            navigationController!.popViewControllerAnimated(true)
-//        }
-//    
-//    }
-//    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if PostButton === sender{
         //Mark: save image in storage

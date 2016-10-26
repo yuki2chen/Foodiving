@@ -75,7 +75,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let parameter: [String: String] = [
             "ll": "\(latitude),\(longitude)",
             "categoryId": "4d4b7105d754a06374d81259",
-            "radius": "150",
+            "radius": "250",
             "limit": "1000"
         ]
         
@@ -233,13 +233,9 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             
             
             let mylocation = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: restLat, longitude: restLng), addressDictionary: nil)
+        
             
 
-            
-            
-           
-            
-//            mapView.removeAnnotations(mapView.annotations)
             let annotation = MKPointAnnotation()
             annotation.coordinate = mylocation.coordinate
             annotation.title = restName
@@ -257,7 +253,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     func centerMapOnLocation(location: CLLocation){
-        let regionRadius: CLLocationDistance = 100
+        let regionRadius: CLLocationDistance = 400
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }

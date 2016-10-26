@@ -11,7 +11,6 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import Nuke
-import Haneke
 
 
 class ResaturantMealTableViewController: UITableViewController  {
@@ -28,7 +27,6 @@ class ResaturantMealTableViewController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(restDic)
         retreiveData()
 
         self.navigationItem.title = restDic["name"] as? String ?? ""
@@ -54,12 +52,9 @@ class ResaturantMealTableViewController: UITableViewController  {
         let restaurantId = restDic["id"] as? String ?? ""
         //print(restaurantId)
         let mealInfoDatabase = FIRDatabase.database().reference()
-        let serverTimestamp = FIRServerValue.timestamp()
-        mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: {
-  
-            snapshot in
-//            print(snapshot.value)
-            
+//        let serverTimestamp = FIRServerValue.timestamp()
+        mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: { snapshot in
+
             for snapshot in snapshot.children {
                 
                 let commentSnap = snapshot as! FIRDataSnapshot
@@ -95,7 +90,7 @@ class ResaturantMealTableViewController: UITableViewController  {
                 }
                 
             }
-//            self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
+// self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
             
         })
        
@@ -104,8 +99,9 @@ class ResaturantMealTableViewController: UITableViewController  {
     
     func retreiveUserData(meal: Meal){
         
+        
         let userInfoDatabase = FIRDatabase.database().reference()
-        userInfoDatabase.child("Users").queryOrderedByKey().queryEqualToValue(meal.userID).observeEventType(.Value, withBlock: {
+        userInfoDatabase.child("Users").queryOrderedByKey().queryEqualToValue(meal.userID).observeSingleEventOfType(.Value, withBlock: {
             snapshot in
 //            print (snapshot.value)
             let snapshots = snapshot.children.allObjects
@@ -126,7 +122,7 @@ class ResaturantMealTableViewController: UITableViewController  {
     //Mark: retreive server value
     
     func retreiveServerValues(){
-//        var sessionRef = FIRDatabase.database().reference("session")
+// var sessionRef = FIRDatabase.database().reference("session")
         
     }
     
@@ -211,7 +207,7 @@ class ResaturantMealTableViewController: UITableViewController  {
     
         if let photoUrl = NSURL(string: photoString) {
 
-            cell.photoImageView.hnk_setImageFromURL(photoUrl)
+            cell.photoImageView.nk_setImageWith(photoUrl)
         
             print(photoUrl)
             
@@ -229,8 +225,5 @@ extension ResaturantMealTableViewController: CommentViewControllerdelegate {
     func  didget(){
         retreiveData()
     }
-//    func didGetData() {
-//        retreiveData()
-//        
-//    }
+
 }

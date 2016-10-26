@@ -18,6 +18,7 @@
 		A50D9B201DAF85F300238BAC /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */; };
 		A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */; };
 		A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D81DA4E07700ECA38C /* DetailViewController.swift */; };
+		A574E2591DC0418A00CC46D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574E2581DC0418A00CC46D7 /* User.swift */; };
 		A5C53F7F1DBA0F060015C91D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5C53F7D1DBA0F060015C91D /* GoogleService-Info.plist */; };
 		A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */; };
 		A5C7C44F1DA7A63100DDFDBA /* searchRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */; };
@@ -52,6 +53,7 @@
 		A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewController.swift; sourceTree = "<group>"; };
 		A54657D81DA4E07700ECA38C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A574E2581DC0418A00CC46D7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A5C53F7D1DBA0F060015C91D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchRestaurantsTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchRestaurantModel.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
 				A50D9B171DACDB6C00238BAC /* ProfileViewController.swift */,
+				A574E2581DC0418A00CC46D7 /* User.swift */,
 				A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */,
 				A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */,
 				A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */,
@@ -329,6 +332,7 @@
 				A50D9B181DACDB6C00238BAC /* ProfileViewController.swift in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,
 				A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */,
+				A574E2591DC0418A00CC46D7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
