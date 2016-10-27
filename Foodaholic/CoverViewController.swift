@@ -25,6 +25,8 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
     //Mark: Properties
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
+    
+//    @IBOutlet weak var loginButton: UIButton!
     weak var delegate: CoverViewControllerDelegate?
     
     

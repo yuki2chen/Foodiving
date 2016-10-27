@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal食物" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
@@ -589,17 +589,21 @@
                                 <color key="color" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Foodaholic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLQ-Ua-RbP">
-                                <rect key="frame" x="211" y="263" width="179" height="73"/>
+                                <rect key="frame" x="211" y="191" width="179" height="73"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-BoldItalic" family="Iowan Old Style" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OC-KH-3sK">
+                                <rect key="frame" x="463" y="345" width="69" height="70"/>
+                                <state key="normal" title="Button" image="facebook"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="rWv-a1-Sn6" firstAttribute="centerY" secondItem="SI9-kr-yCp" secondAttribute="centerY" id="B8q-5X-r4D"/>
                             <constraint firstItem="rWv-a1-Sn6" firstAttribute="centerX" secondItem="SI9-kr-yCp" secondAttribute="centerX" id="Jf6-A2-2EZ"/>
-                            <constraint firstItem="JLQ-Ua-RbP" firstAttribute="centerY" secondItem="SI9-kr-yCp" secondAttribute="centerY" id="h1e-Ac-82F"/>
+                            <constraint firstItem="JLQ-Ua-RbP" firstAttribute="centerY" secondItem="SI9-kr-yCp" secondAttribute="centerY" constant="-72.5" id="h1e-Ac-82F"/>
                             <constraint firstItem="JLQ-Ua-RbP" firstAttribute="centerX" secondItem="SI9-kr-yCp" secondAttribute="centerX" id="sWW-W8-Ryp"/>
                         </constraints>
                     </view>
@@ -866,6 +870,7 @@
     <resources>
         <image name="1476777634_71" width="128" height="128"/>
         <image name="1476777792_pen_stroke_sketch_doodle_lineart_165" width="128" height="128"/>
+        <image name="facebook" width="256" height="256"/>
         <image name="pin" width="64" height="64"/>
         <image name="placeholder" width="32" height="32"/>
         <image name="restaurant" width="128" height="128"/>

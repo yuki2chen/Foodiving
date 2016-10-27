@@ -13,7 +13,7 @@ import FirebaseStorage
 import Nuke
 
 
-class ResaturantMealTableViewController: UITableViewController  {
+class ResaturantMealTableViewController: UITableViewController, DetailViewControllerDelegate  {
     
     //Mark: Properties
     
@@ -37,7 +37,11 @@ class ResaturantMealTableViewController: UITableViewController  {
         
     }
     
-    
+    func didEdit() {
+        
+        retreiveData()
+        
+    }
     
     
     // Mark: Retrieve data
@@ -145,6 +149,8 @@ class ResaturantMealTableViewController: UITableViewController  {
             
             let mealDetailViewController = segue.destinationViewController as! DetailViewController
             
+            mealDetailViewController.delegate = self
+            
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
@@ -169,9 +175,12 @@ class ResaturantMealTableViewController: UITableViewController  {
     // Mark: Action
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+       
         
         
     }
+    
+    
     
     @IBAction func unwindToMealList2(sender: UIStoryboardSegue) {
         meals = []

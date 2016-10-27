@@ -222,7 +222,11 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
             
             print("")
             
-            mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase)
+            mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase, withCompletionBlock: { error, ref in
+                
+                self.delegate?.didget()
+            
+            })
 
         }
     }

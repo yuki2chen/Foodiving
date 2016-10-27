@@ -13,11 +13,11 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
-//protocol DetailViewControllerDelegate: class {
-//    func didGetData()
-//}
+protocol DetailViewControllerDelegate: class {
+    func didEdit()
+}
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, CommentViewControllerdelegate {
 
     //Mark: properties
     var meal: Meal?
@@ -40,10 +40,16 @@ class DetailViewController: UIViewController {
 //    var deleteButton: UIBarButtonItem!
 //    var mealCommentObject: String = ""
     var restaurantPlace: String = ""
-//    weak var detailDelegate: DetailViewControllerDelegate?
+    weak var delegate : DetailViewControllerDelegate?
     
     //Mark: Action
     
+    
+    func didget() {
+        
+        delegate?.didEdit()
+        
+    }
   
     @IBAction func myOptionalButton(sender: AnyObject) {
         
@@ -59,11 +65,10 @@ class DetailViewController: UIViewController {
             let commentvc = storyboard.instantiateViewControllerWithIdentifier("CommentViewController") as! CommentViewController
             commentvc.meal = self.meal
             commentvc.isPost = false
+            commentvc.delegate = self
             self.showViewController(commentvc, sender: commentvc)
             
             })
-        
-        
         
         // Delete
         
