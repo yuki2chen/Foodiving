@@ -107,30 +107,31 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         mealInfoReference.child("RestaurantsComments").queryOrderedByChild("userID").queryEqualToValue(userUid).observeEventType(.Value, withBlock:
             { snapshot in
                 
-                let snapshots = snapshot.children.allObjects
+//                let snapshots = snapshot.children.allObjects
                 
                 self.meals = []
                 self.mealPhotoStringArray = []
                 
-                for mealInfo in snapshots {
+                for snapshots in snapshot.children {
                     guard
-                        let mealName = mealInfo.value["mealName"] as? String,
-                        let price = mealInfo.value["price"] as? String,
-                        let photoString = mealInfo.value["photoString"] as? String,
-                        let tasteRating = mealInfo.value["tasteRating"] as? Int,
-                        let serviceRating = mealInfo.value["serviceRating"] as?  Int,
-                        let revisitRating = mealInfo.value["revisitRating"] as?  Int,
-                        let environmentRating = mealInfo.value["environmentRating"] as?  Int,
-                        let comment = mealInfo.value["comment"] as? String,
-                        let userID = mealInfo.value["userID"] as? String,
-                        let restID = mealInfo.value["restaurantId"] as? String
+                        let mealInfo = snapshots as? FIRDataSnapshot,
+                        let mealName = mealInfo.value?["mealName"] as? String,
+                        let price = mealInfo.value?["price"] as? String,
+                        let photoString = mealInfo.value?["photoString"] as? String,
+                        let tasteRating = mealInfo.value?["tasteRating"] as? Int,
+                        let serviceRating = mealInfo.value?["serviceRating"] as?  Int,
+                        let revisitRating = mealInfo.value?["revisitRating"] as?  Int,
+                        let environmentRating = mealInfo.value?["environmentRating"] as?  Int,
+                        let comment = mealInfo.value?["comment"] as? String,
+                        let userID = mealInfo.value?["userID"] as? String,
+                        let restID = mealInfo.value?["restaurantId"] as? String
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
                     meal.photoString = photoString
                     meal.userID = userID
                     meal.restaurantID = restID
-                    
+                    meal.restCommentID = mealInfo.key
                     
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
@@ -153,12 +154,12 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         if segue.identifier == "DetailFromPicture"{
             let destinationController = segue.destinationViewController as! DetailViewController
             
-            
             if let selectedCellsquare = sender as? ProfileCollectionViewCell{
                 let indexPath = collectionView.indexPathForCell(selectedCellsquare)
                 let selectedPhoto = meals[indexPath!.row]
                 destinationController.meal = selectedPhoto
             }
+            
             
         }
     }

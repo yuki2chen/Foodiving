@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7H-Yi-Ply" id="H70-uh-oK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal食物" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-Sg-yyM">
@@ -204,16 +204,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="D0d-sP-mmu">
-                        <barButtonItem key="rightBarButtonItem" title="Delete" id="KUw-zu-KbY">
-                            <connections>
-                                <segue destination="X1F-LM-AGw" kind="unwind" unwindAction="unwindToMealList2:" id="eHM-lm-S1p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="D0d-sP-mmu"/>
                     <connections>
                         <outlet property="commentDetail" destination="hHR-FN-JFJ" id="I2E-eR-1Lg"/>
-                        <outlet property="deleteButton" destination="KUw-zu-KbY" id="mYu-Iq-2Py"/>
                         <outlet property="environmentRateDetail" destination="Cpt-Fd-qSU" id="52h-D3-j4V"/>
                         <outlet property="mealNameDetail" destination="SQH-eh-pgu" id="uGA-1l-WM3"/>
                         <outlet property="photoDetail" destination="V4C-eK-7qc" id="Tyh-IM-wPU"/>
@@ -226,7 +219,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ER9-3l-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="X1F-LM-AGw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4042" y="914"/>
         </scene>

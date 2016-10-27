@@ -89,6 +89,7 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
         FIRAnalytics.logEventWithName("delete_comment", parameters: nil)
         let firebase = FIRDatabase.database().reference()
         let restCommentID = meal!.restCommentID
+        
         firebase.child("RestaurantsComments").child(restCommentID).removeValueWithCompletionBlock{(error, ref) in
             if let error = error{
                 print("error:\(error)")
@@ -177,20 +178,7 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
             destinationController!.meal = self.meal
             
             
-        }else if deleteButton === sender{
-            FIRAnalytics.logEventWithName("delete_comment", parameters: nil)
-            let firebase = FIRDatabase.database().reference()
-            let restCommentID = meal!.restCommentID
-            firebase.child("RestaurantsComments").child(restCommentID).removeValueWithCompletionBlock{(error, ref) in
-                if error != nil{
-                    print("error:\(error)")
-                 
-                }
-                else{
-
-                }
         }
-    }
     }
  
     

@@ -55,28 +55,30 @@ class OtherUserViewController: UIViewController ,UICollectionViewDelegate,UIColl
         
         mealInfoReference.child("RestaurantsComments").queryOrderedByChild("userID").queryEqualToValue(userID).observeEventType(.Value, withBlock:
             { snapshot in
-                let snapshots = snapshot.children.allObjects
-                print(snapshot.value)
+//                let snapshots = snapshot.children.allObjects
                 
-                for mealInfo in snapshots {
+                
+                 for snapshot in snapshot.children {
+                    print(snapshot.children)
                     guard
-                        let mealName = mealInfo.value["mealName"] as? String,
-                        let price = mealInfo.value["price"] as? String,
-                        let photoString = mealInfo.value["photoString"] as? String,
-                        let tasteRating = mealInfo.value["tasteRating"] as? Int,
-                        let serviceRating = mealInfo.value["serviceRating"] as?  Int,
-                        let revisitRating = mealInfo.value["revisitRating"] as?  Int,
-                        let environmentRating = mealInfo.value["environmentRating"] as?  Int,
-                        let comment = mealInfo.value["comment"] as? String,
-                        let userID = mealInfo.value["userID"] as? String,
-                        let restID = mealInfo.value["restaurantId"] as? String
+                        let mealInfo = snapshot as? FIRDataSnapshot ,
+                        let mealName = mealInfo.value?["mealName"] as? String,
+                        let price = mealInfo.value?["price"] as? String,
+                        let photoString = mealInfo.value?["photoString"] as? String,
+                        let tasteRating = mealInfo.value?["tasteRating"] as? Int,
+                        let serviceRating = mealInfo.value?["serviceRating"] as?  Int,
+                        let revisitRating = mealInfo.value?["revisitRating"] as?  Int,
+                        let environmentRating = mealInfo.value?["environmentRating"] as?  Int,
+                        let comment = mealInfo.value?["comment"] as? String,
+                        let userID = mealInfo.value?["userID"] as? String,
+                        let restID = mealInfo.value?["restaurantId"] as? String
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
                     meal.photoString = photoString
                     meal.userID = userID
                     meal.restaurantID = restID
-
+                    meal.restCommentID = mealInfo.key
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
                 }
