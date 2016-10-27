@@ -13,7 +13,7 @@ import FirebaseStorage
 import Nuke
 
 
-class ResaturantMealTableViewController: UITableViewController,DetailViewControllerDelegate  {
+class ResaturantMealTableViewController: UITableViewController,CommentFromDetailViewControllerDelegate  {
     
     //Mark: Properties
     
@@ -115,7 +115,7 @@ class ResaturantMealTableViewController: UITableViewController,DetailViewControl
     
    
     func didEdit() {
-        didget()
+       
     }
     
     //Mark: notification from delete button
@@ -236,12 +236,10 @@ class ResaturantMealTableViewController: UITableViewController,DetailViewControl
     }
 }
 
-extension ResaturantMealTableViewController: CommentFromRestViewControllerdelegate,CommentFromDetailViewControllerDelegate {
+extension ResaturantMealTableViewController: CommentFromRestViewControllerdelegate{
     func  didget(){
         retreiveData()
     }
-    func didEdit(){
-        
-    }
+    
 
 }

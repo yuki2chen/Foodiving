@@ -14,7 +14,7 @@ import FirebaseDatabase
 
 
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,CommentFromRestViewControllerdelegate {
 
     //Mark: properties
     var meal: Meal?
@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
     
   
     func didget() {
-        delegate.didEdit()
+        detailDelegate?.didEdit()
     }
     @IBAction func myOptionalButton(sender: AnyObject) {
         

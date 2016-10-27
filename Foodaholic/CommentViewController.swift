@@ -56,7 +56,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var PostButton: UIBarButtonItem!
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
-    weak var delegate: CommentViewControllerdelegate?
+    weak var delegate: CommentFromRestViewControllerdelegate?
     var isPost: Bool = true
     
     
