@@ -12,8 +12,11 @@ import FirebaseStorage
 import Fusuma
 import IQKeyboardManagerSwift
 
-protocol CommentViewControllerdelegate: class {
+protocol CommentFromRestViewControllerdelegate: class {
     func didget()
+}
+protocol CommentFromDetailViewControllerDelegate: class {
+    func didEdit()
 }
 
 

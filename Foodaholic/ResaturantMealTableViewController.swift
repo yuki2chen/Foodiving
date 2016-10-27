@@ -236,9 +236,12 @@ class ResaturantMealTableViewController: UITableViewController,DetailViewControl
     }
 }
 
-extension ResaturantMealTableViewController: CommentViewControllerdelegate {
+extension ResaturantMealTableViewController: CommentFromRestViewControllerdelegate,CommentFromDetailViewControllerDelegate {
     func  didget(){
         retreiveData()
+    }
+    func didEdit(){
+        
     }
 
 }
