@@ -103,11 +103,13 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
                 
 //                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [ResaturantMealTableViewController];
 //                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
-                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers
                 
                 for aViewController in viewControllers {
                     if(aViewController is ResaturantMealTableViewController){
-                        self.navigationController!.popToViewController(aViewController, animated: true);
+                        self.navigationController!.popToViewController(aViewController, animated: true)
+                    }else if (aViewController is ProfileViewController){
+                        self.navigationController!.popToViewController(aViewController, animated: true)
                     }
                 }
 
