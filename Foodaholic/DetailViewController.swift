@@ -17,7 +17,7 @@ protocol DetailViewControllerDelegate: class {
     func didEdit()
 }
 
-class DetailViewController: UIViewController, CommentViewControllerdelegate {
+class DetailViewController: UIViewController,CommentViewControllerdelegate {
 
     //Mark: properties
     var meal: Meal?
@@ -40,17 +40,14 @@ class DetailViewController: UIViewController, CommentViewControllerdelegate {
 //    var deleteButton: UIBarButtonItem!
 //    var mealCommentObject: String = ""
     var restaurantPlace: String = ""
-    weak var delegate : DetailViewControllerDelegate?
+    weak var detailDelegate: DetailViewControllerDelegate?
     
     //Mark: Action
     
-    
+  
     func didget() {
         
-        delegate?.didEdit()
-        
     }
-  
     @IBAction func myOptionalButton(sender: AnyObject) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -69,6 +66,8 @@ class DetailViewController: UIViewController, CommentViewControllerdelegate {
             self.showViewController(commentvc, sender: commentvc)
             
             })
+        
+        
         
         // Delete
         

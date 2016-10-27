@@ -13,7 +13,7 @@ import FirebaseStorage
 import Nuke
 
 
-class ResaturantMealTableViewController: UITableViewController, DetailViewControllerDelegate  {
+class ResaturantMealTableViewController: UITableViewController,DetailViewControllerDelegate  {
     
     //Mark: Properties
     
@@ -37,11 +37,7 @@ class ResaturantMealTableViewController: UITableViewController, DetailViewContro
         
     }
     
-    func didEdit() {
-        
-        retreiveData()
-        
-    }
+    
     
     
     // Mark: Retrieve data
@@ -118,7 +114,9 @@ class ResaturantMealTableViewController: UITableViewController, DetailViewContro
     }
     
    
-    
+    func didEdit() {
+        didget()
+    }
     
     //Mark: notification from delete button
     
@@ -149,14 +147,12 @@ class ResaturantMealTableViewController: UITableViewController, DetailViewContro
             
             let mealDetailViewController = segue.destinationViewController as! DetailViewController
             
-            mealDetailViewController.delegate = self
-            
             if let selectedMealCell = sender as? ResaturantMealTableViewCell{
                 let indexPath = tableView.indexPathForCell(selectedMealCell)!
                 let selectedMeal = meals[indexPath.row]
                 mealDetailViewController.meal = selectedMeal
                                 
-//                mealDetailViewController.detailDelegate = self
+                mealDetailViewController.detailDelegate = self
             }
         }else if segue.identifier == "AddItem"{
             let destinationController = segue.destinationViewController as! CommentViewController

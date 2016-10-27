@@ -222,59 +222,13 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
             
             print("")
             
-            mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase, withCompletionBlock: { error, ref in
-                
+            mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase, withCompletionBlock: {(error,ref) in
                 self.delegate?.didget()
-            
             })
 
         }
     }
     
-    
-    func updateCommentData(photoString: String){
-        let mealName = mealNameTextField.text ?? ""
-        let price = priceTextField.text ?? "0"
-        let tasteRating = Int(tasteRatingControl.rating)
-        let serviceRating = Int(serviceRatingControl.rating)
-        let revisitRating = Int(revisitRatingControl.rating)
-        let environmentRating = Int(environmentRatingControl.rating)
-        let comment = commentTextView.text ?? ""
-        meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
-        
-        //save data in firebase
-        
-        let mealReference = FIRDatabase.database().reference()
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        let restaurantID = restDictionary["id"] as? String ?? ""
-        let timestamp = FIRServerValue.timestamp()
-        
-        let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
-        
-        
-        
-        let restCommentID = meal?.restCommentID ?? ""
-        
-        mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase,withCompletionBlock:
-            {(error, ref) in
-                
-                self.delegate?.didget()
-            })
-                    
-
-       
-        
-//        mealReference.child("RestaurantsComments").childByAutoId().setValue(
-//            mealInfoDatabase,
-//            withCompletionBlock:
-//            {(error, ref) in
-//                
-//                self.delegate?.didget()
-//            }
-//            
-//        )
-
-    }
     
     
     
