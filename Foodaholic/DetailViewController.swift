@@ -187,7 +187,6 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
                  
                 }
                 else{
-//                   self.detailDelegate?.didGetData()
 
                 }
         }
