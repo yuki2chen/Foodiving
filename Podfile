@@ -17,5 +17,6 @@ target 'Foodaholic' do
     pod 'Nuke', '3.1.3'
     pod 'Fusuma'
     pod 'HanekeSwift'
+    pod 'IQKeyboardManagerSwift', '4.0.5'
     
 end

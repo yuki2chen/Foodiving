@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
     
      
 //    var deleteButton: UIBarButtonItem!
-    var mealCommentObject: String = ""
+//    var mealCommentObject: String = ""
     var restaurantPlace: String = ""
 //    weak var detailDelegate: DetailViewControllerDelegate?
     
@@ -49,17 +49,23 @@ class DetailViewController: UIViewController {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
+        
+        
+        // Edit
+        
         alert.addAction(UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default){(action:UIAlertAction) -> Void in
       
-            self.performSegueWithIdentifier("EditViewController", sender: self)
-            override func prepareForSegue(UIStoryBoardSegue!, sender: AnyObject){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let commentvc = storyboard.instantiateViewControllerWithIdentifier("CommentViewController") as! CommentViewController
+            commentvc.meal = self.meal
+            commentvc.isPost = false
+            self.showViewController(commentvc, sender: commentvc)
             
-                if segue.identifier == "EditViewController"{
-                    let destinationController = segue.destinationViewController as? OtherUserViewController
-                    destinationController!.meal = self.meal
-                }
-            }
             })
+        
+        
+        
+        // Delete
         
         alert.addAction(UIAlertAction(title: "Delete", style: .Destructive){(action:UIAlertAction) -> Void in
             
@@ -118,7 +124,7 @@ class DetailViewController: UIViewController {
     //Mark: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(meal)
         guard let meal = meal else {return}
 
         photoDetail.clipsToBounds = true

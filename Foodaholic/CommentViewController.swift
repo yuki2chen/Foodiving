@@ -27,8 +27,8 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var mealNameTextField: UITextField!
     @IBOutlet weak var priceNameLabel: UILabel!
     @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var serviceChargeNameLabel: UILabel!
-    @IBOutlet weak var serviceSwitch: UISwitch!
+//    @IBOutlet weak var serviceChargeNameLabel: UILabel!
+//    @IBOutlet weak var serviceSwitch: UISwitch!
    
 //    @IBAction func serviceAction(sender: AnyObject) {
 //        let onState = serviceSwitch.on
@@ -55,44 +55,31 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     var meal: Meal?
     var restDictionary: [String: AnyObject] = [:]
     weak var delegate: CommentViewControllerdelegate?
+    var isPost: Bool = true
     
     
     
-    
-    //Mark: delegate camera withFusuma
-    func fusumaLibrary(){
-        let fusuma = FusumaViewController()
-        fusuma.delegate = self
-        fusuma.hasVideo = false
-        self.presentViewController(fusuma, animated: true, completion: nil)
-        fusumaBackgroundColor =  UIColor.blackColor()
-        fusumaTintColor = UIColor.whiteColor()
-        fusumaCropImage = false
-    }
-    
-    func fusumaImageSelected(image: UIImage){
-        
-        photoImageView.image = image
-        
-    }
-    func fusumaDismissedWithImage(image: UIImage) {
-        print("Called just fusumaViewController is dismissed.")
-    }
-    
-    func fusumaVideoCompleted(withFileURL fileURL: NSURL) {
-        print("Called just after a video has been selected")
-    }
-    func fusumaCameraRollUnauthorized() {
-        print("Camera roll unauthorized")
-    }
-    //Mark: View Life Cycle
+       //Mark: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard
+            let meal = meal else {return}
+        mealNameTextField.text = meal.mealName
+        priceTextField.text = meal.price
+        commentTextView.text = meal.comment
+        environmentRatingControl.rating = meal.environmentRating
+        revisitRatingControl.rating = meal.revisitRating
+        tasteRatingControl.rating = meal.tasteRating
+        serviceRatingControl.rating = meal.serviceRating
+        
+
+        
+        
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
-       
+        
         mealNameTextField.delegate = self
         priceTextField.delegate = self
         priceTextField.keyboardType = .NumberPad //只能輸入數字
@@ -122,14 +109,17 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         commentTextView.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).CGColor
 
         
+        guard isPost == true else {
+            PostButton.title = "Save"
+            return}
+            
+        
+        
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-       
-    }
-  
-    
+   
     //Mark: UIImagePickerControllerDelegate
     
 //    func imagePickerControllerDidCancel(picker:UIImagePickerController){
@@ -146,10 +136,14 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     //Mark: Navigation
 
 
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if PostButton === sender{
         //Mark: save image in storage
-            
+           
+
             let storageRef = FIRStorage.storage().reference
             let maelPhotoFileName = NSUUID().UUIDString
             let mealPhoto = storageRef().child("mealPhoto/\(maelPhotoFileName).jpg")
@@ -158,28 +152,83 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
             let metadata = FIRStorageMetadata()
             metadata.contentType = "Image/jpeg"
             mealPhoto.putData(UIImageJPEGRepresentation(photoImageView.image!, 0.2)!,metadata: metadata){(data,error) in
-                if error == nil{
+                if error == nil {
                     print("upload successful")
-                    guard let photoURL = data?.downloadURL()?.absoluteString else{
+                    guard let photoString = data?.downloadURL()?.absoluteString else{
                         print("fail to download photoURL")
                         return
                     }
+//                    if self.isPost == true{
                     
-                    self.saveToFirebase(photoURL)
-                    FIRAnalytics.logEventWithName("post_comment", parameters: nil)
+                        self.saveToFirebase(photoString)
+                    let destVC = segue.destinationViewController as! ResaturantMealTableViewController
+                    destVC.tableView.reloadData()
+                        FIRAnalytics.logEventWithName("post_comment", parameters: nil)
+//                    }else{
+//                        self.updateCommentData(photoString)
+//                    }
                     
                 }else{
                     print(error?.localizedDescription)
                 }
                 
+ 
             }
+                   }
         
-        }
+        
+        
     }
     
     //Mark: save To Firebase
     func saveToFirebase(photoString: String){
         
+        let mealName = mealNameTextField.text ?? ""
+        let price = priceTextField.text ?? "0"
+        let tasteRating = Int(tasteRatingControl.rating)
+        let serviceRating = Int(serviceRatingControl.rating)
+        let revisitRating = Int(revisitRatingControl.rating)
+        let environmentRating = Int(environmentRatingControl.rating)
+        let comment = commentTextView.text ?? ""
+//        let meal2 = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
+
+        //save data in firebase
+        
+        let mealReference = FIRDatabase.database().reference()
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+//        restDictionary["id"] as? String ?? ""
+        let timestamp = FIRServerValue.timestamp()
+        
+        if isPost == true{
+            
+            let restaurantID = restDictionary["id"] as? String ?? ""
+            
+            let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
+            
+            mealReference.child("RestaurantsComments").childByAutoId().setValue(
+                mealInfoDatabase,
+                withCompletionBlock:
+                {(error, ref) in
+                    
+                    self.delegate?.didget()
+            })
+            
+        }else{
+            
+            let restCommentID = meal?.restCommentID ?? ""
+            let restaurantID = meal?.restaurantID ?? ""
+            let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
+            
+            print("")
+            
+            mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase)
+
+        }
+    }
+    
+    
+    func updateCommentData(photoString: String){
         let mealName = mealNameTextField.text ?? ""
         let price = priceTextField.text ?? "0"
         let tasteRating = Int(tasteRatingControl.rating)
@@ -198,16 +247,30 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
         
-        mealReference.child("RestaurantsComments").childByAutoId().setValue(
-            mealInfoDatabase,
-            withCompletionBlock:
-            {(error, ref) in
         
+        
+        let restCommentID = meal?.restCommentID ?? ""
+        
+        mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase,withCompletionBlock:
+            {(error, ref) in
+                
                 self.delegate?.didget()
-            }
-    )}
-    
-    
+            })
+                    
+
+       
+        
+//        mealReference.child("RestaurantsComments").childByAutoId().setValue(
+//            mealInfoDatabase,
+//            withCompletionBlock:
+//            {(error, ref) in
+//                
+//                self.delegate?.didget()
+//            }
+//            
+//        )
+
+    }
     
     
     
@@ -276,7 +339,38 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     }
     
     
+
     
+    
+    
+    
+    //Mark: delegate camera withFusuma
+    func fusumaLibrary(){
+        let fusuma = FusumaViewController()
+        fusuma.delegate = self
+        fusuma.hasVideo = false
+        self.presentViewController(fusuma, animated: true, completion: nil)
+        fusumaBackgroundColor =  UIColor.blackColor()
+        fusumaTintColor = UIColor.whiteColor()
+        fusumaCropImage = false
+    }
+    
+    func fusumaImageSelected(image: UIImage){
+        
+        photoImageView.image = image
+        
+    }
+    func fusumaDismissedWithImage(image: UIImage) {
+        print("Called just fusumaViewController is dismissed.")
+    }
+    
+    func fusumaVideoCompleted(withFileURL fileURL: NSURL) {
+        print("Called just after a video has been selected")
+    }
+    func fusumaCameraRollUnauthorized() {
+        print("Camera roll unauthorized")
+    }
+
     
 }
 

@@ -173,7 +173,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="TUN-kX-s4z">
                                 <rect key="frame" x="174" y="324" width="22" height="22"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-eK-7qc">
                                 <rect key="frame" x="165" y="72" width="270" height="174"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -346,14 +346,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-g8-6Xe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-g8-6Xe">
                                 <rect key="frame" x="25" y="47" width="101" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Y4V-g8-6Xe" secondAttribute="height" multiplier="1:1" id="2w4-uF-T9U"/>
                                     <constraint firstAttribute="width" constant="101" id="8fs-zy-89P"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-1v-viI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-1v-viI">
                                 <rect key="frame" x="146" y="119" width="180" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="JsH-E6-6d8"/>
@@ -362,7 +362,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Ur-shw">
                                 <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="82d-ri-o6N">
                                     <size key="itemSize" width="122" height="122"/>
@@ -435,7 +435,7 @@
         <!--Comment View Controller-->
         <scene sceneID="W41-RS-Rmb">
             <objects>
-                <viewController id="Aly-U5-KVA" customClass="CommentViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentViewController" id="Aly-U5-KVA" customClass="CommentViewController" customModule="Foodaholic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p9g-zl-ioe"/>
                         <viewControllerLayoutGuide type="bottom" id="vDZ-pp-Bjc"/>
@@ -570,7 +570,7 @@
                 </tapGestureRecognizer>
                 <exit id="1vv-sy-jwi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4474" y="-599"/>
+            <point key="canvasLocation" x="4400" y="-571"/>
         </scene>
         <!--Cover View Controller-->
         <scene sceneID="JYT-xH-ktB">
@@ -873,6 +873,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QZa-Fa-Ng9"/>
+        <segue reference="e7h-P2-KtH"/>
     </inferredMetricsTieBreakers>
 </document>
