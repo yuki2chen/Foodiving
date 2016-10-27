@@ -13,7 +13,7 @@ import FoursquareAPIClient
 import FBSDKLoginKit
 import Fabric
 import Crashlytics
-
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         Fabric.with([Crashlytics.self])
-
+        IQKeyboardManager.sharedManager().enable = true
         
 //        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: [kFIRParameterContentType: "cont" as NSObject,kFIRParameterItemID: "1" as NSObject])
         

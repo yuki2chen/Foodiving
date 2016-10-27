@@ -47,19 +47,13 @@ PODS:
   - Fusuma (0.5.3)
   - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - GoogleMaps (2.1.0):
-    - GoogleMaps/Maps (= 2.1.0)
-  - GoogleMaps/Base (2.1.0)
-  - GoogleMaps/Maps (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
   - GoogleNetworkingUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - GooglePlaces (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
   - HanekeSwift (0.10.1)
+  - IQKeyboardManagerSwift (4.0.5)
   - Nuke (3.1.3)
 
 DEPENDENCIES:
@@ -75,9 +69,8 @@ DEPENDENCIES:
   - Firebase/Storage
   - FoursquareAPIClient
   - Fusuma
-  - GoogleMaps
-  - GooglePlaces
   - HanekeSwift
+  - IQKeyboardManagerSwift (= 4.0.5)
   - Nuke (= 3.1.3)
 
 SPEC CHECKSUMS:
@@ -96,14 +89,13 @@ SPEC CHECKSUMS:
   FoursquareAPIClient: 3cdd26eb65b2112a2175eda1118ecd78fbbb8529
   Fusuma: 02ffb3a9943792519f2c0972263b750acb550a49
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
-  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
-  GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  IQKeyboardManagerSwift: 41fd3a45a2cdb2a0e031af697708a95b865068a1
   Nuke: d951142c7499e18f242e59ae7fb95a021a2a4974
 
-PODFILE CHECKSUM: c4f40c0766aef7768581fe0b1f751e0f64d2e303
+PODFILE CHECKSUM: 8ee0cd98e47378107ccc2de557cec9b97e5226ed
 
 COCOAPODS: 1.0.0

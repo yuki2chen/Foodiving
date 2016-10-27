@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import Fusuma
-//import Checkbox
-
+import IQKeyboardManagerSwift
 
 protocol CommentViewControllerdelegate: class {
     func didget()
@@ -75,7 +74,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         serviceRatingControl.rating = meal.serviceRating
         
 
-        
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
         photoImageView.userInteractionEnabled = true
@@ -95,6 +94,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
 //            tasteRatingControl.rating = meal.tasteRating
 //            
 //        }
+        
         //Mark: commentTextView
         commentTextView.delegate = self
         
