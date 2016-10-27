@@ -115,7 +115,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
     
    
     func didEdit() {
-       
+      retreiveData()
     }
     
     //Mark: notification from delete button
