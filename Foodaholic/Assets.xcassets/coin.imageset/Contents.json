@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "money-bag.png",
+      "filename" : "coin.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "coin (1).png",
       "scale" : "2x"
     },
     {

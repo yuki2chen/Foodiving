@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dining-meal-covered.png",
+      "filename" : "coins.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "coins (1).png",
       "scale" : "2x"
     },
     {

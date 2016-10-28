@@ -22,7 +22,7 @@ protocol CommentFromDetailViewControllerDelegate: class {
 
 
 class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,FusumaDelegate,UITextViewDelegate {
-
+    
     //Mark: Properties
     
     @IBOutlet weak var mealNameLabel: UILabel!
@@ -41,7 +41,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
 //        }
 //    }
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var rateLabel: UILabel!
+    
     @IBOutlet weak var tasteRateLabel: UILabel!
     @IBOutlet weak var tasteRatingControl: RatingControl!
     @IBOutlet weak var serviceRateLabel: UILabel!
@@ -58,14 +58,23 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     var restDictionary: [String: AnyObject] = [:]
     weak var delegate: CommentFromRestViewControllerdelegate?
     var isPost: Bool = true
-    
+//    let constraint: NSLayoutConstraint?
     
     
        //Mark: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+//        let heartWidth = NSLayoutConstraint.constraintsWithVisualFormat("[UIImageView:0x13685c310(120)]",
+//                                                                        options:[], metrics:nil, views:viewsDictionary)
+//
+//        for constraint in heartWidth {
+//            constraint.identifier = "$imagefork$"
+//        }
+//        photoImageView.addConstraints(heartWidth)
+//        
+//        constraint!.identifier = "$imagefork$"
         guard
             let meal = meal else {return}
         mealNameTextField.text = meal.mealName
@@ -80,7 +89,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
         //使圖案透視 可使用照片點選(autolayout完看是否需要）
-        photoImageView.userInteractionEnabled = true
+//        photoImageView.userInteractionEnabled = true
         
         mealNameTextField.delegate = self
         priceTextField.delegate = self
@@ -161,15 +170,11 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
                         print("fail to download photoURL")
                         return
                     }
-//                    if self.isPost == true{
                     
                         self.saveToFirebase(photoString)
                     let destVC = segue.destinationViewController as! ResaturantMealTableViewController
                     destVC.tableView.reloadData()
                         FIRAnalytics.logEventWithName("post_comment", parameters: nil)
-//                    }else{
-//                        self.updateCommentData(photoString)
-//                    }
                     
                 }else{
                     print(error?.localizedDescription)
@@ -193,14 +198,13 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         let revisitRating = Int(revisitRatingControl.rating)
         let environmentRating = Int(environmentRatingControl.rating)
         let comment = commentTextView.text ?? ""
-//        let meal2 = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
-
+        
+        
         //save data in firebase
         
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
         
-//        restDictionary["id"] as? String ?? ""
         let timestamp = FIRServerValue.timestamp()
         
         if isPost == true{
@@ -223,7 +227,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
             let restaurantID = meal?.restaurantID ?? ""
             let mealInfoDatabase: [String: AnyObject] = ["userID": uid!, "mealName": mealName ,"price": price, "tasteRating": tasteRating,"serviceRating": serviceRating, "revisitRating": revisitRating, "environmentRating": environmentRating,"comment": comment,"photoString": photoString,"restaurantId": restaurantID,"timestamp": timestamp]
             
-            print("")
             
             mealReference.child("RestaurantsComments").child(restCommentID).updateChildValues(mealInfoDatabase, withCompletionBlock: {(error,ref) in
                 self.delegate?.didget()
@@ -285,7 +288,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBAction func selectImage(sender: UITapGestureRecognizer) {
         //當點擊時 keyboard會關閉
         fusumaLibrary()
-        mealNameTextField.resignFirstResponder()
+//        mealNameTextField.resignFirstResponder()
 //        priceTextField.resignFirstResponder()
 //        commentTextField.resignFirstResponder()
         
@@ -293,8 +296,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         //Mark: create a image picker controller
         let imagePickerController = UIImagePickerController()
         
-//        imagePickerController.sourceType = .PhotoLibrary
-//        imagePickerController.delegate = self
+
         presentViewController(imagePickerController, animated: true, completion: nil)
         
     }
@@ -313,7 +315,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         self.presentViewController(fusuma, animated: true, completion: nil)
         fusumaBackgroundColor =  UIColor.blackColor()
         fusumaTintColor = UIColor.whiteColor()
-        fusumaCropImage = false
+        fusumaCropImage = true
     }
     
     func fusumaImageSelected(image: UIImage){
@@ -345,6 +347,14 @@ extension UIViewController{
     }
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension NSLayoutConstraint {
+    
+    override public var description: String {
+        let id = identifier ?? ""
+        return "id: \(id), constant: \(constant)" //you may print whatever you want here
     }
 }
 
