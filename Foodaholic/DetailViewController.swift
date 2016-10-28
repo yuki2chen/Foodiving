@@ -33,9 +33,9 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
     @IBOutlet weak var deleteButton: UIBarButtonItem!
    
     
-     
+    @IBOutlet weak var optionalButton: UIButton!
+    
 //    var deleteButton: UIBarButtonItem!
-//    var mealCommentObject: String = ""
     var restaurantPlace: String = ""
     weak var detailDelegate: CommentFromDetailViewControllerDelegate?
     
@@ -45,6 +45,9 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
     func didget() {
         detailDelegate?.didEdit()
     }
+    
+    
+    
     @IBAction func myOptionalButton(sender: AnyObject) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -148,10 +151,9 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
         if let user = FIRAuth.auth()?.currentUser {
             let uid = user.uid
             if (meal.userID) == uid {
-                self.navigationItem.rightBarButtonItem = self.deleteButton
+                optionalButton.hidden = false
             }else{
-                self.navigationItem.rightBarButtonItem = nil
-                
+                optionalButton.hidden = true
 
             }
             
