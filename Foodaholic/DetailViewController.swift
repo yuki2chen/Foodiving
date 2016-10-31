@@ -35,19 +35,16 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
     
     @IBOutlet weak var optionalButton: UIButton!
     
-//    var deleteButton: UIBarButtonItem!
     var restaurantPlace: String = ""
     weak var detailDelegate: CommentFromDetailViewControllerDelegate?
     
-    //Mark: Action
-    
-  
     func didget() {
         detailDelegate?.didEdit()
     }
     
     
-    
+    //Mark: Action
+
     @IBAction func myOptionalButton(sender: AnyObject) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)

@@ -118,6 +118,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
       retreiveData()
     }
     
+    
     //Mark: notification from delete button
     
     func methodOfReceivedNotification(notification: NSNotification){
@@ -125,6 +126,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
         meals = []
         retreiveData()
         self.tableView.reloadData()
+        
     }
     
     

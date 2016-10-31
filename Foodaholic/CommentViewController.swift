@@ -58,7 +58,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         //Mark: commentTextView
         commentTextView.delegate = self
         commentTextView.editable = true
-        commentTextView.layer.borderWidth = 5
+        commentTextView.layer.borderWidth = 1
         commentTextView.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).CGColor
         
         
@@ -73,7 +73,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         priceTextField.keyboardType = .NumberPad //只能輸入數字
         self.hideKeyboardWhenTappedAround()
         
-        
+//        checkValidMealName()
         
         guard
             let meal = meal else {return}
@@ -216,21 +216,22 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     
     
     
-//        func textFieldDidEndEditing(textField: UITextField) {
-//            mealNameLabel.text = textField.text
-//        }
-//    
-//    
+    
 //        func textFieldDidBeginEditing(textField: UITextField) {
 //            //打字的時候不能按post button
 //            PostButton.enabled = false
 //        }
-//    
-//    
+    
+    
     
         func checkValidMealName(){
             let mealNametext = mealNameTextField.text ?? ""
+            let priceNametext = priceTextField.text ?? ""
+//            guard let mealImage = photoImageView.image?.images else{return}
             PostButton.enabled = !mealNametext.isEmpty
+            PostButton.enabled = !priceNametext.isEmpty
+//            PostButton.enabled = !mealImage.isEmpty
+            
         }
     
 //        func textFieldDidEndEditing(textField: UITextField) {

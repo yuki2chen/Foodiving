@@ -75,7 +75,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let parameter: [String: String] = [
             "ll": "\(latitude),\(longitude)",
             "categoryId": "4d4b7105d754a06374d81259",
-            "radius": "250",
+            "radius": "300",
             "limit": "1000"
         ]
         
@@ -95,7 +95,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             
             self.transformData()
             
-            // print(NSString(data: data!, encoding: NSUTF8StringEncoding))
             
             }
         

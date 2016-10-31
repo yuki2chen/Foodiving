@@ -24,16 +24,18 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
     
     //Mark: Properties
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-    var loginButton: FBSDKLoginButton = FBSDKLoginButton()
+//    var loginButton: FBSDKLoginButton = FBSDKLoginButton()
     
-//    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     weak var delegate: CoverViewControllerDelegate?
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.loginButton.hidden = true
+        self.view.backgroundColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 1)
+
+//        self.loginButton.hidden = true
         
         delegate = self
         
@@ -46,11 +48,12 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.window?.rootViewController = TabBarController
                 self.uploadUserInfo(user)
+                self.view.backgroundColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 1)
                 
             }
             else {
                 
-                self.loginButton.center = self.view.center
+//                self.loginButton.center = self.view.center
                 self.loginButton.readPermissions = ["public_profile","email","user_friends"]
                 self.loginButton.delegate = self
                 
@@ -147,7 +150,8 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
                     
                     let storage = FIRStorage.storage()
                     let storageRef = storage.referenceForURL("gs://foodaholic-e6dde.appspot.com")
-                    let profilePicRef = storageRef.child(user.uid + ".jpg")
+                    let profilePicRef = storageRef.child("userPhoto/\(user.uid).jpg")
+
                     
                     profilePicRef.putData(imageData,metadata: metadata) { metadata, error in
                         
@@ -170,13 +174,13 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
                                     
                             }
                             
-                            let storageReference = FIRStorage.storage().reference()
-                            let userPhotoName = NSUUID().UUIDString
-                            let userPhoto = storageReference.child("userPhoto/\(userPhotoName).jpg")
-                            
-                            let metadata = FIRStorageMetadata()
-                            metadata.contentType = "Image/jpeg"
-                            userPhoto.putData(UIImageJPEGRepresentation(photoImage, 0.2)!,metadata: metadata){(data,error) in
+//                            let storageReference = FIRStorage.storage().reference()
+//                            let userPhotoName = NSUUID().UUIDString
+//                            let userPhoto = storageReference.child("userPhoto/\(userPhotoName).jpg")
+//                            
+//                            let metadata = FIRStorageMetadata()
+//                            metadata.contentType = "Image/jpeg"
+                            profilePicRef.putData(UIImageJPEGRepresentation(photoImage, 0.2)!,metadata: metadata){(data,error) in
                                 
                                 if let error = error {
                                     
