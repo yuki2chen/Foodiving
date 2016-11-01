@@ -64,7 +64,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
                 let comment = commentSnap.value?["comment"] as? String ?? ""
                 let userID = commentSnap.value?["userID"] as? String ?? ""
                 let restID = commentSnap.value?["restaurantId"] as? String ?? ""
-                let timestamp = commentSnap.value?["timestamp"] as? [String: String] ?? [:]
+//                let timestamp = commentSnap.value?["timestamp"] as? [String: String] ?? [:]
                 
                 
                 

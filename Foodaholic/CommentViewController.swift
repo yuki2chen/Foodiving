@@ -65,7 +65,7 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
-        // 使圖案透視 可使用照片點選(autolayout完看是否需要）
+        // 使圖案透視 可使用照片點選
         // photoImageView.userInteractionEnabled = true
         
         mealNameTextField.delegate = self
@@ -73,10 +73,10 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         priceTextField.keyboardType = .NumberPad //只能輸入數字
         self.hideKeyboardWhenTappedAround()
         
-//        checkValidMealName()
         
         guard
             let meal = meal else {return}
+        
         mealNameTextField.text = meal.mealName
         priceTextField.text = meal.price
         commentTextView.text = meal.comment
@@ -85,6 +85,11 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         tasteRatingControl.rating = meal.tasteRating
         serviceRatingControl.rating = meal.serviceRating
         
+        guard let photoString = meal.photoString
+            else {return}
+        if let photoUrl = NSURL(string: photoString){
+            self.photoImageView.nk_setImageWith(photoUrl)
+        }
         
         
         guard isPost == true else {

@@ -19,7 +19,6 @@
 		A52973CE1D9D176B002DBD01 /* ResaturantMealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */; };
 		A54657D91DA4E07700ECA38C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54657D81DA4E07700ECA38C /* DetailViewController.swift */; };
 		A574E2591DC0418A00CC46D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574E2581DC0418A00CC46D7 /* User.swift */; };
-		A5C53F7F1DBA0F060015C91D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5C53F7D1DBA0F060015C91D /* GoogleService-Info.plist */; };
 		A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */; };
 		A5C7C44F1DA7A63100DDFDBA /* searchRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */; };
 		A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */; };
@@ -27,7 +26,7 @@
 		A5DF27921D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */; };
 		A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */; };
 		A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */; };
-		A5EF45051DC0CB2D0032BEDB /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */; };
+		A5EF45091DC747E50032BEDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5EF45081DC747E50032BEDB /* GoogleService-Info.plist */; };
 		A5F1E8A21DA626700028ABF5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F1E8A11DA626700028ABF5 /* MapKit.framework */; };
 		A5F1E8AE1DA655B00028ABF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */; };
 		A5F4165D1DB5C8EF0053C18C /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */; };
@@ -55,7 +54,6 @@
 		A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResaturantMealTableViewController.swift; sourceTree = "<group>"; };
 		A54657D81DA4E07700ECA38C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A574E2581DC0418A00CC46D7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A5C53F7D1DBA0F060015C91D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchRestaurantsTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchRestaurantModel.swift; sourceTree = "<group>"; };
 		A5DF27861D9CDE7500CF5CEA /* Foodaholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodaholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +63,7 @@
 		A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DF27961D9CDE7500CF5CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5DF27981D9CDE7500CF5CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		A5EF45081DC747E50032BEDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5F1E8A11DA626700028ABF5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A5F1E8AD1DA655B00028ABF5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5F1E8AF1DA659B50028ABF5 /* FoursquareAPIClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoursquareAPIClient-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -152,14 +150,13 @@
 				A52973CD1D9D176B002DBD01 /* ResaturantMealTableViewController.swift */,
 				A5FD5AD31D9E6CCA0062C276 /* ResaturantMealTableViewCell.swift */,
 				A50D9B171DACDB6C00238BAC /* ProfileViewController.swift */,
-				A574E2581DC0418A00CC46D7 /* User.swift */,
 				A50D9B1F1DAF85F300238BAC /* ProfileCollectionViewCell.swift */,
+				A574E2581DC0418A00CC46D7 /* User.swift */,
 				A5C7C44E1DA7A63100DDFDBA /* searchRestaurantModel.swift */,
 				A5C7C44C1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift */,
 				A54657D81DA4E07700ECA38C /* DetailViewController.swift */,
 				A5FD5ACF1D9E14880062C276 /* CommentViewController.swift */,
 				A5DF278D1D9CDE7500CF5CEA /* Main.storyboard */,
-				A5EF45041DC0CB2D0032BEDB /* EditViewController.swift */,
 				A5048E751DB2195800837BCF /* RatingControl */,
 				A5DF27891D9CDE7500CF5CEA /* AppDelegate.swift */,
 				A5F4165C1DB5C8EF0053C18C /* OtherUserViewController.swift */,
@@ -168,10 +165,10 @@
 				A5DF27931D9CDE7500CF5CEA /* Assets.xcassets */,
 				A5DF27951D9CDE7500CF5CEA /* LaunchScreen.storyboard */,
 				A5DF27981D9CDE7500CF5CEA /* Info.plist */,
-				A5C53F7D1DBA0F060015C91D /* GoogleService-Info.plist */,
 				A5DF27901D9CDE7500CF5CEA /* Foodaholic.xcdatamodeld */,
 				A5F416601DB770570053C18C /* postcode.json */,
 				A5F416621DB770D10053C18C /* PostalCodesConvert.swift */,
+				A5EF45081DC747E50032BEDB /* GoogleService-Info.plist */,
 			);
 			path = Foodaholic;
 			sourceTree = "<group>";
@@ -241,9 +238,9 @@
 			files = (
 				A5DF27971D9CDE7500CF5CEA /* LaunchScreen.storyboard in Resources */,
 				A5F416611DB770570053C18C /* postcode.json in Resources */,
+				A5EF45091DC747E50032BEDB /* GoogleService-Info.plist in Resources */,
 				A5DF27941D9CDE7500CF5CEA /* Assets.xcassets in Resources */,
 				A5DF278F1D9CDE7500CF5CEA /* Main.storyboard in Resources */,
-				A5C53F7F1DBA0F060015C91D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +332,6 @@
 				A50D9B181DACDB6C00238BAC /* ProfileViewController.swift in Sources */,
 				A5DF278A1D9CDE7500CF5CEA /* AppDelegate.swift in Sources */,
 				A5C7C44D1DA7A0A300DDFDBA /* searchRestaurantsTableViewCell.swift in Sources */,
-				A5EF45051DC0CB2D0032BEDB /* EditViewController.swift in Sources */,
 				A574E2591DC0418A00CC46D7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,9 +455,10 @@
 				);
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onechun.Foodaholic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -479,9 +476,10 @@
 				);
 				INFOPLIST_FILE = Foodaholic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onechun.instructor.Foodaholic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onechun.Foodaholic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

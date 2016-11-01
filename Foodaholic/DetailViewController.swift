@@ -98,11 +98,7 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
 //                self.dismissViewControllerAnimated(true, completion: nil)
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("didRemoveItem", object: nil)
-//                let ResaturantMealTableVC = self.navigationController?.viewControllers[1] as! ResaturantMealTableViewController
-//                self.navigationController?.popToViewController(ResaturantMealTableViewController, animated: true)
-                
-//                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [ResaturantMealTableViewController];
-//                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+
                 let viewControllers: [UIViewController] = self.navigationController!.viewControllers
                 
                 for aViewController in viewControllers {

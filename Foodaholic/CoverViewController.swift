@@ -149,7 +149,7 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
                 if let imageData = NSData(contentsOfURL: url) {
                     
                     let storage = FIRStorage.storage()
-                    let storageRef = storage.referenceForURL("gs://foodaholic-e6dde.appspot.com")
+                    let storageRef = storage.referenceForURL("gs://foodaholic-e3b84.appspot.com")
                     let profilePicRef = storageRef.child("userPhoto/\(user.uid).jpg")
 
                     
