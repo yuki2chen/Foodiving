@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target 'Foodaholic' do
+target 'Foodiving' do
     pod 'Firebase/Core'
     pod 'Firebase'
     pod 'Firebase/Database'
