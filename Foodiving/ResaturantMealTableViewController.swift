@@ -48,6 +48,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.methodOfReceivedNotification), name:"didRemoveItem", object: nil)
         
+
     }
     
     
@@ -61,7 +62,6 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
         
         let restaurantId = restDic["id"] as? String ?? ""
         let mealInfoDatabase = FIRDatabase.database().reference()
-//        let serverTimestamp = FIRServerValue.timestamp()
         mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: { snapshot in
 
             if snapshot.exists() {
@@ -79,7 +79,6 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
                 let comment = commentSnap.value?["comment"] as? String ?? ""
                 let userID = commentSnap.value?["userID"] as? String ?? ""
                 let restID = commentSnap.value?["restaurantId"] as? String ?? ""
-//                let timestamp = commentSnap.value?["timestamp"] as? [String: String] ?? [:]
                 
                 
                 
@@ -102,13 +101,11 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
                 self.loadingSpinner.hidesWhenStopped = true
                 }
             }
-// self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
             else {
                 self.loadingSpinner.hidden = true
             }
         })
         
-
     }
     
     
@@ -124,12 +121,20 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
             for commentsnap in snapshots{
             meal.userName = commentsnap.value?["userName"] as? String ?? ""
             meal.userPhotoString = commentsnap.value?["photoString"] as? String ?? ""
+                
+                
+
             self.meals.append(meal)
+                
             
             }
-            self.tableView.reloadData()
-
+            let result = self.meals.sort({$0.tasteRating > $1.tasteRating})
+                self.meals = result
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+            }
         })
+        
 
     }
     
@@ -149,15 +154,6 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
         
     }
     
-    
-
-    
-    //Mark: retreive server value
-    
-    func retreiveServerValues(){
-// var sessionRef = FIRDatabase.database().reference("session")
-        
-    }
     
     
     

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74f-BZ-yR5" id="tuf-eX-81R">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="JiB-HE-CXO" customClass="RatingControl" customModule="Foodiving" customModuleProvider="target">
@@ -387,7 +387,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLV-Ye-1A9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DLV-Ye-1A9">
                                 <rect key="frame" x="25" y="39" width="101" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="101" id="ac4-aO-WNn"/>
@@ -408,7 +408,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Co-xeY">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Co-xeY">
                                 <rect key="frame" x="0.0" y="162" width="600" height="438"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="bAP-ec-JwQ">
                                     <size key="itemSize" width="122" height="122"/>
@@ -461,7 +461,7 @@
                             <constraint firstItem="HMa-Co-xeY" firstAttribute="leading" secondItem="p2E-qS-Cpw" secondAttribute="leading" id="rIR-kG-d3D"/>
                             <constraint firstItem="DLV-Ye-1A9" firstAttribute="leading" secondItem="p2E-qS-Cpw" secondAttribute="leadingMargin" constant="5" id="rUe-nc-4oW"/>
                             <constraint firstItem="DLV-Ye-1A9" firstAttribute="leading" secondItem="p2E-qS-Cpw" secondAttribute="leadingMargin" constant="5" id="udm-Em-FFo"/>
-                            <constraint firstAttribute="trailing" secondItem="5aD-s4-s8G" secondAttribute="trailing" constant="20" id="uz5-Pw-tDN"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5aD-s4-s8G" secondAttribute="trailing" constant="20" id="uz5-Pw-tDN"/>
                             <constraint firstItem="DLV-Ye-1A9" firstAttribute="top" secondItem="eLd-j2-Xmh" secondAttribute="bottom" constant="19" id="w56-at-cWG"/>
                             <constraint firstItem="5aD-s4-s8G" firstAttribute="top" secondItem="eLd-j2-Xmh" secondAttribute="bottom" constant="143" id="xBo-9A-Hoq"/>
                             <constraint firstItem="5aD-s4-s8G" firstAttribute="bottom" secondItem="DLV-Ye-1A9" secondAttribute="bottom" id="zSx-wP-GJz"/>
@@ -1038,6 +1038,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2lf-Bq-f3s"/>
+        <segue reference="y8t-Ch-LdX"/>
     </inferredMetricsTieBreakers>
 </document>
