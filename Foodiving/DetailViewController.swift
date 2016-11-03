@@ -169,25 +169,6 @@ class DetailViewController: UIViewController,CommentFromRestViewControllerdelega
         
     }
 
-//    override func viewDidLayoutSubviews() {
-//        //scrollView
-//        fullSize = UIScreen.mainScreen().bounds.size
-//        
-//        scrollView.scrollEnabled = true
-////        scrollView.frame = CGRect(x: 0, y: 20, width: fullSize.width, height: fullSize.height)
-//        
-//        
-////        scrollView.contentSize = CGSizeMake(fullSize.width, fullSize.height*2)
-//        scrollView.showsHorizontalScrollIndicator = false
-//        scrollView.showsVerticalScrollIndicator = true
-//        scrollView.indicatorStyle = .Black
-//        scrollView.scrollsToTop = false
-//        
-//        
-//        self.view.addSubview(scrollView)
-//        
-//        
-//    }
     
     
     

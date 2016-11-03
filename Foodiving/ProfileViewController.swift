@@ -124,7 +124,8 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                         let environmentRating = mealInfo.value?["environmentRating"] as?  Int,
                         let comment = mealInfo.value?["comment"] as? String,
                         let userID = mealInfo.value?["userID"] as? String,
-                        let restID = mealInfo.value?["restaurantId"] as? String
+                        let restID = mealInfo.value?["restaurantId"] as? String,
+                        let timestamp = mealInfo.value?["timestamp"] as? Int
                         else { continue }
                     let meal = Meal(mealName: mealName, price: price,tasteRating: tasteRating, serviceRating: serviceRating, revisitRating: revisitRating, environmentRating: environmentRating, comment: comment)
                     
@@ -132,13 +133,18 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     meal.userID = userID
                     meal.restaurantID = restID
                     meal.restCommentID = mealInfo.key
-                    
+                    meal.timestamp = timestamp
                     self.meals.append(meal)
                     self.mealPhotoStringArray.append(photoString)
                     
                 }
+//                let result = self.meals.sort({$0.timestamp > $1.timestamp})
+//                self.meals = result
+                dispatch_async(dispatch_get_main_queue()){
+                    self.collectionView.reloadData()
+                }
+
                 
-                self.collectionView.reloadData()
                 
         })
         

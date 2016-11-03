@@ -49,10 +49,6 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     weak var delegate: CommentFromRestViewControllerdelegate?
     var isPost: Bool = true
     
-    //    let constraint: NSLayoutConstraint?
-//    self.view = self.scrollView
-//    self.scrollView.contentSize = CGSize(width: 600, height: 492)
-    
     //Mark: View Life Cycle
     
     override func viewDidLoad() {
@@ -178,7 +174,11 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
-        
+        let dateFormatter = NSDateFormatter()
+        let date = NSDate()
+//        var currentDate: String = ""
+//        DateFormatter.dateFormat = "yy/MM/dd, HH:mm:ss"
+//        currentDate = dateFormatter.dateFormat
         let timestamp = FIRServerValue.timestamp()
         
         if isPost == true{

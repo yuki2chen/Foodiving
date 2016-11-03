@@ -32,7 +32,7 @@ class Meal {
     var restCommentID: String = ""
     
     var restName: String = ""
-    
+    var timestamp: Int = 0
     // MARK: Initialization
     
     init(mealName: String, price: String,tasteRating: Int,serviceRating:Int,revisitRating:Int,environmentRating:Int,comment: String) {
