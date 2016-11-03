@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import Firebase
 
-class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate{
+class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate{
     
     //Mark: Properties
     var jsonData: NSData!
@@ -23,16 +23,13 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     let locationManager = CLLocationManager()
     var locationLat: Double = 0.0
     var locationLng: Double = 0.0
-    var resultSearchController: UISearchController?
     
-    
-    //Mark: Action
+      //Mark: Action
     
     @IBAction func reloadButton(sender: AnyObject) {
         self.viewDidLoad()
 
     }
-    
     
    
     //Mark: View Life Cycle
@@ -55,11 +52,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         
-//        let locationSearchTable = UIStoryboard!.instantiateViewControllerWithIdentifier("searchRestaurantsTableViewCell") as! searchRestaurantsTableViewCell
-//        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-//        resultSearchController?.searchResultsUpdater = locationSearchTable
-//        
-        
         
         
         guard
@@ -76,7 +68,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
     }
-    
     
     
     
@@ -162,6 +153,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchRestaurant.count
     }
+   
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchRestaurantsTableViewCell", forIndexPath: indexPath) as! searchRestaurantsTableViewCell
@@ -170,6 +162,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         let restaurant = searchRestaurant[indexPath.row]
         cell.restaurantName.text = restaurant["name"] as? String ?? ""
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

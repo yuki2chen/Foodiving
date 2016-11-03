@@ -15,6 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="kPl-Wj-snW">
+                            <rect key="frame" x="0.0" y="212" width="600" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" rowHeight="120" id="74f-BZ-yR5" customClass="ResaturantMealTableViewCell" customModule="Foodiving" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
@@ -130,6 +134,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="loadingSpinner" destination="kPl-Wj-snW" id="lPq-Rt-i6S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Le-xI-Zxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -954,6 +961,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FOODIVING" id="X3H-J1-AZb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="Ggy-OZ-bTn"/>
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="Sc7-eR-9rV">
                             <connections>
                                 <action selector="reloadButton:" destination="L0f-gQ-xzY" id="6mZ-wX-ZQZ"/>
@@ -963,9 +971,18 @@
                     <connections>
                         <outlet property="addTableView" destination="4f0-Ec-O5s" id="wL1-is-BS5"/>
                         <outlet property="mapView" destination="ctf-7q-fGk" id="Zy2-4d-ZkY"/>
+                        <outlet property="searchDisplayController" destination="iC3-3g-CJx" id="RXf-l9-Gih"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RhR-4E-30w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="iC3-3g-CJx">
+                    <connections>
+                        <outlet property="delegate" destination="L0f-gQ-xzY" id="gFJ-v1-BWO"/>
+                        <outlet property="searchContentsController" destination="L0f-gQ-xzY" id="3GA-LM-8bS"/>
+                        <outlet property="searchResultsDataSource" destination="L0f-gQ-xzY" id="YHB-aj-FhT"/>
+                        <outlet property="searchResultsDelegate" destination="L0f-gQ-xzY" id="jY8-el-vWH"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2581" y="-318"/>
         </scene>

@@ -20,7 +20,8 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
     var meals = [Meal]()
     var restDic: [String: AnyObject] = [:]
     
-    
+//    
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     
     @IBOutlet weak var mealDefaultPhoto: UIImageView!
     
@@ -40,13 +41,12 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
         super.viewDidLoad()
         
         retreiveData()
-
+        
         self.navigationItem.title = restDic["name"] as? String ?? ""
         tableView.separatorStyle = .None
         
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ResaturantMealTableViewController.methodOfReceivedNotification), name:"didRemoveItem", object: nil)
-        
         
     }
     
@@ -56,7 +56,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
     // Mark: Retrieve data
     
     func retreiveData() {
-        
+
         meals = []
         
         let restaurantId = restDic["id"] as? String ?? ""
@@ -64,7 +64,9 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
 //        let serverTimestamp = FIRServerValue.timestamp()
         mealInfoDatabase.child("RestaurantsComments").queryOrderedByChild("restaurantId").queryEqualToValue("\(restaurantId)").observeSingleEventOfType(.Value, withBlock: { snapshot in
 
+            if snapshot.exists() {
             for snapshot in snapshot.children {
+                self.loadingSpinner.startAnimating()
                 
                 let commentSnap = snapshot as! FIRDataSnapshot
                 let mealName = commentSnap.value?["mealName"] as? String ?? ""
@@ -90,17 +92,23 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
                 
 
                 self.retreiveUserData(meal)
-            
+               
+                
                 if self.tableView != nil{
                     
                     self.tableView.reloadData()
                 }
-                
+                self.loadingSpinner.stopAnimating()
+                self.loadingSpinner.hidesWhenStopped = true
+                }
             }
 // self.meals.sortInPlace({ $0.tasteRating < $1.tasteRating})
-            
+            else {
+                self.loadingSpinner.hidden = true
+            }
         })
-       
+        
+
     }
     
     
@@ -212,6 +220,7 @@ class ResaturantMealTableViewController: UITableViewController,CommentFromDetail
         
         return meals.count
     }
+    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let cellIdentifier = "MealTableViewCell"

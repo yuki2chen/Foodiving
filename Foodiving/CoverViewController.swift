@@ -24,7 +24,6 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
     
     //Mark: Properties
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-//    var loginButton: FBSDKLoginButton = FBSDKLoginButton()
     
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     weak var delegate: CoverViewControllerDelegate?
@@ -35,7 +34,6 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 1)
 
-//        self.loginButton.hidden = true
         
         delegate = self
         
@@ -53,7 +51,6 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
             }
             else {
                 
-//                self.loginButton.center = self.view.center
                 self.loginButton.readPermissions = ["public_profile","email","user_friends"]
                 self.loginButton.delegate = self
                 

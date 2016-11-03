@@ -19,6 +19,7 @@ class ResaturantMealTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
