@@ -884,7 +884,7 @@
             </objects>
             <point key="canvasLocation" x="2661" y="712"/>
         </scene>
-        <!--Map View Controller-->
+        <!--FOODIVING-->
         <scene sceneID="NJb-gM-ScB">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="L0f-gQ-xzY" customClass="MapViewController" customModule="Foodiving" customModuleProvider="target" sceneMemberID="viewController">
@@ -953,7 +953,13 @@
                             <constraint firstItem="4f0-Ec-O5s" firstAttribute="centerX" secondItem="opE-9b-LEc" secondAttribute="centerX" id="zqM-Qv-h1n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FOt-y6-SSf"/>
+                    <navigationItem key="navigationItem" title="FOODIVING" id="X3H-J1-AZb">
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="Sc7-eR-9rV">
+                            <connections>
+                                <action selector="reloadButton:" destination="L0f-gQ-xzY" id="6mZ-wX-ZQZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addTableView" destination="4f0-Ec-O5s" id="wL1-is-BS5"/>
                         <outlet property="mapView" destination="ctf-7q-fGk" id="Zy2-4d-ZkY"/>
@@ -1010,6 +1016,7 @@
         <image name="placeholder" width="32" height="32"/>
         <image name="placeholder-on-a-map" width="32" height="32"/>
         <image name="ppppp" width="1024" height="768"/>
+        <image name="refresh" width="24" height="24"/>
         <image name="restaurant (10)" width="256" height="256"/>
         <image name="user" width="32" height="32"/>
     </resources>

@@ -23,8 +23,18 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     let locationManager = CLLocationManager()
     var locationLat: Double = 0.0
     var locationLng: Double = 0.0
+    var resultSearchController: UISearchController?
     
     
+    //Mark: Action
+    
+    @IBAction func reloadButton(sender: AnyObject) {
+        self.viewDidLoad()
+
+    }
+    
+    
+   
     //Mark: View Life Cycle
     override func viewDidLoad() {
         
@@ -43,6 +53,13 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        
+        
+//        let locationSearchTable = UIStoryboard!.instantiateViewControllerWithIdentifier("searchRestaurantsTableViewCell") as! searchRestaurantsTableViewCell
+//        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+//        resultSearchController?.searchResultsUpdater = locationSearchTable
+//        
+        
         
         
         guard
@@ -109,6 +126,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 
                 guard let venues = response["venues"] as? NSArray else{return
                 }
+                searchRestaurant = []
                 for restaurants in venues{
                     
                     let restaurant = searchRestaurantModel()
@@ -160,7 +178,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //Mark: save to firebase
     
     func saveToFirebase(){
-        
         for restPerInfo in searchRestaurant{
             var restaurantInfo: [String: AnyObject] = [:]
             let id = restPerInfo["id"] as? String ?? ""
@@ -185,7 +202,6 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         if segue.identifier == "showInfo"{
             
-            //            print(searchRestaurant)
             
             
             let destController = segue.destinationViewController as! ResaturantMealTableViewController
@@ -210,8 +226,8 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //Mark: rest annotation place
     
     func restLocation(){
-        
-        //print("searchRest array: \(searchRestaurant.first)")
+        mapView.removeAnnotations(mapView.annotations)
+
         
         for restInfo in searchRestaurant{
             
@@ -219,10 +235,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 return}
             guard let restLng = restInfo["restLng"] as? Double else{
                 return}
-            guard let restCountry = restInfo["restCity"] as? String else{
-                return}
-            guard let restCity = restInfo["restCountry"] as? String else{
-                return}
+//            guard let restCountry = restInfo["restCity"] as? String else{
+//                return}
+//            guard let restCity = restInfo["restCountry"] as? String else{
+//                return}
             guard let restName = restInfo["name"] as? String else{
                 return}
             
@@ -232,17 +248,11 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             
 
             let annotation = MKPointAnnotation()
+            
             annotation.coordinate = mylocation.coordinate
             annotation.title = restName
-//            if let city = mylocation.locality,
-//                let state = mylocation.administrativeArea {
-//                annotation.subtitle = "\(city) \(state)"
-//            }
+
             mapView.addAnnotation(annotation)
-//            let span = MKCoordinateSpanMake(0.05, 0.05)
-//            let region = MKCoordinateRegionMake(mylocation.coordinate, span)
-//            mapView.setRegion(region, animated: true)
-            
       
         }
     }
@@ -256,4 +266,5 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
 }
+
 
