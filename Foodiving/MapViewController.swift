@@ -58,14 +58,10 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
         
-        
-        
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        return
-    }
+    
+    
     
     // Mark: fetch data from foursquare
     
