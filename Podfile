@@ -17,5 +17,4 @@ target 'Foodiving' do
     pod 'Nuke', '3.1.3'
     pod 'Fusuma'
     pod 'IQKeyboardManagerSwift', '4.0.5'
-    
 end

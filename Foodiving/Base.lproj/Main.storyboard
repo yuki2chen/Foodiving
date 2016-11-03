@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UVe-wK-Z20">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74f-BZ-yR5" id="tuf-eX-81R">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="RatingControl" translatesAutoresizingMaskIntoConstraints="NO" id="JiB-HE-CXO" customClass="RatingControl" customModule="Foodiving" customModuleProvider="target">
@@ -57,9 +58,8 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal食物" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDH-tA-FCA">
-                                            <rect key="frame" x="176" y="11" width="248" height="30"/>
+                                            <rect key="frame" x="176" y="11" width="96" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="248" id="Akm-w1-Nsc"/>
                                                 <constraint firstAttribute="height" constant="30" id="Bci-hr-Zyz"/>
                                                 <constraint firstAttribute="height" constant="30" id="v7g-Cg-Jxm"/>
                                             </constraints>
@@ -97,6 +97,7 @@
                                         <constraint firstItem="HDH-tA-FCA" firstAttribute="centerY" secondItem="DEC-0I-KSO" secondAttribute="centerY" identifier="11" id="nOf-Ur-zaB"/>
                                         <constraint firstItem="DEC-0I-KSO" firstAttribute="top" secondItem="tuf-eX-81R" secondAttribute="topMargin" identifier="4" id="tMV-SY-aYW"/>
                                         <constraint firstItem="DEC-0I-KSO" firstAttribute="leading" secondItem="bwO-PO-KaN" secondAttribute="trailing" constant="6" identifier="3" id="x6g-xb-bJl"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HDH-tA-FCA" secondAttribute="trailing" id="zqw-S8-klm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -126,7 +127,7 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="placeholder-on-a-map" id="zdu-F1-1Vo">
+                            <barButtonItem image="facebook-2" id="zdu-F1-1Vo">
                                 <connections>
                                     <action selector="shareToFacebook:" destination="e6B-FZ-BDd" id="fGZ-vg-373"/>
                                 </connections>
@@ -344,7 +345,7 @@
                             <constraint firstItem="Eh1-bZ-lat" firstAttribute="leading" secondItem="Te8-Ee-bg6" secondAttribute="trailing" constant="62" identifier="27" id="fBH-h0-Ddl"/>
                             <constraint firstItem="xML-rC-Vap" firstAttribute="leading" secondItem="ZIB-mP-j2r" secondAttribute="leadingMargin" constant="1" identifier="29" id="k7F-wf-bqf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ooe-1R-dGX" secondAttribute="trailing" identifier="34" id="k7p-XN-AUU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="g4b-cL-4vm" secondAttribute="trailing" priority="999" identifier="24" id="kwg-vo-5yq"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="g4b-cL-4vm" secondAttribute="trailing" identifier="24" id="kwg-vo-5yq"/>
                             <constraint firstItem="Eh1-bZ-lat" firstAttribute="centerY" secondItem="Te8-Ee-bg6" secondAttribute="centerY" constant="-2" identifier="26" id="mUt-SC-OmV"/>
                             <constraint firstItem="oUR-Hq-ARt" firstAttribute="top" secondItem="2sh-aq-hJj" secondAttribute="bottom" constant="18" identifier="11" id="oQk-PY-SwG"/>
                             <constraint firstItem="Zu9-Bq-7p5" firstAttribute="centerY" secondItem="oUR-Hq-ARt" secondAttribute="centerY" constant="2" identifier="14" id="p1i-Lb-EOL"/>
@@ -372,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNK-oX-mLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4042" y="914"/>
+            <point key="canvasLocation" x="3738" y="669"/>
         </scene>
         <!--Other User View Controller-->
         <scene sceneID="sAb-2o-vzX">
@@ -613,7 +614,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="meal field" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cI-2J-DXR">
-                                <rect key="frame" x="216" y="82" width="348" height="30"/>
+                                <rect key="frame" x="216" y="82" width="129" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cj4-1s-grU"/>
                                 </constraints>
@@ -621,7 +622,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="price field" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8G-Jw-bVT">
-                                <rect key="frame" x="216" y="120" width="348" height="30"/>
+                                <rect key="frame" x="216" y="120" width="92" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="EFv-oV-Ypo"/>
                                 </constraints>
@@ -637,7 +638,7 @@
                             <constraint firstItem="8Ye-8p-mcU" firstAttribute="leading" secondItem="xcP-fa-ria" secondAttribute="leadingMargin" constant="15" identifier="25" id="3Xp-e9-hpP"/>
                             <constraint firstItem="3Ao-13-3lr" firstAttribute="leading" secondItem="6Ei-A2-rGm" secondAttribute="trailing" constant="52" identifier="21" id="4ml-Jm-Esx"/>
                             <constraint firstItem="Xap-o3-d28" firstAttribute="leading" secondItem="xcP-fa-ria" secondAttribute="leadingMargin" constant="15" identifier="5" id="7bp-aH-4su"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8cI-2J-DXR" secondAttribute="trailing" constant="16" identifier="7" id="9VU-2I-UEi"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="8cI-2J-DXR" secondAttribute="trailing" constant="16" identifier="7" id="9VU-2I-UEi"/>
                             <constraint firstItem="N8G-Jw-bVT" firstAttribute="leading" secondItem="THg-ac-GVN" secondAttribute="trailing" constant="3" identifier="13" id="AoA-e9-G79"/>
                             <constraint firstItem="e3i-EK-IL0" firstAttribute="leading" secondItem="xcP-fa-ria" secondAttribute="leadingMargin" constant="15" identifier="29" id="DIE-cw-75W"/>
                             <constraint firstItem="3Ao-13-3lr" firstAttribute="centerY" secondItem="6Ei-A2-rGm" secondAttribute="centerY" identifier="22" id="GR4-rc-VbZ"/>
@@ -663,7 +664,7 @@
                             <constraint firstItem="zzv-6y-Dxp" firstAttribute="centerY" secondItem="0qx-oh-CsO" secondAttribute="centerY" identifier="24" id="pOd-hl-hNZ"/>
                             <constraint firstItem="xwH-5k-ECU" firstAttribute="top" secondItem="e3i-EK-IL0" secondAttribute="bottom" constant="14" identifier="32" id="sX8-4Z-HN9"/>
                             <constraint firstItem="0qx-oh-CsO" firstAttribute="leading" secondItem="xcP-fa-ria" secondAttribute="leadingMargin" constant="15" identifier="19" id="tJJ-KY-nbH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="N8G-Jw-bVT" secondAttribute="trailing" constant="16" identifier="14" id="tpY-d7-XiF"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="N8G-Jw-bVT" secondAttribute="trailing" constant="16" identifier="14" id="tpY-d7-XiF"/>
                             <constraint firstItem="ykR-sY-QP1" firstAttribute="top" secondItem="CCF-AQ-rb6" secondAttribute="bottom" constant="18" identifier="$imagefork$" id="wGj-0Y-Eug"/>
                             <constraint firstItem="qEf-0g-vDa" firstAttribute="centerY" secondItem="8Ye-8p-mcU" secondAttribute="centerY" identifier="28" id="wL4-hu-y9M"/>
                             <constraint firstItem="ffL-JX-iJS" firstAttribute="centerY" secondItem="Xap-o3-d28" secondAttribute="centerY" identifier="18" id="yjT-Vk-Nif"/>
@@ -889,7 +890,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ff-23-rp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="712"/>
+            <point key="canvasLocation" x="2644" y="561"/>
         </scene>
         <!--FOODIVING-->
         <scene sceneID="NJb-gM-ScB">
@@ -961,7 +962,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FOODIVING" id="X3H-J1-AZb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="Ggy-OZ-bTn"/>
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="Sc7-eR-9rV">
                             <connections>
                                 <action selector="reloadButton:" destination="L0f-gQ-xzY" id="6mZ-wX-ZQZ"/>
@@ -1027,11 +1027,11 @@
     </scenes>
     <resources>
         <image name="coins" width="32" height="32"/>
+        <image name="facebook-2" width="24" height="24"/>
         <image name="menu-card" width="64" height="64"/>
         <image name="more-button-of-three-dots (4)" width="32" height="32"/>
         <image name="pin" width="64" height="64"/>
         <image name="placeholder" width="32" height="32"/>
-        <image name="placeholder-on-a-map" width="32" height="32"/>
         <image name="ppppp" width="1024" height="768"/>
         <image name="refresh" width="24" height="24"/>
         <image name="restaurant (10)" width="256" height="256"/>
