@@ -174,8 +174,8 @@ class CommentViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         
         let mealReference = FIRDatabase.database().reference()
         let uid = FIRAuth.auth()?.currentUser?.uid
-        let dateFormatter = NSDateFormatter()
-        let date = NSDate()
+//        let dateFormatter = NSDateFormatter()
+//        let date = NSDate()
 //        var currentDate: String = ""
 //        DateFormatter.dateFormat = "yy/MM/dd, HH:mm:ss"
 //        currentDate = dateFormatter.dateFormat

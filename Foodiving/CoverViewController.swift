@@ -51,7 +51,7 @@ class CoverViewController: UIViewController,FBSDKLoginButtonDelegate, CoverViewC
             }
             else {
                 
-                self.loginButton.readPermissions = ["public_profile","email","user_friends"]
+                self.loginButton.readPermissions = ["public_profile","email"]
                 self.loginButton.delegate = self
                 
                 self.view!.addSubview(self.loginButton)

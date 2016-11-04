@@ -151,6 +151,14 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
     }
     
+    func retrieveRestData(restID: String){
+        let restFirebase = FIRDatabase.database().reference()
+        restFirebase.child("restaurants").queryOrderedByKey().queryEqualToValue(restID).observeEventType(.Value, withBlock: {
+            
+            snapshot in
+            
+        })
+    }
     
     
     

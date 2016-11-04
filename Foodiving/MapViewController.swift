@@ -23,6 +23,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     let locationManager = CLLocationManager()
     var locationLat: Double = 0.0
     var locationLng: Double = 0.0
+    @IBOutlet weak var noResultFoundLabel: UIView!
     
       //Mark: Action
     
@@ -34,7 +35,7 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
    
     //Mark: View Life Cycle
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         addTableView.delegate = self
         addTableView.dataSource = self
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 226/255, blue: 82/255, alpha: 0)
@@ -46,30 +47,37 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+
         }
+        noResultFoundLabel.hidden = true
+
+        switch CLLocationManager.authorizationStatus()
+        {
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            mapView.showsUserLocation = true
+            noResultFoundLabel.hidden = true
+        case .Denied, .Restricted:
+            let alert = UIAlertController(title: "Sorry!", message: "GPS access is restricted. In order to use tracking, please enable GPS in the Settigs app under Privacy, Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
+            noResultFoundLabel.hidden = true
+
+            alert.addAction(UIAlertAction(title: "Go to setting", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in
+                UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)}))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in self.noResultFoundLabel.hidden = false}))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            break
+            
+        }
+
         
-        
-        
-        
-        guard
-            let lat = locationManager.location?.coordinate.latitude,
-            let lng = locationManager.location?.coordinate.longitude
-            else{return}
-        self.locationLat = lat
-        self.locationLng = lng
-        fetchData(locationLat, longitude: locationLng)
-        
-        centerMapOnLocation(locationManager.location!)
-        locationManager.stopUpdatingLocation()
-        
-        
-        
-    }
+}
     
-    
+   
     
     // Mark: fetch data from foursquare
     
@@ -210,11 +218,53 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        
+        
         print(error.localizedDescription)
     }
     
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard
+            let lat = locationManager.location?.coordinate.latitude,
+            let lng = locationManager.location?.coordinate.longitude
+            else{return}
+        self.locationLat = lat
+        self.locationLng = lng
+        fetchData(locationLat, longitude: locationLng)
+        
+        centerMapOnLocation(locationManager.location!)
+        locationManager.stopUpdatingLocation()
+        
+        
+    }
     
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            mapView.showsUserLocation = true
+            noResultFoundLabel.hidden = true
+        case .Denied, .Restricted:
+            let alert = UIAlertController(title: "Sorry!", message: "GPS access is restricted. In order to use tracking, please enable GPS in the Settigs app under Privacy, Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
+            noResultFoundLabel.hidden = true
+            
+            alert.addAction(UIAlertAction(title: "Go to setting", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in
+                UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)}))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in self.noResultFoundLabel.hidden = false}))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        default:
+            break
+
+
+        }
+          
+    }
+
     
     //Mark: rest annotation place
     
@@ -250,8 +300,14 @@ class MapViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
     }
     
+    
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//        
+//    }
+    
+    
     func centerMapOnLocation(location: CLLocation){
-        let regionRadius: CLLocationDistance = 400
+        let regionRadius: CLLocationDistance = 300
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 1.0, regionRadius * 1.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
