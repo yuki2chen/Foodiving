@@ -7,9 +7,9 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 #Feature
 
 ####Map 
-All Restaurants Locations Nearby
+<pre><code>All Restaurants Locations Nearby</code></pre>
 
-#####Menu
+<p>Menu<p>
 Display The Comments From Others
 Find The Most Popular Meal In The Restaurant
 
