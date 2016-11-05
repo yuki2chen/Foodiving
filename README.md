@@ -36,7 +36,7 @@
 </ul>
 
 #ScreenShot
-![](http://imgur.com/F29vMAk)
+![](http://i.imgur.com/UtJZqJk.png)
 ![](http://imgur.com/UtJZqJk)
 ![](http://imgur.com/YH5I5P2)
 ![](http://imgur.com/lKkqap5)
