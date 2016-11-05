@@ -6,7 +6,7 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 
 #Feature
 
-#Map 
+###Map 
 All Restaurants Locations Nearby
 
 #Menu
