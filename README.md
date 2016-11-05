@@ -21,19 +21,20 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 
 <ul><li>Social Media</li></ul> 
 <ul><ul><li>Facebook Login </li></ul></ul>
-<ul><ul><li>Share your chek-in and food photo on Facebook</li></ul></ul>
+<ul><ul><li>Share your chek-in and food comment on Facebook</li></ul></ul>
 
 
 
 #Libraries
 
-SideMenu
-Firebase
-Foursquare
-FBSDK
-GA
-Crashlytics
-
+<ul>
+<li>SideMenu</li>
+<li>Firebase</li>
+<li>Foursquare</li>
+<li>FBSDK</li>
+<li>GA</li>
+<li>Crashlytics</li>
+</ul>
 
 #ScreenShot
 
@@ -41,10 +42,11 @@ Crashlytics
 
 #Requirement
 
-iOS 9.0+
-Xcode 7.3+
-pod install
-
+<ul>
+<li>iOS 9.0+</li>
+<li>Xcode 7.3+</li>
+<li>pod install</li>
+</ul>
 
 #Contacts
 
