@@ -7,7 +7,12 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 #Feature
 
 ####Map 
-<pre><code>All Restaurants Locations Nearby</code></pre>
+All Restaurants Locations Nearby
+
+<ul>
+<li>Bird</li>
+<li>Magic</li>
+</ul>
 
 <p>Menu<p>
 Display The Comments From Others
