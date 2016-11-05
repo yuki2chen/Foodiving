@@ -43,7 +43,7 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 #Requirement
 
 <ul>
-<li>iOS 9.0+</li>
+<li>iOS 8.0+</li>
 <li>Xcode 7.3+</li>
 <li>pod install</li>
 </ul>
