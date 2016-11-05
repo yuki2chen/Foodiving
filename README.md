@@ -7,7 +7,7 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 #Feature
 
 <ul><li>Map<li></ul> 
-<ul><li><p>All Restaurants Locations Nearby</p></li></ul>
+<ul><ul><li><li>All Restaurants Locations Nearby</li></ul></ul>
 
 
 
