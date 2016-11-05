@@ -27,7 +27,6 @@
 #Libraries
 
 <ul>
-<li>SideMenu</li>
 <li>Firebase</li>
 <li>Foursquare</li>
 <li>FBSDK</li>
