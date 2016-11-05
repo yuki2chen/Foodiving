@@ -1,6 +1,6 @@
 ##Foodiving iOS
 
-When we first go to the restaurant and enjoy our meal, we don't know which meal is the most popular. So we search the internet to browse others who have enjoy it before. Or maybe we would like to share our meal to others but we have no time writing the long story like a blog. Don't worry, in this app, you can quickly find out what the most popular meal in the restaurant ,or, share your delicious meal to let others enjoy a good time with you!
+>When we first go to the restaurant and enjoy our meal, we don't know which meal is the most popular. So we search the internet to browse others who have enjoy it before. Or maybe we would like to share our meal to others but we have no time writing the long story like a blog. Don't worry, in this app, you can quickly find out what the most popular meal in the restaurant ,or, share your delicious meal to let others enjoy a good time with you!
 
 
 #Feature
