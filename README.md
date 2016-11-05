@@ -6,13 +6,10 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 
 #Feature
 
-####Map 
-All Restaurants Locations Nearby
+<ul><li>Map<li></ul> 
+<ul><li><p>All Restaurants Locations Nearby</p></li></ul>
 
-<ul>
-<li>Bird</li>
-<li>Magic</li>
-</ul>
+
 
 <p>Menu<p>
 Display The Comments From Others
