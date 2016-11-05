@@ -11,18 +11,17 @@ When we first go to the restaurant and enjoy our meal, we don't know which meal 
 
 
 
-<p>Menu<p>
-Display The Comments From Others
-Find The Most Popular Meal In The Restaurant
+<ul><li>Menu</li></ul> 
+<ul><ul><li>Display The Comments From Others</li></ul></ul>
+<ul><ul><li>Find The Most Popular Meal In The Restaurant</li></ul></ul>
 
 
-#Profile
-Record The Food You Ate
+<ul><li>Profile</li></ul> 
+<ul><ul><li>Record The Food You Ate</li></ul></ul>
 
--Social Media
-
-Facebook Login 
-Share your chek-in and food photo on Facebook
+<ul><li>Social Media</li></ul> 
+<ul><ul><li>Facebook Login </li></ul></ul>
+<ul><ul><li>Share your chek-in and food photo on Facebook</li></ul></ul>
 
 
 
