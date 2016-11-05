@@ -17,7 +17,7 @@ Find The Most Popular Meal In The Restaurant
 #Profile
 Record The Food You Ate
 
-#Social Media
+-Social Media
 
 Facebook Login 
 Share your chek-in and food photo on Facebook
