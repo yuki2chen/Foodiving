@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class searchRestaurantsTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantName: UILabel!
 
