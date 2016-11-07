@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		429EA47DB5E1AA7AB770A072 /* Pods_Foodiving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49737159224D1C92F206E51 /* Pods_Foodiving.framework */; };
+		A5110D731DCEE0250082ACE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5110D711DCEE0250082ACE1 /* GoogleService-Info.plist */; };
+		A5110D741DCEE0250082ACE1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5110D721DCEE0250082ACE1 /* Info.plist */; };
 		A52C8A7D1DC8697500D00B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52C8A7B1DC8697500D00B03 /* Main.storyboard */; };
 		A52C8A821DC8697500D00B03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52C8A801DC8697500D00B03 /* LaunchScreen.storyboard */; };
 		A52C8AA11DC86A9D00D00B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C8A891DC86A9D00D00B03 /* AppDelegate.swift */; };
@@ -32,7 +34,6 @@
 		A52C8AB61DC86A9D00D00B03 /* searchRestaurantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C8A9F1DC86A9D00D00B03 /* searchRestaurantsTableViewCell.swift */; };
 		A52C8AB71DC86A9D00D00B03 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C8AA01DC86A9D00D00B03 /* User.swift */; };
 		A52C8AB91DC86AD100D00B03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C8AB81DC86AD100D00B03 /* ProfileViewController.swift */; };
-		A52C8ABB1DC86DD800D00B03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A52C8ABA1DC86DD800D00B03 /* GoogleService-Info.plist */; };
 		A52C8ABD1DC877CB00D00B03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A52C8ABC1DC877CB00D00B03 /* Assets.xcassets */; };
 		A52C8CC51DC8823700D00B03 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52C8CC31DC8823700D00B03 /* FBSDKCoreKit.framework */; };
 		A52C8CC61DC8823700D00B03 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52C8CC41DC8823700D00B03 /* FBSDKLoginKit.framework */; };
@@ -40,10 +41,11 @@
 
 /* Begin PBXFileReference section */
 		61A0328517AD41D326412455 /* Pods-Foodiving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodiving.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodiving/Pods-Foodiving.debug.xcconfig"; sourceTree = "<group>"; };
+		A5110D711DCEE0250082ACE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A5110D721DCEE0250082ACE1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A52C8A741DC8697500D00B03 /* Foodiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52C8A7C1DC8697500D00B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A52C8A811DC8697500D00B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A52C8A831DC8697500D00B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A52C8A891DC86A9D00D00B03 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A52C8A8A1DC86A9D00D00B03 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A52C8A8B1DC86A9D00D00B03 /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +68,6 @@
 		A52C8A9F1DC86A9D00D00B03 /* searchRestaurantsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchRestaurantsTableViewCell.swift; sourceTree = "<group>"; };
 		A52C8AA01DC86A9D00D00B03 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A52C8AB81DC86AD100D00B03 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A52C8ABA1DC86DD800D00B03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A52C8ABC1DC877CB00D00B03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A52C8CC31DC8823700D00B03 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A52C8CC41DC8823700D00B03 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -144,8 +145,8 @@
 				A52C8A7B1DC8697500D00B03 /* Main.storyboard */,
 				A52C8ABC1DC877CB00D00B03 /* Assets.xcassets */,
 				A52C8A801DC8697500D00B03 /* LaunchScreen.storyboard */,
-				A52C8ABA1DC86DD800D00B03 /* GoogleService-Info.plist */,
-				A52C8A831DC8697500D00B03 /* Info.plist */,
+				A5110D711DCEE0250082ACE1 /* GoogleService-Info.plist */,
+				A5110D721DCEE0250082ACE1 /* Info.plist */,
 			);
 			path = Foodiving;
 			sourceTree = "<group>";
@@ -223,7 +224,8 @@
 			files = (
 				A52C8A821DC8697500D00B03 /* LaunchScreen.storyboard in Resources */,
 				A52C8AAC1DC86A9D00D00B03 /* postcode.json in Resources */,
-				A52C8ABB1DC86DD800D00B03 /* GoogleService-Info.plist in Resources */,
+				A5110D741DCEE0250082ACE1 /* Info.plist in Resources */,
+				A5110D731DCEE0250082ACE1 /* GoogleService-Info.plist in Resources */,
 				A52C8ABD1DC877CB00D00B03 /* Assets.xcassets in Resources */,
 				A52C8A7D1DC8697500D00B03 /* Main.storyboard in Resources */,
 			);
